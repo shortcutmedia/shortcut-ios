@@ -17,6 +17,7 @@
  */
 @interface SCDeepLinking : NSObject
 
+
 /// @name Accessing the global instance
 
 /**
@@ -31,5 +32,27 @@
  *  @return The global config instance.
  */
 + (instancetype)sharedInstance;
+
+
+/// @name Interactions
+
+/**
+ *  Takes care of handling potential deferred deep links.
+ *
+ *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
+ */
+- (void)launch;
+
+/**
+ *  Reports the opening of the URL to the Shortcut backend.
+ *
+ *  This method should be called in the app delegate's application:openURL:sourceApplication:annotation:
+ *  It reports the opening of the deep link to the Shortcut backend if the opening was triggered by visiting
+ *  a Shortcut link. It then returns a URL stripped of all additional query parameters Shortcut needs to
+ *  attribute the URL to the correct Shortcut link.
+ *
+ *  @return A sanitized variant of the URL for further processing.
+ */
+- (NSURL *)handleOpenURL:(NSURL *)url;
 
 @end
