@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		864828F41BAC10CB00E7F4D2 /* libShortcutDeepLinkingSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 864828E81BAC10CA00E7F4D2 /* libShortcutDeepLinkingSDK.a */; };
+		864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */ = {isa = PBXBuildFile; fileRef = 864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */; };
+		864829081BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		864828F51BAC10CB00E7F4D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 864828E01BAC10CA00E7F4D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 864828E71BAC10CA00E7F4D2;
+			remoteInfo = ShortcutDeepLinkingSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		864828E61BAC10CA00E7F4D2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		864828E81BAC10CA00E7F4D2 /* libShortcutDeepLinkingSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libShortcutDeepLinkingSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		864828F31BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShortcutDeepLinkingSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		864828F91BAC10CB00E7F4D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeepLinking.h; sourceTree = "<group>"; };
+		864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeepLinking.m; sourceTree = "<group>"; };
+		864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutDeepLinkingSDK.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		864828E51BAC10CA00E7F4D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		864828F01BAC10CB00E7F4D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				864828F41BAC10CB00E7F4D2 /* libShortcutDeepLinkingSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		864828DF1BAC10CA00E7F4D2 = {
+			isa = PBXGroup;
+			children = (
+				864828EA1BAC10CA00E7F4D2 /* ShortcutDeepLinkingSDK */,
+				864828F71BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests */,
+				864828E91BAC10CA00E7F4D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		864828E91BAC10CA00E7F4D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				864828E81BAC10CA00E7F4D2 /* libShortcutDeepLinkingSDK.a */,
+				864828F31BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		864828EA1BAC10CA00E7F4D2 /* ShortcutDeepLinkingSDK */ = {
+			isa = PBXGroup;
+			children = (
+				864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */,
+				864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */,
+				864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */,
+			);
+			path = ShortcutDeepLinkingSDK;
+			sourceTree = "<group>";
+		};
+		864828F71BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				864828F81BAC10CB00E7F4D2 /* Supporting Files */,
+			);
+			path = ShortcutDeepLinkingSDKTests;
+			sourceTree = "<group>";
+		};
+		864828F81BAC10CB00E7F4D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				864828F91BAC10CB00E7F4D2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		864829021BAC113E00E7F4D2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				864829081BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h in Headers */,
+				864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		864828E71BAC10CA00E7F4D2 /* ShortcutDeepLinkingSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 864828FC1BAC10CB00E7F4D2 /* Build configuration list for PBXNativeTarget "ShortcutDeepLinkingSDK" */;
+			buildPhases = (
+				864828E41BAC10CA00E7F4D2 /* Sources */,
+				864828E51BAC10CA00E7F4D2 /* Frameworks */,
+				864828E61BAC10CA00E7F4D2 /* CopyFiles */,
+				864829021BAC113E00E7F4D2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShortcutDeepLinkingSDK;
+			productName = ShortcutDeepLinkingSDK;
+			productReference = 864828E81BAC10CA00E7F4D2 /* libShortcutDeepLinkingSDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		864828F21BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 864828FF1BAC10CB00E7F4D2 /* Build configuration list for PBXNativeTarget "ShortcutDeepLinkingSDKTests" */;
+			buildPhases = (
+				864828EF1BAC10CB00E7F4D2 /* Sources */,
+				864828F01BAC10CB00E7F4D2 /* Frameworks */,
+				864828F11BAC10CB00E7F4D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				864828F61BAC10CB00E7F4D2 /* PBXTargetDependency */,
+			);
+			name = ShortcutDeepLinkingSDKTests;
+			productName = ShortcutDeepLinkingSDKTests;
+			productReference = 864828F31BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		864828E01BAC10CA00E7F4D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Shortcut Media AG";
+				TargetAttributes = {
+					864828E71BAC10CA00E7F4D2 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					864828F21BAC10CB00E7F4D2 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 864828E31BAC10CA00E7F4D2 /* Build configuration list for PBXProject "ShortcutDeepLinkingSDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 864828DF1BAC10CA00E7F4D2;
+			productRefGroup = 864828E91BAC10CA00E7F4D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				864828E71BAC10CA00E7F4D2 /* ShortcutDeepLinkingSDK */,
+				864828F21BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		864828F11BAC10CB00E7F4D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		864828E41BAC10CA00E7F4D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		864828EF1BAC10CB00E7F4D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		864828F61BAC10CB00E7F4D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 864828E71BAC10CA00E7F4D2 /* ShortcutDeepLinkingSDK */;
+			targetProxy = 864828F51BAC10CB00E7F4D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		864828FA1BAC10CB00E7F4D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		864828FB1BAC10CB00E7F4D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		864828FD1BAC10CB00E7F4D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = include/ShortcutDeepLinkingSDK;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		864828FE1BAC10CB00E7F4D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = include/ShortcutDeepLinkingSDK;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		864829001BAC10CB00E7F4D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ShortcutDeepLinkingSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		864829011BAC10CB00E7F4D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ShortcutDeepLinkingSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		864828E31BAC10CA00E7F4D2 /* Build configuration list for PBXProject "ShortcutDeepLinkingSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				864828FA1BAC10CB00E7F4D2 /* Debug */,
+				864828FB1BAC10CB00E7F4D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		864828FC1BAC10CB00E7F4D2 /* Build configuration list for PBXNativeTarget "ShortcutDeepLinkingSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				864828FD1BAC10CB00E7F4D2 /* Debug */,
+				864828FE1BAC10CB00E7F4D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		864828FF1BAC10CB00E7F4D2 /* Build configuration list for PBXNativeTarget "ShortcutDeepLinkingSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				864829001BAC10CB00E7F4D2 /* Debug */,
+				864829011BAC10CB00E7F4D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 864828E01BAC10CA00E7F4D2 /* Project object */;
+}
