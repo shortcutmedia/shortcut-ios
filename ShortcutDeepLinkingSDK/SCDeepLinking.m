@@ -11,8 +11,8 @@
 
 #include <sys/sysctl.h>
 
-NSString * const kFirstOpenURLString = @"http://192.168.178.67:3001/api/v1/deep_links/first_open";
-NSString * const kOpenURLString      = @"http://192.168.178.67:3001/api/v1/deep_links/open";
+NSString * const kFirstOpenURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/first_open";
+NSString * const kOpenURLString      = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/open";
 NSString * const kLinkIDParamString  = @"sc_link_id";
 NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
@@ -87,7 +87,7 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
             }
         }];
     }
-    
+        
     return [self URLWithoutLinkID:url];
 }
 
@@ -105,6 +105,7 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
     
     return !alreadyLaunched;
 }
+
 
 - (NSDictionary *)deviceFingerprint {
     return @{
@@ -177,6 +178,7 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
     
     return linkId;
 }
+
 
 - (NSURL *)URLWithoutLinkID:(NSURL *)url {
     NSString *baseURLString = [[url.absoluteString componentsSeparatedByString:@"?"] firstObject];
