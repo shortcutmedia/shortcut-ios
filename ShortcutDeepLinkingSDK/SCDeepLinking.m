@@ -57,8 +57,11 @@ NSString * const kLinkIDParamString  = @"sc_link_id";
         if (error) {
             NSLog(@"error: %@", [error description]);
         } else {
-            NSString *deepLinkURI = content[@"uri"];
-            if (deepLinkURI) {
+            NSString *deepLinkURI = nil;
+            if ([content[@"uri"] isKindOfClass:NSString.class]) {
+                deepLinkURI = content[@"uri"];
+            }
+            if (deepLinkURI.length) {
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:deepLinkURI]];
             }
         }
@@ -67,6 +70,7 @@ NSString * const kLinkIDParamString  = @"sc_link_id";
 
 
 - (NSURL *)handleOpenURL:(NSURL *)url {
+    
     NSString *linkId = [self extractLinkIDFromURL:url];
     
     if (linkId) {
