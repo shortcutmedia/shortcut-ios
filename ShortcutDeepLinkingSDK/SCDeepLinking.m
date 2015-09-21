@@ -62,12 +62,14 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         if (error) {
             NSLog(@"error: %@", [error description]);
         } else {
-            NSString *deepLinkURI = nil;
+            NSString *deepLinkURIString = nil;
             if ([content[@"uri"] isKindOfClass:NSString.class]) {
-                deepLinkURI = content[@"uri"];
-            }
-            if (deepLinkURI.length) {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:deepLinkURI]];
+                deepLinkURIString = content[@"uri"];
+                
+                NSURL *deepLinkURL = [self URLWithoutLinkID:[NSURL URLWithString:deepLinkURIString]];
+                if ([deepLinkURL absoluteString].length) {
+                    [[UIApplication sharedApplication] openURL:deepLinkURL];
+                }
             }
         }
     }];
@@ -86,7 +88,7 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         }];
     }
     
-    return url;
+    return [self URLWithoutLinkID:url];
 }
 
 
@@ -174,6 +176,25 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
     }
     
     return linkId;
+}
+
+- (NSURL *)URLWithoutLinkID:(NSURL *)url {
+    NSString *baseURLString = [[url.absoluteString componentsSeparatedByString:@"?"] firstObject];
+    
+    NSMutableString *newQueryString = [[NSMutableString alloc] init];
+    for (NSString *keyValueString in [url.query componentsSeparatedByString:@"&"]) {
+        NSArray *keyValue = [keyValueString componentsSeparatedByString:@"="];
+        if (![[keyValue firstObject] isEqualToString:kLinkIDParamString]) {
+            [newQueryString appendFormat:@"%@=%@", [keyValue firstObject], [keyValue lastObject]];
+        }
+    }
+    
+    NSString *newURLString = baseURLString;
+    if (newQueryString.length) {
+        newURLString = [newURLString stringByAppendingFormat:@"?%@", newQueryString];
+    }
+    
+    return [NSURL URLWithString:newURLString];
 }
 
 @end
