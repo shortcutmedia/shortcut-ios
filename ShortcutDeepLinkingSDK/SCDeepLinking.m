@@ -14,6 +14,7 @@
 NSString * const kFirstOpenURLString = @"http://192.168.178.67:3001/api/v1/deep_links/first_open";
 NSString * const kOpenURLString      = @"http://192.168.178.67:3001/api/v1/deep_links/open";
 NSString * const kLinkIDParamString  = @"sc_link_id";
+NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
 @interface SCDeepLinking ()
 
@@ -52,6 +53,10 @@ NSString * const kLinkIDParamString  = @"sc_link_id";
 #pragma mark - Interactions
 
 - (void)launch {
+    BOOL firstLaunch = [self checkForFirstLaunch];
+    if (!firstLaunch) {
+        return;
+    }
     
     [self JSONPOSTRequestToURL:[NSURL URLWithString:kFirstOpenURLString] params:nil completionHandler:^(NSURLResponse *response, NSDictionary *content, NSError *error) {
         if (error) {
@@ -86,6 +91,18 @@ NSString * const kLinkIDParamString  = @"sc_link_id";
 
 
 #pragma mark - Helpers
+
+- (BOOL)checkForFirstLaunch {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    BOOL alreadyLaunched = [defaults boolForKey:kAlreadyLaunchedKey];
+    if (!alreadyLaunched) {
+        [defaults setBool:YES forKey:kAlreadyLaunchedKey];
+        [defaults synchronize];
+    }
+    
+    return !alreadyLaunched;
+}
 
 - (NSDictionary *)deviceFingerprint {
     return @{
