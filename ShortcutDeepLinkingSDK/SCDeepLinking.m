@@ -15,6 +15,12 @@ NSString * const kFirstOpenURLString = @"http://192.168.178.67:3001/api/v1/deep_
 NSString * const kOpenURLString      = @"http://192.168.178.67:3001/api/v1/deep_links/open";
 NSString * const kLinkIDParamString  = @"sc_link_id";
 
+@interface SCDeepLinking ()
+
+@property (strong, nonatomic) NSOperationQueue *httpQueue;
+
+@end
+
 
 @implementation SCDeepLinking
 
@@ -30,6 +36,16 @@ NSString * const kLinkIDParamString  = @"sc_link_id";
     });
     
     return instance;
+}
+
+
+#pragma mark - Properties
+
+- (NSOperationQueue *)httpQueue {
+    if (!_httpQueue) {
+        _httpQueue = [[NSOperationQueue alloc] init];
+    }
+    return _httpQueue;
 }
 
 
@@ -109,7 +125,7 @@ NSString * const kLinkIDParamString  = @"sc_link_id";
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyContent options:0 error:NULL];
     
     // Send request
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [NSURLConnection sendAsynchronousRequest:request queue:[self httpQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         
         // Handle response
         NSDictionary *content = nil;
