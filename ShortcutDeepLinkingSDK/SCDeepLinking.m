@@ -9,6 +9,8 @@
 #import "SCDeepLinking.h"
 #import <UIKit/UIKit.h>
 
+#include <sys/sysctl.h>
+
 NSString * const kFirstOpenURLString = @"http://192.168.178.67:3001/api/v1/deep_links/first_open";
 NSString * const kOpenURLString      = @"http://192.168.178.67:3001/api/v1/deep_links/open";
 NSString * const kLinkIDParamString  = @"sc_link_id";
@@ -41,7 +43,6 @@ NSString * const kLinkIDParamString  = @"sc_link_id";
         } else {
             NSString *deepLinkURI = content[@"uri"];
             if (deepLinkURI) {
-                NSLog(@"opening deep link: %@", deepLinkURI);
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:deepLinkURI]];
             }
         }
@@ -66,18 +67,46 @@ NSString * const kLinkIDParamString  = @"sc_link_id";
 
 #pragma mark - Helpers
 
+- (NSDictionary *)deviceFingerprint {
+    return @{
+        @"platform" :        @"iOS",
+        @"platformVersion" : [[UIDevice currentDevice] systemVersion],
+        @"platformBuild" :   [self systemBuildVersion],
+        @"device" :          [[UIDevice currentDevice] model],
+    };
+}
+
+
+- (NSString *)systemBuildVersion {
+    int mib[2] = {CTL_KERN, KERN_OSVERSION};
+    size_t size = 0;
+    
+    // Get the size for the buffer
+    sysctl(mib, 2, NULL, &size, NULL, 0);
+    
+    char *answer = malloc(size);
+    sysctl(mib, 2, answer, &size, NULL, 0);
+    
+    NSString *result = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
+    free(answer);
+    return result;
+}
+
+
 - (void)JSONPOSTRequestToURL:(NSURL *)url params:(NSDictionary *)params completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSError *error))completionHandler {
+    
+    // Build body content (params + fingerprint)
+    NSMutableDictionary *bodyContent = [[NSMutableDictionary alloc] init];
+    [bodyContent addEntriesFromDictionary:[self deviceFingerprint]];
+    [bodyContent addEntriesFromDictionary:params];
     
     // Build JSON request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     request.URL        = url;
     request.HTTPMethod = @"POST";
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    if (params) {
-        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        request.HTTPBody = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
-    }
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyContent options:0 error:NULL];
     
     // Send request
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
