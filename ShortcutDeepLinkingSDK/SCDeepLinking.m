@@ -7,9 +7,9 @@
 //
 
 #import "SCDeepLinking.h"
-#import <UIKit/UIKit.h>
 
-#include <sys/sysctl.h>
+#import <UIKit/UIKit.h>
+#import "SCDeviceFingerprint.h"
 
 NSString * const kFirstOpenURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/first_open";
 NSString * const kOpenURLString      = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/open";
@@ -107,37 +107,11 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 }
 
 
-- (NSDictionary *)deviceFingerprint {
-    return @{
-        @"platform" :        @"iOS",
-        @"platformVersion" : [[UIDevice currentDevice] systemVersion],
-        @"platformBuild" :   [self systemBuildVersion],
-        @"device" :          [[UIDevice currentDevice] model],
-    };
-}
-
-
-- (NSString *)systemBuildVersion {
-    int mib[2] = {CTL_KERN, KERN_OSVERSION};
-    size_t size = 0;
-    
-    // Get the size for the buffer
-    sysctl(mib, 2, NULL, &size, NULL, 0);
-    
-    char *answer = malloc(size);
-    sysctl(mib, 2, answer, &size, NULL, 0);
-    
-    NSString *result = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
-    free(answer);
-    return result;
-}
-
-
 - (void)JSONPOSTRequestToURL:(NSURL *)url params:(NSDictionary *)params completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSError *error))completionHandler {
     
     // Build body content (params + fingerprint)
     NSMutableDictionary *bodyContent = [[NSMutableDictionary alloc] init];
-    [bodyContent addEntriesFromDictionary:[self deviceFingerprint]];
+    [bodyContent addEntriesFromDictionary:[[[SCDeviceFingerprint alloc] init] dictionaryRepresentation]];
     [bodyContent addEntriesFromDictionary:params];
     
     // Build JSON request

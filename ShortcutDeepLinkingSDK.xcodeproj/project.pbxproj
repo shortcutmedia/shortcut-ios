@@ -11,6 +11,9 @@
 		864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */ = {isa = PBXBuildFile; fileRef = 864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */; };
 		864829081BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */; settings = {ASSET_TAGS = (); }; };
+		86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */; settings = {ASSET_TAGS = (); }; };
+		86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeepLinking.h; sourceTree = "<group>"; };
 		864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeepLinking.m; sourceTree = "<group>"; };
 		864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutDeepLinkingSDK.h; sourceTree = "<group>"; };
+		86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeviceFingerprint.h; sourceTree = "<group>"; };
+		86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeviceFingerprint.m; sourceTree = "<group>"; };
+		86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeviceFingerprintTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,8 @@
 				864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */,
 				864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */,
 				864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */,
+				86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */,
+				86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */,
 			);
 			path = ShortcutDeepLinkingSDK;
 			sourceTree = "<group>";
@@ -94,6 +102,7 @@
 		864828F71BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */,
 				864828F81BAC10CB00E7F4D2 /* Supporting Files */,
 			);
 			path = ShortcutDeepLinkingSDKTests;
@@ -116,6 +125,7 @@
 			files = (
 				864829081BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h in Headers */,
 				864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */,
+				86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */,
 				864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
