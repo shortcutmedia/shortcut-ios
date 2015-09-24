@@ -40,6 +40,8 @@
  *  Takes care of handling potential deferred deep links.
  *
  *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
+ *  It checks for a stored deep link for the current device on the Shortcut backend and triggers an opening
+ *  of the stored deep link if one was found.
  */
 - (void)launch;
 
