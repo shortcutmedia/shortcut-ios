@@ -14,6 +14,9 @@
 		86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */; settings = {ASSET_TAGS = (); }; };
 		86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */; settings = {ASSET_TAGS = (); }; };
 		86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */; settings = {ASSET_TAGS = (); }; };
+		86A1E8761BB41F2E000E7F7F /* SCLinkIDExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */; settings = {ASSET_TAGS = (); }; };
+		86A1E8771BB41F2E000E7F7F /* SCLinkIDExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8751BB41F2E000E7F7F /* SCLinkIDExtractor.m */; settings = {ASSET_TAGS = (); }; };
+		86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeviceFingerprint.h; sourceTree = "<group>"; };
 		86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeviceFingerprint.m; sourceTree = "<group>"; };
 		86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeviceFingerprintTest.m; sourceTree = "<group>"; };
+		86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLinkIDExtractor.h; sourceTree = "<group>"; };
+		86A1E8751BB41F2E000E7F7F /* SCLinkIDExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLinkIDExtractor.m; sourceTree = "<group>"; };
+		86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLinkIDExtractorTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,8 @@
 				864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */,
 				86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */,
 				86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */,
+				86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */,
+				86A1E8751BB41F2E000E7F7F /* SCLinkIDExtractor.m */,
 			);
 			path = ShortcutDeepLinkingSDK;
 			sourceTree = "<group>";
@@ -103,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */,
+				86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */,
 				864828F81BAC10CB00E7F4D2 /* Supporting Files */,
 			);
 			path = ShortcutDeepLinkingSDKTests;
@@ -125,6 +134,7 @@
 			files = (
 				864829081BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h in Headers */,
 				864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */,
+				86A1E8761BB41F2E000E7F7F /* SCLinkIDExtractor.h in Headers */,
 				86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +230,7 @@
 			files = (
 				86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */,
 				864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */,
+				86A1E8771BB41F2E000E7F7F /* SCLinkIDExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */,
+				86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

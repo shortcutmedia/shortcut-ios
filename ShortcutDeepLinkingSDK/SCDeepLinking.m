@@ -10,10 +10,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SCDeviceFingerprint.h"
+#import "SCLinkIDExtractor.h"
 
 NSString * const kFirstOpenURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/first_open";
 NSString * const kOpenURLString      = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/open";
-NSString * const kLinkIDParamString  = @"sc_link_id";
 NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
 @interface SCDeepLinking ()
@@ -62,11 +62,12 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         if (error) {
             NSLog(@"error: %@", [error description]);
         } else {
-            NSString *deepLinkURIString = nil;
             if ([content[@"uri"] isKindOfClass:NSString.class]) {
-                deepLinkURIString = content[@"uri"];
+                NSURL *deepLinkURL = [NSURL URLWithString:content[@"uri"]];
                 
-                NSURL *deepLinkURL = [self URLWithoutLinkID:[NSURL URLWithString:deepLinkURIString]];
+                SCLinkIDExtractor *linkIDExtractor = [[SCLinkIDExtractor alloc] init];
+                deepLinkURL = [linkIDExtractor URLWithoutLinkID:deepLinkURL];
+                
                 if ([deepLinkURL absoluteString].length) {
                     [[UIApplication sharedApplication] openURL:deepLinkURL];
                 }
@@ -78,7 +79,9 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
 - (NSURL *)handleOpenURL:(NSURL *)url {
     
-    NSString *linkId = [self extractLinkIDFromURL:url];
+    SCLinkIDExtractor *linkIDExtractor = [[SCLinkIDExtractor alloc] init];
+    
+    NSString *linkId = [linkIDExtractor linkIDFromURL:url];
     
     if (linkId) {
         [self JSONPOSTRequestToURL:[NSURL URLWithString:kOpenURLString] params:@{kLinkIDParamString : linkId} completionHandler:^(NSURLResponse *response, NSDictionary *content, NSError *error) {
@@ -88,7 +91,7 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         }];
     }
         
-    return [self URLWithoutLinkID:url];
+    return [linkIDExtractor URLWithoutLinkID:url];
 }
 
 
@@ -136,41 +139,6 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         
         completionHandler(response, content, error);
     }];
-}
-
-
-- (NSString *)extractLinkIDFromURL:(NSURL *)url {
-    NSString *linkId = nil;
-    
-    for (NSString *keyValueString in [url.query componentsSeparatedByString:@"&"]) {
-        NSArray *keyValue = [keyValueString componentsSeparatedByString:@"="];
-        if ([[keyValue firstObject] isEqualToString:kLinkIDParamString]) {
-            linkId = [keyValue lastObject];
-            break;
-        }
-    }
-    
-    return linkId;
-}
-
-
-- (NSURL *)URLWithoutLinkID:(NSURL *)url {
-    NSString *baseURLString = [[url.absoluteString componentsSeparatedByString:@"?"] firstObject];
-    
-    NSMutableString *newQueryString = [[NSMutableString alloc] init];
-    for (NSString *keyValueString in [url.query componentsSeparatedByString:@"&"]) {
-        NSArray *keyValue = [keyValueString componentsSeparatedByString:@"="];
-        if (![[keyValue firstObject] isEqualToString:kLinkIDParamString]) {
-            [newQueryString appendFormat:@"%@=%@", [keyValue firstObject], [keyValue lastObject]];
-        }
-    }
-    
-    NSString *newURLString = baseURLString;
-    if (newQueryString.length) {
-        newURLString = [newURLString stringByAppendingFormat:@"?%@", newQueryString];
-    }
-    
-    return [NSURL URLWithString:newURLString];
 }
 
 @end
