@@ -11,6 +11,8 @@
 #import <UIKit/UIKit.h>
 #include <sys/sysctl.h>
 
+NSString * const kDeviceIDKey = @"sc.shortcut.DeviceID";
+
 @implementation SCDeviceFingerprint
 
 - (NSDictionary *)dictionaryRepresentation {
@@ -19,6 +21,7 @@
         @"platformVersion" : [[UIDevice currentDevice] systemVersion],
         @"platformBuild" :   [self systemBuildVersion],
         @"device" :          [[UIDevice currentDevice] model],
+        @"device_id" :       [self deviceID],
     };
 }
 
@@ -36,6 +39,18 @@
     NSString *result = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
     free(answer);
     return result;
+}
+
+- (NSString *)deviceID {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSString *deviceID = [defaults objectForKey:kDeviceIDKey];
+    if (!deviceID) {
+        deviceID = [[NSUUID UUID] UUIDString];
+        [defaults setValue:deviceID forKey:kDeviceIDKey];
+        [defaults synchronize];
+    }
+    return deviceID;
 }
 
 @end

@@ -30,6 +30,7 @@
     XCTAssertNotNil(result[@"platformVersion"]);
     XCTAssertNotNil(result[@"platformBuild"]);
     XCTAssertNotNil(result[@"device"]);
+    XCTAssertNotNil(result[@"device_id"]);
 }
 
 @end
