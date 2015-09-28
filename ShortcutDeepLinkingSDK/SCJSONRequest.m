@@ -53,8 +53,12 @@ completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSEr
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyContent options:0 error:NULL];
     
+    [self logRequest:request];
+    
     // Send request
     [NSURLConnection sendAsynchronousRequest:request queue:[self httpQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        
+        [self logResponse:response data:data error:error];
         
         // Handle response
         NSDictionary *content = nil;
@@ -69,6 +73,30 @@ completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSEr
             completionHandler(response, content, error);
         }
     }];
+}
+
+
+#pragma mark - Logging
+
+- (void)logRequest:(NSURLRequest *)request {
+#ifdef DEBUG
+    NSLog(@"Sending request %@ %@ with data %@", request.HTTPMethod, request.URL, [NSString stringWithUTF8String:request.HTTPBody.bytes]);
+#endif
+}
+
+- (void)logResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *)error {
+#ifdef DEBUG
+    long statusCode = -1;
+    if ([response isKindOfClass:NSHTTPURLResponse.class]) {
+        statusCode = ((NSHTTPURLResponse *)response).statusCode;
+    }
+    
+    if (!error) {
+        NSLog(@"Received response with code %ld and data %@", statusCode, [NSString stringWithUTF8String:data.bytes]);
+    } else {
+        NSLog(@"Received response with code %ld and error %@", statusCode, error.description);
+    }
+#endif
 }
 
 @end
