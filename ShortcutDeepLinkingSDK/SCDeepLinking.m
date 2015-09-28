@@ -9,12 +9,14 @@
 #import "SCDeepLinking.h"
 
 #import <UIKit/UIKit.h>
-#import "SCLinkIDExtractor.h"
-#import "SCJSONRequest.h"
 
-NSString * const kFirstOpenURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/first_open";
-NSString * const kOpenURLString      = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/open";
 NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
+
+@interface SCDeepLinking ()
+
+@property (strong, nonatomic) SCSession *firstOpenSession;
+
+@end
 
 
 @implementation SCDeepLinking
@@ -42,40 +44,27 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         return;
     }
     
-    [SCJSONRequest postToURL:[NSURL URLWithString:kFirstOpenURLString] params:nil completionHandler:^(NSURLResponse *response, NSDictionary *content, NSError *error) {
-        if (error) {
-            NSLog(@"error: %@", [error description]);
-        } else {
-            if ([content[@"uri"] isKindOfClass:NSString.class]) {
-                NSURL *deepLinkURL = [NSURL URLWithString:content[@"uri"]];
-                
-                SCLinkIDExtractor *linkIDExtractor = [[SCLinkIDExtractor alloc] init];
-                deepLinkURL = [linkIDExtractor URLWithoutLinkID:deepLinkURL];
-                
-                if ([deepLinkURL absoluteString].length) {
-                    [[UIApplication sharedApplication] openURL:deepLinkURL];
-                }
-            }
-        }
+    self.firstOpenSession = [[SCSession alloc] init];
+    
+    [self.firstOpenSession firstLaunchLookupWithCompletionHandler:^{
+        [[UIApplication sharedApplication] openURL:self.firstOpenSession.url];
     }];
 }
 
 
-- (NSURL *)handleOpenURL:(NSURL *)url {
+- (SCSession *)startSessionWithURL:(NSURL *)url {
     
-    SCLinkIDExtractor *linkIDExtractor = [[SCLinkIDExtractor alloc] init];
+    SCSession *session = nil;
     
-    NSString *linkId = [linkIDExtractor linkIDFromURL:url];
-    
-    if (linkId) {
-        [SCJSONRequest postToURL:[NSURL URLWithString:kOpenURLString] params:@{kLinkIDParamString : linkId} completionHandler:^(NSURLResponse *response, NSDictionary *content, NSError *error) {
-            if (error) {
-                NSLog(@"error: %@", [error description]);
-            }
-        }];
+    if (self.firstOpenSession && [self.firstOpenSession.url isEqual:url]) {
+        session = self.firstOpenSession;
+        self.firstOpenSession = nil;
+    } else {
+        session = [[SCSession alloc] initWithURL:url];
+        [session start];
     }
-        
-    return [linkIDExtractor URLWithoutLinkID:url];
+    
+    return session;
 }
 
 

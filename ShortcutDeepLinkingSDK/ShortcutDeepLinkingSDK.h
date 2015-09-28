@@ -7,3 +7,4 @@
 //
 
 #import "SCDeepLinking.h"
+#import "SCSession.h"

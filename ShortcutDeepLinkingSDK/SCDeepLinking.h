@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SCSession.h"
 
 /**
  *  The SCDeepLinking object acts as central interaction point with the ShortcutDeepLinkingSDK.
@@ -46,15 +47,19 @@
 - (void)launch;
 
 /**
- *  Reports the opening of the URL to the Shortcut backend.
+ *  Starts a deep link viewing session and returns it.
  *
  *  This method should be called in the app delegate's application:openURL:sourceApplication:annotation:
- *  It reports the opening of the deep link to the Shortcut backend if the opening was triggered by visiting
- *  a Shortcut link. It then returns a URL stripped of all additional query parameters Shortcut needs to
- *  attribute the URL to the correct Shortcut link.
+ *  It creates and starts a deep link viewing session for the given deep link URL. A session spans the time the
+ *  user is looking at a deep link and reports the duration to the Shortcut backend if the session was started
+ *  by visiting a Shortcut link.
+ *  The session's url property contains a URL stripped of all additional query parameters Shortcut needs to
+ *  attribute the URL to the correct Shortcut link. So use this URL for further processing.
  *
- *  @return A sanitized variant of the URL for further processing.
+ *  @important Call finish on the session object when the user is done looking at the deep link content!
+ *
+ *  @return A session describing the viewing of a deep link. nil if the URL is not from a Shortcut link.
  */
-- (NSURL *)handleOpenURL:(NSURL *)url;
+- (SCSession *)startSessionWithURL:(NSURL *)url;
 
 @end
