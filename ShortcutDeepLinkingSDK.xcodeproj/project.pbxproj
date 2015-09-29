@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		861BDB131BBAD184005B57AB /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 861BDB141BBAD184005B57AB /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				861BDB191BBAD27A005B57AB /* ShellScript */,
+			);
+			dependencies = (
+				861BDB181BBAD230005B57AB /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		864828F41BAC10CB00E7F4D2 /* libShortcutDeepLinkingSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 864828E81BAC10CA00E7F4D2 /* libShortcutDeepLinkingSDK.a */; };
 		864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		861BDB171BBAD230005B57AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 864828E01BAC10CA00E7F4D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 864828E71BAC10CA00E7F4D2;
+			remoteInfo = ShortcutDeepLinkingSDK;
+		};
 		864828F51BAC10CB00E7F4D2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 864828E01BAC10CA00E7F4D2 /* Project object */;
@@ -46,6 +68,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		861BDB1B1BBAD32D005B57AB /* create_framework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = create_framework.sh; sourceTree = "<group>"; };
+		861BDB1C1BBAD3B5005B57AB /* finish_build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = finish_build.sh; sourceTree = "<group>"; };
+		861BDB1E1BBAD423005B57AB /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		861BDB1F1BBAD423005B57AB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		864828E81BAC10CA00E7F4D2 /* libShortcutDeepLinkingSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libShortcutDeepLinkingSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		864828F31BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShortcutDeepLinkingSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		864828F91BAC10CB00E7F4D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +109,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		861BDB121BBAD11A005B57AB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				861BDB1F1BBAD423005B57AB /* README.md */,
+				861BDB1E1BBAD423005B57AB /* LICENSE.txt */,
+				861BDB1A1BBAD32D005B57AB /* BuildScripts */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		861BDB1A1BBAD32D005B57AB /* BuildScripts */ = {
+			isa = PBXGroup;
+			children = (
+				861BDB1B1BBAD32D005B57AB /* create_framework.sh */,
+				861BDB1C1BBAD3B5005B57AB /* finish_build.sh */,
+			);
+			path = BuildScripts;
+			sourceTree = "<group>";
+		};
 		864828DF1BAC10CA00E7F4D2 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +160,7 @@
 				86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */,
 				8663CB0D1BB5829B00636636 /* SCSession.h */,
 				8663CB0E1BB5829B00636636 /* SCSession.m */,
+				861BDB121BBAD11A005B57AB /* Supporting Files */,
 			);
 			path = ShortcutDeepLinkingSDK;
 			sourceTree = "<group>";
@@ -201,6 +247,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Shortcut Media AG";
 				TargetAttributes = {
+					861BDB131BBAD184005B57AB = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
 					864828E71BAC10CA00E7F4D2 = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -223,6 +272,7 @@
 			targets = (
 				864828E71BAC10CA00E7F4D2 /* ShortcutDeepLinkingSDK */,
 				864828F21BAC10CB00E7F4D2 /* ShortcutDeepLinkingSDKTests */,
+				861BDB131BBAD184005B57AB /* Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +286,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		861BDB191BBAD27A005B57AB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/ShortcutDeepLinkingSDK/BuildScripts/create_framework.sh\n$SRCROOT/ShortcutDeepLinkingSDK/BuildScripts/finish_build.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		864828E41BAC10CA00E7F4D2 /* Sources */ = {
@@ -262,6 +328,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		861BDB181BBAD230005B57AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 864828E71BAC10CA00E7F4D2 /* ShortcutDeepLinkingSDK */;
+			targetProxy = 861BDB171BBAD230005B57AB /* PBXContainerItemProxy */;
+		};
 		864828F61BAC10CB00E7F4D2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 864828E71BAC10CA00E7F4D2 /* ShortcutDeepLinkingSDK */;
@@ -270,6 +341,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		861BDB151BBAD184005B57AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		861BDB161BBAD184005B57AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		864828FA1BAC10CB00E7F4D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -357,6 +442,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/ShortcutDeepLinkingSDK;
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 			};
 			name = Debug;
 		};
@@ -368,6 +454,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/ShortcutDeepLinkingSDK;
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 			};
 			name = Release;
 		};
@@ -408,6 +495,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		861BDB141BBAD184005B57AB /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				861BDB151BBAD184005B57AB /* Debug */,
+				861BDB161BBAD184005B57AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		864828E31BAC10CA00E7F4D2 /* Build configuration list for PBXProject "ShortcutDeepLinkingSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
