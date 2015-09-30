@@ -12,4 +12,8 @@ cp -R "${FRAMEWORK}" "${PROJECT_DIR}/build/"
 cp "${PROJECT_DIR}/README.md" "${PROJECT_DIR}/build/"
 cp "${PROJECT_DIR}/LICENSE.txt" "${PROJECT_DIR}/build/"
 
+SDK_VERSION=`ruby -e "print File.read('${PROJECT_DIR}/ShortcutDeepLinkingSDK/ShortcutDeepLinkingSDK.h').match(/SDK_VERSION @\"([^\"]+)\"/)[1]"`
+
+cd "${PROJECT_DIR}/build" && zip -r "ShortcutDeepLinkingSDK-${SDK_VERSION}.zip" . && cd -
+
 open "${PROJECT_DIR}/build"
