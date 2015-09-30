@@ -49,7 +49,7 @@ Add the following to `-application:didFinishLaunchingWithOptions:`:
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-   [[SCDeepLinking sharedInstance] launch]; // <- Add this call
+   [[SCDeepLinking sharedInstance] launch];
 
    // ...
   return YES;
@@ -65,11 +65,8 @@ Add the following to `-application:openURL:sourceApplication:annotation:` (you h
 ```objective-c
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 
-    // 1. Add this call
     SCSession *deepLinkSession = [[SCDeepLinking sharedInstance] startSessionWithURL:url];
-
-    // 2. Adjust your existing deep link handling to use deepLinkSession.url instead of
-    //    the parameter url...
+    url = deepLinkSession.url // Use the session object's url property for further processing
 
     // ...
     return YES;
