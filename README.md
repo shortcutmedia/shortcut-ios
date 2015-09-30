@@ -1,21 +1,23 @@
 # Shortcut Deep Linking SDK for iOS
 
-This SDK provides the following features to enhance the user experience with Shortcut Short Links:
+This SDK provides the following features:
 
 - Support for [deferred deep linking](https://en.wikipedia.org/wiki/Deferred_deep_linking).
-- Collection of additional statistics about user interaction with deep links.
+- Collection of additional statistics to build a user acquisition funnel and evaluate user activity.
 
 There is also an [Android version of this SDK](https://github.com/shortcutmedia/shortcut-deeplink-sdk-android).
 
+## Requirements
+
+The SDK works with iOS6 and newer.
 
 ## Installation
 
 The SDK is packaged in a .framework file. To use it within your project follow these steps:
 
-1. Download the latest SDK from the [releases page](https://github.com/shortcutmedia/shortcut-deeplink-sdk-ios/releases) (just download the file *ShortcutDeepLinkingSDK-VERSION.zip*, you do not need the source code).
-2. Add the *ShortcutDeepLinkingSDK.framework*  file to your project, e.g. by dragging it into your project in Xcode.
-3. Within your project's **Build phases** make sure that the *ShortcutDeepLinkingSDK.framework* is added in the **Link binary with libraries** section.
-
+1. Download the latest SDK as zip file from the [releases page](https://github.com/shortcutmedia/shortcut-deeplink-sdk-ios/releases).
+2. Unzip it and add the *ShortcutDeepLinkingSDK.framework*  file to your project, e.g. by dragging it into the Project Navigator of your project in Xcode.
+3. Within your project's **Build phases** make sure that the *ShortcutDeepLinkingSDK.framework* is added in the **Link binary with libraries** section. If you don't find it there, drag it from the Project Navigator to the list.
 
 ## Integration into your app
 
@@ -60,7 +62,7 @@ Add the following to `-application:openURL:sourceApplication:annotation:` (you h
 }
 ```
 
-**Step 2:** You can tell the SDK when a user is done with looking at the deep link content; this allows to collect session duration statistics.
+**Step 2 (optional):** You can tell the SDK when a user is done with looking at the deep link content; this allows to collect session duration statistics.
 
 To do so you have to call `-finish` on the deep link session object that you obtained in the previous step when the user is done looking at the deep link content:
 
