@@ -112,8 +112,6 @@
 		861BDB121BBAD11A005B57AB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				861BDB1F1BBAD423005B57AB /* README.md */,
-				861BDB1E1BBAD423005B57AB /* LICENSE.txt */,
 				861BDB1A1BBAD32D005B57AB /* BuildScripts */,
 			);
 			name = "Supporting Files";
@@ -149,6 +147,8 @@
 		864828EA1BAC10CA00E7F4D2 /* ShortcutDeepLinkingSDK */ = {
 			isa = PBXGroup;
 			children = (
+				861BDB1F1BBAD423005B57AB /* README.md */,
+				861BDB1E1BBAD423005B57AB /* LICENSE.txt */,
 				864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */,
 				864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */,
 				864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */,
