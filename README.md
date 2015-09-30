@@ -19,6 +19,20 @@ The SDK is packaged in a .framework file. To use it within your project follow t
 2. Unzip it and add the *ShortcutDeepLinkingSDK.framework*  file to your project, e.g. by dragging it into the Project Navigator of your project in Xcode.
 3. Within your project's **Build phases** make sure that the *ShortcutDeepLinkingSDK.framework* is added in the **Link binary with libraries** section. If you don't find it there, drag it from the Project Navigator to the list.
 
+### Important: Are you using the iOS9 SDK (Xcode 7)?
+
+Apple introduced [App Transport Security](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/) in the iOS9 SDK. ATS prevents network connections that do not adhere to a very strict set of encryption requirements (which is a good thing). Unfortunately, our servers are not completely compliant with these requirements. So you need to add a temporary exception to ATS.
+
+Add the following in your app's plist file:
+
+```plist
+<key>NSAppTransportSecurity</key>
+ <dict>
+  <key>NSAllowsArbitraryLoads</key>
+  <true/>
+</dict>
+```
+
 ## Integration into your app
 
 #### Enabling deferred deep linking
