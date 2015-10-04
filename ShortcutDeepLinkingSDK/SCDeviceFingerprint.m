@@ -26,19 +26,24 @@ NSString * const kDeviceIDKey = @"sc.shortcut.DeviceID";
 }
 
 
-- (NSString *)systemBuildVersion {
-    int mib[2] = {CTL_KERN, KERN_OSVERSION};
-    size_t size = 0;
+- (id)systemBuildVersion {
+    static id systemBuildVersionFromUA = nil;
     
-    // Get the size for the buffer
-    sysctl(mib, 2, NULL, &size, NULL, 0);
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        UIWebView *webView    = [[UIWebView alloc] init];
+        NSString *pattern     = @"Mobile\\/([a-zA-Z0-9]+)";
+        NSString *parseScript = [NSString stringWithFormat:@"navigator.userAgent.match(/%@/)[1]", pattern];
+        
+        NSString *uaBuildString = [webView stringByEvaluatingJavaScriptFromString:parseScript];
+        if (uaBuildString.length) {
+            systemBuildVersionFromUA = uaBuildString;
+        } else {
+            systemBuildVersionFromUA = [NSNull null];
+        }
+    });
     
-    char *answer = malloc(size);
-    sysctl(mib, 2, answer, &size, NULL, 0);
-    
-    NSString *result = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
-    free(answer);
-    return result;
+    return systemBuildVersionFromUA;
 }
 
 - (NSString *)deviceID {
