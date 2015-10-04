@@ -27,8 +27,8 @@
     NSDictionary *result = self.deviceFingerprint.dictionaryRepresentation;
     
     XCTAssertNotNil(result[@"platform"]);
-    XCTAssertNotNil(result[@"platformVersion"]);
-    XCTAssertNotNil(result[@"platformBuild"]);
+    XCTAssertNotNil(result[@"platform_version"]);
+    XCTAssertNotNil(result[@"platform_build"]);
     XCTAssertNotNil(result[@"device"]);
     XCTAssertNotNil(result[@"device_id"]);
 }

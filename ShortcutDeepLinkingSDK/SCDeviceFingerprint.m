@@ -17,11 +17,11 @@ NSString * const kDeviceIDKey = @"sc.shortcut.DeviceID";
 
 - (NSDictionary *)dictionaryRepresentation {
     return @{
-        @"platform" :        @"iOS",
-        @"platformVersion" : [[UIDevice currentDevice] systemVersion],
-        @"platformBuild" :   [self systemBuildVersion],
-        @"device" :          [[UIDevice currentDevice] model],
-        @"device_id" :       [self deviceID],
+        @"platform" :         @"iOS",
+        @"platform_version" : [[UIDevice currentDevice] systemVersion],
+        @"platform_build" :   [self systemBuildVersion],
+        @"device" :           [[UIDevice currentDevice] model],
+        @"device_id" :        [self deviceID],
     };
 }
 
