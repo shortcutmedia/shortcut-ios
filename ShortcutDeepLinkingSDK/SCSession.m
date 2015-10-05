@@ -57,9 +57,9 @@ NSString * const kSessionIDParamString = @"session_id";
             if ([content[@"uri"] isKindOfClass:NSString.class]) {
                 NSURL *deepLinkURL = [NSURL URLWithString:content[@"uri"]];
                 [self updateWithURL:deepLinkURL];
-                completionHandler();
             }
         }
+        completionHandler();
     }];
 }
 
