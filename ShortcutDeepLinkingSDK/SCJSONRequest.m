@@ -9,6 +9,7 @@
 #import "SCJSONRequest.h"
 
 #import "SCDeviceFingerprint.h"
+#import "SCLogger.h"
 
 @interface SCJSONRequest ()
 
@@ -58,7 +59,7 @@ completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSEr
     // Send request
     [NSURLConnection sendAsynchronousRequest:request queue:[self httpQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         
-        [self logResponse:response data:data error:error];
+        [self logResponse:response data:data error:error forRequest:request];
         
         // Handle response
         NSDictionary *content = nil;
@@ -80,21 +81,31 @@ completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSEr
 
 - (void)logRequest:(NSURLRequest *)request {
 #ifdef DEBUG
-    NSLog(@"Sending request %@ %@ with data %@", request.HTTPMethod, request.URL, [NSString stringWithUTF8String:request.HTTPBody.bytes]);
+    [SCLogger log:[NSString stringWithFormat:@"Sending request %@ %@",
+                   request.HTTPMethod, request.URL]];
+    
+    if (request.HTTPBody.length) {
+        [SCLogger log:[NSString stringWithFormat:@"Request data: %@",
+                       [NSString stringWithUTF8String:request.HTTPBody.bytes]]];
+    }
 #endif
 }
 
-- (void)logResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *)error {
+- (void)logResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *)error forRequest:(NSURLRequest *)request {
 #ifdef DEBUG
-    long statusCode = -1;
     if ([response isKindOfClass:NSHTTPURLResponse.class]) {
-        statusCode = ((NSHTTPURLResponse *)response).statusCode;
-    }
-    
-    if (!error) {
-        NSLog(@"Received response with code %ld and data %@", statusCode, [NSString stringWithUTF8String:data.bytes]);
-    } else {
-        NSLog(@"Received response with code %ld and error %@", statusCode, error.description);
+        NSInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
+        [SCLogger log:[NSString stringWithFormat:@"Received response for request %@ %@: %ld",
+                       request.HTTPMethod, request.URL, statusCode]];
+        
+        if (data.length) {
+            [SCLogger log:[NSString stringWithFormat:@"Response data: %@",
+                           [NSString stringWithUTF8String:data.bytes]]];
+        }
+        if (error) {
+            [SCLogger log:[NSString stringWithFormat:@"Response error: %@",
+                           error.description]];
+        }
     }
 #endif
 }

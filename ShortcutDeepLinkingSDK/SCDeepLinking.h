@@ -47,6 +47,17 @@
 - (void)launch;
 
 /**
+ *  Takes care of handling potential deferred deep links.
+ *
+ *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
+ *  It checks for a stored deep link for the current device on the Shortcut backend and triggers an opening
+ *  of the stored deep link if one was found.
+ *
+ *  @param loggingEnabled Boolean to indicate whether to enable logging or not. @see logging
+ */
+- (void)launchWithLoggingEnabled:(BOOL)loggingEnabled;
+
+/**
  *  Starts a deep link viewing session and returns it.
  *
  *  This method should be called in the app delegate's application:openURL:sourceApplication:annotation:
@@ -61,5 +72,13 @@
  *  @return A session describing the viewing of a deep link. nil if the URL is not from a Shortcut link.
  */
 - (SCSession *)startSessionWithURL:(NSURL *)url;
+
+
+/// @name Debugging helpers
+
+/**
+ *  By default the some debug information is logged. Use this property to turn off this logging.
+ */
+@property (nonatomic) BOOL loggingEnabled;
 
 @end
