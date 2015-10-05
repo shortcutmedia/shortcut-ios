@@ -9,7 +9,7 @@ There is also an [Android version of this SDK](https://github.com/shortcutmedia/
 
 ## Requirements
 
-The SDK works with iOS6 and newer.
+The SDK works with any device running iOS6 and newer.
 
 ## Installation
 
@@ -32,6 +32,14 @@ Add the following in your app's plist file:
   <true/>
 </dict>
 ```
+
+## Prerequisites
+
+To make use of this SDK you need the following:
+
+- An iOS app that supports deep linking (responds to a [custom URL scheme](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html#//apple_ref/doc/uid/TP40007072-CH6-SW10)).
+- A Shortcut Link with a deep link to your app specified. Use the [Shortcut Manager](http://manager.shortcutmedia.com) to create one.
+
 
 ## Integration into your app
 
