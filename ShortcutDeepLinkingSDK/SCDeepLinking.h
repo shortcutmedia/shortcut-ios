@@ -10,7 +10,7 @@
 #import "SCSession.h"
 
 /**
- *  The SCDeepLinking object acts as central interaction point with the ShortcutDeepLinkingSDK.
+ *  The SCDeepLinking class acts as central interaction point with the ShortcutDeepLinkingSDK.
  *
  *  @discussion
  *  It is implemented as a singleton: Use the SCDeepLinking +sharedInstance method to get the
