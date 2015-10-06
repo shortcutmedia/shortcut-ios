@@ -96,7 +96,7 @@ completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSEr
     if ([response isKindOfClass:NSHTTPURLResponse.class]) {
         NSInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
         [SCLogger log:[NSString stringWithFormat:@"Received response for request %@ %@: %ld",
-                       request.HTTPMethod, request.URL, statusCode]];
+                       request.HTTPMethod, request.URL, (long)statusCode]];
         
         if (data.length) {
             [SCLogger log:[NSString stringWithFormat:@"Response data: %@",
