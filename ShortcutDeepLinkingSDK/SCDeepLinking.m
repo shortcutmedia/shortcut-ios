@@ -15,12 +15,29 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
 @interface SCDeepLinking ()
 
-@property (strong, nonatomic) SCSession *firstOpenSession;
+@property (strong, nonatomic) SCSession *currentSession;
 
 @end
 
 
 @implementation SCDeepLinking
+
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(stopCurrentSession)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];
+    }
+    
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 
 #pragma mark - Singleton instance
@@ -46,13 +63,13 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         return;
     }
     
-    self.firstOpenSession = [[SCSession alloc] init];
+    self.currentSession = [[SCSession alloc] init];
     [SCLogger log:@"Doing deferred deep link lookup"];
-    [self.firstOpenSession firstLaunchLookupWithCompletionHandler:^{
-        if (self.firstOpenSession.url) {
+    [self.currentSession firstLaunchLookupWithCompletionHandler:^{
+        if (self.currentSession.url) {
             [SCLogger log:[NSString stringWithFormat:@"Found deferred deep link: %@",
-                           self.firstOpenSession.url.absoluteString]];
-            [[UIApplication sharedApplication] openURL:self.firstOpenSession.url];
+                           self.currentSession.url.absoluteString]];
+            [[UIApplication sharedApplication] openURL:self.currentSession.url];
         } else {
             [SCLogger log:@"Found no deferred deep link"];
         }
@@ -68,21 +85,31 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
 - (SCSession *)startSessionWithURL:(NSURL *)url {
     
-    SCSession *session = nil;
+    // Stop current session if the URL changed
+    if (self.currentSession && ![self.currentSession.url isEqual:url]) {
+        [self.currentSession finish];
+        self.currentSession = nil;
+    }
     
-    if (self.firstOpenSession && [self.firstOpenSession.url isEqual:url]) {
-        session = self.firstOpenSession;
-        self.firstOpenSession = nil;
-    } else {
-        session = [[SCSession alloc] initWithURL:url];
-        [session start];
+    // Start a new current session if necessary
+    if (!self.currentSession) {
+        self.currentSession = [[SCSession alloc] initWithURL:url];
+        [self.currentSession start];
     }
     
     [SCLogger log:[NSString stringWithFormat:@"Starting session for deep link: %@",
-                   session.url.absoluteString]];
+                   [self.currentSession.url absoluteString]]];
     
-    return session;
+    return self.currentSession;
 }
+
+- (void)stopCurrentSession {
+    if (self.currentSession) {
+        [self.currentSession finish];
+        self.currentSession = nil;
+    }
+}
+
 
 #pragma mark - Logging
 
