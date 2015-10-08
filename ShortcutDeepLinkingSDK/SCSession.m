@@ -31,7 +31,7 @@ NSString * const kSessionIDParamString = @"session_id";
     self = [super init];
     
     if (self) {
-        self.sessionID = [[NSUUID UUID] UUIDString];
+        self.sessionID = [[self class] generateSessionID];
     }
     
     return self;
@@ -48,18 +48,34 @@ NSString * const kSessionIDParamString = @"session_id";
     return self;
 }
 
-- (void)firstLaunchLookupWithCompletionHandler:(void (^)())completionHandler {
+- (instancetype)initWithSessionID:(NSString *)sessionID URL:(NSURL *)url {
+    
+    self = [self initWithURL:url];
+    
+    if (self) {
+        self.sessionID = sessionID;
+    }
+    
+    return self;
+}
+
++ (void)firstLaunchLookupWithCompletionHandler:(void (^)(SCSession *session))completionHandler {
+    
+    NSString *sessionID = [self generateSessionID];
     
     [SCJSONRequest postToURL:[NSURL URLWithString:kFirstOpenURLString]
-                      params:[self paramsDictionary]
+                      params:@{kSessionIDParamString : sessionID}
            completionHandler:^(NSURLResponse *response, NSDictionary *content, NSError *error) {
-        if (!error) {
-            if ([content[@"uri"] isKindOfClass:NSString.class]) {
-                NSURL *deepLinkURL = [NSURL URLWithString:content[@"uri"]];
-                [self updateWithURL:deepLinkURL];
-            }
-        }
-        completionHandler();
+        
+               SCSession *session = nil;
+               
+               if (!error) {
+                   if ([content[@"uri"] isKindOfClass:NSString.class]) {
+                       NSURL *deepLinkURL = [NSURL URLWithString:content[@"uri"]];
+                       session = [[self alloc] initWithSessionID:sessionID URL:deepLinkURL];
+                   }
+               }
+               completionHandler(session);
     }];
 }
 
@@ -97,6 +113,10 @@ NSString * const kSessionIDParamString = @"session_id";
     if (self.sessionID) { params[kSessionIDParamString] = self.sessionID; }
 
     return params;
+}
+
++ (NSString *)generateSessionID {
+    return [[NSUUID UUID] UUIDString];
 }
 
 @end

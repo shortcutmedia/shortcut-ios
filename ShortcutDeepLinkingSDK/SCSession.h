@@ -38,17 +38,18 @@
 /// @name Operations
 
 /**
- *  Checks if a deferred deep link is available.
+ *  Creates a new session from a deferred deep link, if available.
  *
  *  This method makes a call to the Shortcut backend and checks whether a deferred deep link
- *  is available for the current device. If a deferred deep link is found, it is assigned as
- *  the session's url property.
- *  When the lookup is finished the callback is called. Within the callback you can check the
- *  session's url property to see if the lookup was successful.
+ *  is available for the current device. If a deferred deep link is found, it is used to create
+ *  a new session.
+ *  When the lookup is finished the callback is called. The session parameter of the callback is
+ *  the newly created session if available, nil otherwise.
  *
- *  @param completionHandler A callback to be called after the lookup.
+ *  @param completionHandler A callback to be called after the lookup. The session parameter
+ *  contains a new session for the deferred deep link, if available. It is nil otherwise.
  */
-- (void)firstLaunchLookupWithCompletionHandler:(void (^)())completionHandler;
++ (void)firstLaunchLookupWithCompletionHandler:(void (^)(SCSession *session))completionHandler;
 
 /**
  *  Reports the start of a session to the Shortcut backend.

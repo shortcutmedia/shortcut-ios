@@ -63,10 +63,11 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         return;
     }
     
-    self.currentSession = [[SCSession alloc] init];
     [SCLogger log:@"Doing deferred deep link lookup"];
-    [self.currentSession firstLaunchLookupWithCompletionHandler:^{
-        if (self.currentSession.url) {
+    [SCSession firstLaunchLookupWithCompletionHandler:^(SCSession *session) {
+        self.currentSession = session;
+        
+        if (self.currentSession) {
             [SCLogger log:[NSString stringWithFormat:@"Found deferred deep link: %@",
                            self.currentSession.url.absoluteString]];
             [[UIApplication sharedApplication] openURL:self.currentSession.url];
