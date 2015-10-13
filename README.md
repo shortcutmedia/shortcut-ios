@@ -67,16 +67,6 @@ Add the following to `-application:openURL:sourceApplication:annotation:` (you h
 }
 ```
 
-**Step 2 (optional):** You can tell the SDK when a user is done with looking at the deep link content; this allows to collect session duration statistics.
-
-To do so you have to call `-finish` on the deep link session object that you obtained in the previous step when the user is done looking at the deep link content:
-
-```objective-c
-[deepLinkSession finish];
-```
-
-**A typical example:** Typically you present a new view controller when a user opens a deep link. You now have to create a new property on this view controller holding the deep link session object. This way you can call `-finish` on it when the user is done looking at the content (e.g. when dismissing the view controller or navigating away from it).
-
 
 ## License
 This project is released under the MIT license. See included LICENSE.txt file for details.
