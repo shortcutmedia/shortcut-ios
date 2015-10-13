@@ -30,7 +30,7 @@
 /**
  *  Returns the singleton instance.
  *
- *  @return The global config instance.
+ *  @return The global instance.
  */
 + (instancetype)sharedInstance;
 
@@ -72,11 +72,15 @@
 - (SCSession *)startSessionWithURL:(NSURL *)url;
 
 
-/// @name Debugging helpers
+
+/// @name Configuration accessors
+
 
 /**
  *  By default the some debug information is logged. Use this property to turn off this logging.
+ *
+ *  @see SCConfig -loggingEnabled
  */
-@property (nonatomic) BOOL loggingEnabled;
+- (void)setLoggingEnabled:(BOOL)enabled;
 
 @end

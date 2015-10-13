@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		8612954D1BCD48FE00529657 /* SCConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8612954B1BCD48FE00529657 /* SCConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8612954E1BCD48FE00529657 /* SCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8612954C1BCD48FE00529657 /* SCConfig.m */; settings = {ASSET_TAGS = (); }; };
 		864828F41BAC10CB00E7F4D2 /* libShortcutDeepLinkingSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 864828E81BAC10CA00E7F4D2 /* libShortcutDeepLinkingSDK.a */; };
 		864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */ = {isa = PBXBuildFile; fileRef = 864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */; };
@@ -70,6 +72,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8612954B1BCD48FE00529657 /* SCConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCConfig.h; sourceTree = "<group>"; };
+		8612954C1BCD48FE00529657 /* SCConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCConfig.m; sourceTree = "<group>"; };
 		861BDB1B1BBAD32D005B57AB /* create_framework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = create_framework.sh; sourceTree = "<group>"; };
 		861BDB1C1BBAD3B5005B57AB /* finish_build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = finish_build.sh; sourceTree = "<group>"; };
 		861BDB1E1BBAD423005B57AB /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
@@ -156,6 +160,8 @@
 				864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */,
 				864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */,
 				864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */,
+				8612954B1BCD48FE00529657 /* SCConfig.h */,
+				8612954C1BCD48FE00529657 /* SCConfig.m */,
 				86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */,
 				86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */,
 				86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */,
@@ -200,6 +206,7 @@
 				86C168C51BC2AF15003FF836 /* SCLogger.h in Headers */,
 				86A1E87D1BB427D7000E7F7F /* SCJSONRequest.h in Headers */,
 				864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */,
+				8612954D1BCD48FE00529657 /* SCConfig.h in Headers */,
 				86A1E8761BB41F2E000E7F7F /* SCLinkIDExtractor.h in Headers */,
 				86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */,
 				8663CB0F1BB5829B00636636 /* SCSession.h in Headers */,
@@ -316,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */,
+				8612954E1BCD48FE00529657 /* SCConfig.m in Sources */,
 				86C168C61BC2AF15003FF836 /* SCLogger.m in Sources */,
 				8663CB101BB5829B00636636 /* SCSession.m in Sources */,
 				864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */,

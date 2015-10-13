@@ -8,6 +8,8 @@
 
 #import "SCLogger.h"
 
+#import "SCConfig.h"
+
 @implementation SCLogger
 
 + (instancetype)sharedLogger {
@@ -21,20 +23,12 @@
     return instance;
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.enabled = YES;
-    }
-    return self;
-}
-
 + (void)log:(NSString *)message {
     [[self sharedLogger] log:message];
 }
 
 - (void)log:(NSString *)message {
-    if (self.enabled) {
+    if ([SCConfig sharedConfig].loggingEnabled) {
         NSLog(@"[ShortcutDeepLinkingSDK]: %@", message);
     }
 }

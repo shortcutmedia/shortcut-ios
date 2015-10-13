@@ -10,6 +10,7 @@
 
 #import "SCDeviceFingerprint.h"
 #import "SCLogger.h"
+#import "SCConfig.h"
 
 @interface SCJSONRequest ()
 

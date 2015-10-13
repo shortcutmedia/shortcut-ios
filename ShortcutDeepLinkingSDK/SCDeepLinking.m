@@ -9,6 +9,7 @@
 #import "SCDeepLinking.h"
 
 #import <UIKit/UIKit.h>
+#import "SCConfig.h"
 #import "SCLogger.h"
 
 NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
@@ -79,7 +80,7 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
 
 - (void)launchWithLoggingEnabled:(BOOL)loggingEnabled {
-    self.loggingEnabled = loggingEnabled;
+    [self setLoggingEnabled:loggingEnabled];
     [self launch];
 }
 
@@ -104,6 +105,7 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
     return self.currentSession;
 }
 
+
 - (void)stopCurrentSession {
     if (self.currentSession) {
         [self.currentSession finish];
@@ -112,14 +114,10 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 }
 
 
-#pragma mark - Logging
+#pragma mark - Config delegators
 
-- (BOOL)loggingEnabled {
-    return [SCLogger sharedLogger].enabled;
-}
-
-- (void)setLoggingEnabled:(BOOL)loggingEnabled {
-    [SCLogger sharedLogger].enabled = loggingEnabled;
+- (void)setLoggingEnabled:(BOOL)enabled {
+    [SCConfig sharedConfig].loggingEnabled = enabled;
 }
 
 
