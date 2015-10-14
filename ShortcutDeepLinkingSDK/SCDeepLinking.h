@@ -78,6 +78,8 @@
  *  The session's url property contains a URL stripped of all additional query parameters Shortcut needs to
  *  attribute the URL to the correct Shortcut link. So use this URL for further processing.
  *
+ *  @param url The deep link URL that is/was opened.
+ *
  *  @return A session describing the viewing of a deep link.
  */
 - (SCSession *)startSessionWithURL:(NSURL *)url;

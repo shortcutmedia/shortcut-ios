@@ -36,6 +36,7 @@ To make use of this SDK you need the following:
 ```objective-c
 #import <ShortcutDeepLinkingSDK/ShortcutDeepLinkingSDK.h>
 ```
+
 **Step 2:** Then you have to tell the SDK about the app launch.
 
 Add the following to `-application:didFinishLaunchingWithOptions:`:
@@ -52,7 +53,13 @@ Add the following to `-application:didFinishLaunchingWithOptions:`:
 
 #### Collecting deep link interaction statistics
 
-**Step 1:** You have to tell the SDK when a deep link is opened.
+**Step 1:** In your *AppDelegate.m* file you have to import the SDK:
+
+```objective-c
+#import <ShortcutDeepLinkingSDK/ShortcutDeepLinkingSDK.h>
+```
+
+**Step 2:** You have to tell the SDK when a deep link is opened.
 
 Add the following to `-application:openURL:sourceApplication:annotation:` (you have added this method to your app delegate when you implemented your app's normal deep link handling):
 
