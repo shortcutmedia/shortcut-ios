@@ -11,6 +11,13 @@
 @interface SCConfig : NSObject
 
 /**
+ *  The token used for authentication with the Shortcut backend.
+ *  
+ *  An API key with a token can be generated in the Shortcut Manager.
+ */
+@property (strong, nonatomic) NSString *authToken;
+
+/**
  *  By default the some debug information is logged. Use this property to turn off this logging.
  */
 @property (nonatomic) BOOL loggingEnabled;

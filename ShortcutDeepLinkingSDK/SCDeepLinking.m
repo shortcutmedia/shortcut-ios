@@ -78,6 +78,10 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
     }];
 }
 
+- (void)launchWithAuthToken:(NSString *)authToken {
+    [self setAuthToken:authToken];
+    [self launch];
+}
 
 - (void)launchWithLoggingEnabled:(BOOL)loggingEnabled {
     [self setLoggingEnabled:loggingEnabled];
@@ -115,6 +119,10 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
 
 #pragma mark - Config delegators
+
+- (void)setAuthToken:(NSString *)token {
+    [SCConfig sharedConfig].authToken = token;
+}
 
 - (void)setLoggingEnabled:(BOOL)enabled {
     [SCConfig sharedConfig].loggingEnabled = enabled;

@@ -53,7 +53,18 @@
  *  It checks for a stored deep link for the current device on the Shortcut backend and triggers an opening
  *  of the stored deep link if one was found.
  *
- *  @param loggingEnabled Boolean to indicate whether to enable logging or not. @see logging
+ *  @param authToken The token to use for authentication with the Shortcut backend. @see SCConfig
+ */
+- (void)launchWithAuthToken:(NSString *)authToken;
+
+/**
+ *  Takes care of handling potential deferred deep links.
+ *
+ *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
+ *  It checks for a stored deep link for the current device on the Shortcut backend and triggers an opening
+ *  of the stored deep link if one was found.
+ *
+ *  @param loggingEnabled Boolean to indicate whether to enable logging or not. @see SCConfig
  */
 - (void)launchWithLoggingEnabled:(BOOL)loggingEnabled;
 
@@ -75,6 +86,12 @@
 
 /// @name Configuration accessors
 
+/**
+ *  This token is used for authentication with the Shortcut backend.
+ *
+ *  @see SCConfig -authToken
+ */
+- (void)setAuthToken:(NSString *)token;
 
 /**
  *  By default the some debug information is logged. Use this property to turn off this logging.

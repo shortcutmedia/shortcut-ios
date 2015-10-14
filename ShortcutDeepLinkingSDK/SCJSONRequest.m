@@ -12,6 +12,8 @@
 #import "SCLogger.h"
 #import "SCConfig.h"
 
+NSString * const kAuthTokenParamString = @"token";
+
 @interface SCJSONRequest ()
 
 @property (strong, nonatomic) NSOperationQueue *httpQueue;
@@ -42,9 +44,9 @@ completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSEr
            params:(NSDictionary *)params
 completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSError *error))completionHandler {
     
-    // Build body content (params + fingerprint)
+    // Build body content (user-supplied params + default params)
     NSMutableDictionary *bodyContent = [[NSMutableDictionary alloc] init];
-    [bodyContent addEntriesFromDictionary:[[[SCDeviceFingerprint alloc] init] dictionaryRepresentation]];
+    [bodyContent addEntriesFromDictionary:[self defaultParams]];
     [bodyContent addEntriesFromDictionary:params];
     
     // Build JSON request
@@ -58,7 +60,9 @@ completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSEr
     [self logRequest:request];
     
     // Send request
-    [NSURLConnection sendAsynchronousRequest:request queue:[self httpQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[self httpQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         
         [self logResponse:response data:data error:error forRequest:request];
         
@@ -75,6 +79,22 @@ completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSEr
             completionHandler(response, content, error);
         }
     }];
+}
+
+
+#pragma mark - Helpers
+
+- (NSDictionary *)defaultParams {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    // device fingerprint
+    NSDictionary *fingerprintDictionary = [[[SCDeviceFingerprint alloc] init] dictionaryRepresentation];
+    [params addEntriesFromDictionary:fingerprintDictionary];
+    
+    // auth token
+    [params setValue:[SCConfig sharedConfig].authToken forKey:kAuthTokenParamString];
+    
+    return params;
 }
 
 
