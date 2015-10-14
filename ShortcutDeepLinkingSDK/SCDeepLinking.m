@@ -119,6 +119,43 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 }
 
 
+- (void)createShortLinkWithWebsiteURL:(NSURL *)websiteURL
+                    completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
+    [self createShortLinkWithTitle:nil
+                        websiteURL:websiteURL
+                    iOSAppStoreURL:nil
+                    iOSDeepLinkURL:nil
+                androidAppStoreURL:nil
+                androidDeepLinkURL:nil
+                 completionHandler:completionHandler];
+}
+
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+               completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
+    [self createShortLinkWithTitle:title
+                        websiteURL:websiteURL
+                    iOSAppStoreURL:nil
+                    iOSDeepLinkURL:nil
+                androidAppStoreURL:nil
+                androidDeepLinkURL:nil
+                 completionHandler:completionHandler];
+}
+
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+                  iOSAppStoreURL:(NSURL *)iOSAppStoreURL
+                  iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
+               completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
+    [self createShortLinkWithTitle:title
+                        websiteURL:websiteURL
+                    iOSAppStoreURL:iOSAppStoreURL
+                    iOSDeepLinkURL:iOSDeepLinkURL
+                androidAppStoreURL:nil
+                androidDeepLinkURL:nil
+                 completionHandler:completionHandler];
+}
+
 - (void)createShortLinkWithTitle:(NSString *)title
                       websiteURL:(NSURL *)websiteURL
                   iOSAppStoreURL:(NSURL *)iOSAppStoreURL
