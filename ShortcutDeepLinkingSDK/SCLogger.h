@@ -35,11 +35,6 @@
 /// @name Logging
 
 /**
- *  Use this property to enable or disable the logging of debug messages.
- */
-@property (assign, nonatomic) BOOL enabled;
-
-/**
  *  Logs the given message if logging is enabled.
  *
  *  This is just a convenience shortcut for [[SCLogger sharedLogger] log:@"some message"].

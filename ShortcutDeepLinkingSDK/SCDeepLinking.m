@@ -9,7 +9,9 @@
 #import "SCDeepLinking.h"
 
 #import <UIKit/UIKit.h>
+#import "SCConfig.h"
 #import "SCLogger.h"
+#import "SCItem.h"
 
 NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
@@ -77,9 +79,13 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
     }];
 }
 
+- (void)launchWithAuthToken:(NSString *)authToken {
+    [self setAuthToken:authToken];
+    [self launch];
+}
 
 - (void)launchWithLoggingEnabled:(BOOL)loggingEnabled {
-    self.loggingEnabled = loggingEnabled;
+    [self setLoggingEnabled:loggingEnabled];
     [self launch];
 }
 
@@ -104,6 +110,7 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
     return self.currentSession;
 }
 
+
 - (void)stopCurrentSession {
     if (self.currentSession) {
         [self.currentSession finish];
@@ -112,14 +119,72 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 }
 
 
-#pragma mark - Logging
-
-- (BOOL)loggingEnabled {
-    return [SCLogger sharedLogger].enabled;
+- (void)createShortLinkWithWebsiteURL:(NSURL *)websiteURL
+                    completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
+    [self createShortLinkWithTitle:nil
+                        websiteURL:websiteURL
+                    iOSAppStoreURL:nil
+                    iOSDeepLinkURL:nil
+                androidAppStoreURL:nil
+                androidDeepLinkURL:nil
+                 completionHandler:completionHandler];
 }
 
-- (void)setLoggingEnabled:(BOOL)loggingEnabled {
-    [SCLogger sharedLogger].enabled = loggingEnabled;
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+               completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
+    [self createShortLinkWithTitle:title
+                        websiteURL:websiteURL
+                    iOSAppStoreURL:nil
+                    iOSDeepLinkURL:nil
+                androidAppStoreURL:nil
+                androidDeepLinkURL:nil
+                 completionHandler:completionHandler];
+}
+
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+                  iOSAppStoreURL:(NSURL *)iOSAppStoreURL
+                  iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
+               completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
+    [self createShortLinkWithTitle:title
+                        websiteURL:websiteURL
+                    iOSAppStoreURL:iOSAppStoreURL
+                    iOSDeepLinkURL:iOSDeepLinkURL
+                androidAppStoreURL:nil
+                androidDeepLinkURL:nil
+                 completionHandler:completionHandler];
+}
+
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+                  iOSAppStoreURL:(NSURL *)iOSAppStoreURL
+                  iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
+              androidAppStoreURL:(NSURL *)androidAppStoreURL
+              androidDeepLinkURL:(NSURL *)androidDeepLinkURL
+               completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
+    
+    SCItem *item = [[SCItem alloc] initWithTitle:title
+                                      websiteURL:websiteURL
+                                  iOSAppStoreURL:iOSAppStoreURL
+                                  iOSDeepLinkURL:iOSDeepLinkURL
+                              androidAppStoreURL:androidAppStoreURL
+                              androidDeepLinkURL:androidDeepLinkURL];
+    
+    [item createWithCompletionHandler:^(NSError *error) {
+        completionHandler(item.shortURL, error);
+    }];
+}
+
+
+#pragma mark - Config delegators
+
+- (void)setAuthToken:(NSString *)token {
+    [SCConfig sharedConfig].authToken = token;
+}
+
+- (void)setLoggingEnabled:(BOOL)enabled {
+    [SCConfig sharedConfig].loggingEnabled = enabled;
 }
 
 

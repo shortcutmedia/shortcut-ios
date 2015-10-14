@@ -10,3 +10,4 @@
 
 #import "SCDeepLinking.h"
 #import "SCSession.h"
+#import "SCConfig.h"

@@ -30,7 +30,7 @@
 /**
  *  Returns the singleton instance.
  *
- *  @return The global config instance.
+ *  @return The global instance.
  */
 + (instancetype)sharedInstance;
 
@@ -53,7 +53,18 @@
  *  It checks for a stored deep link for the current device on the Shortcut backend and triggers an opening
  *  of the stored deep link if one was found.
  *
- *  @param loggingEnabled Boolean to indicate whether to enable logging or not. @see logging
+ *  @param authToken The token to use for authentication with the Shortcut backend. @see SCConfig
+ */
+- (void)launchWithAuthToken:(NSString *)authToken;
+
+/**
+ *  Takes care of handling potential deferred deep links.
+ *
+ *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
+ *  It checks for a stored deep link for the current device on the Shortcut backend and triggers an opening
+ *  of the stored deep link if one was found.
+ *
+ *  @param loggingEnabled Boolean to indicate whether to enable logging or not. @see SCConfig
  */
 - (void)launchWithLoggingEnabled:(BOOL)loggingEnabled;
 
@@ -67,16 +78,97 @@
  *  The session's url property contains a URL stripped of all additional query parameters Shortcut needs to
  *  attribute the URL to the correct Shortcut link. So use this URL for further processing.
  *
+ *  @param url The deep link URL that is/was opened.
+ *
  *  @return A session describing the viewing of a deep link.
  */
 - (SCSession *)startSessionWithURL:(NSURL *)url;
 
+/**
+ *  Creates a new short link.
+ *
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
+ *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *
+ *  @param websiteURL The URL of the website the short link points to by default.
+ *  @param completionHandler A handler that will be called with the short link URL once the short link is created.
+ */
+- (void)createShortLinkWithWebsiteURL:(NSURL *)websiteURL
+               completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
 
-/// @name Debugging helpers
+/**
+ *  Creates a new short link.
+ *
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
+ *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *
+ *  @param title The title of the new short link (optional).
+ *  @param websiteURL The URL of the website the short link points to by default.
+ *  @param completionHandler A handler that will be called with the short link URL once the short link is created.
+ */
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+               completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
+
+/**
+ *  Creates a new short (deep) link.
+ *
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
+ *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *
+ *  @param title The title of the new short link (optional).
+ *  @param websiteURL The URL of the website the short link points to by default.
+ *  @param iOSAppStoreURL The store URL of the iOS app that should be used to handle the new short link (optional).
+ *  @param iOSDeepLinkURL The deep link URL the short link should link to on iOS (optional).
+ *  @param completionHandler A handler that will be called with the short link URL once the short link is created.
+ */
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+                  iOSAppStoreURL:(NSURL *)iOSAppStoreURL
+                  iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
+               completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
+
+/**
+ *  Creates a new short (deep) link.
+ *
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
+ *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *
+ *  @param title The title of the new short link (optional).
+ *  @param websiteURL The URL of the website the short link points to by default.
+ *  @param iOSAppStoreURL The store URL of the iOS app that should be used to handle the new short link (optional).
+ *  @param iOSDeepLinkURL The deep link URL the short link should link to on iOS (optional).
+ *  @param androidAppStoreURL The store URL of the Android app that should be used to handle the new short link (optional).
+ *  @param androidDeepLinkURL The deep link URL the short link should link to on Android (optional).
+ *  @param completionHandler A handler that will be called with the short link URL once the short link is created.
+ */
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+                  iOSAppStoreURL:(NSURL *)iOSAppStoreURL
+                  iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
+              androidAppStoreURL:(NSURL *)androidAppStoreURL
+              androidDeepLinkURL:(NSURL *)androidDeepLinkURL
+               completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
+
+
+/// @name Configuration accessors
+
+/**
+ *  This token is used for authentication with the Shortcut backend.
+ *
+ *  @see SCConfig -authToken
+ */
+- (void)setAuthToken:(NSString *)token;
 
 /**
  *  By default the some debug information is logged. Use this property to turn off this logging.
+ *
+ *  @see SCConfig -loggingEnabled
  */
-@property (nonatomic) BOOL loggingEnabled;
+- (void)setLoggingEnabled:(BOOL)enabled;
 
 @end
