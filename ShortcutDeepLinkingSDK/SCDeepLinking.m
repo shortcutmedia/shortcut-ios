@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "SCConfig.h"
 #import "SCLogger.h"
+#import "SCItem.h"
 
 NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
@@ -115,6 +116,27 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         [self.currentSession finish];
         self.currentSession = nil;
     }
+}
+
+
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+                  iOSAppStoreURL:(NSURL *)iOSAppStoreURL
+                  iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
+              androidAppStoreURL:(NSURL *)androidAppStoreURL
+              androidDeepLinkURL:(NSURL *)androidDeepLinkURL
+               completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
+    
+    SCItem *item = [[SCItem alloc] initWithTitle:title
+                                      websiteURL:websiteURL
+                                  iOSAppStoreURL:iOSAppStoreURL
+                                  iOSDeepLinkURL:iOSDeepLinkURL
+                              androidAppStoreURL:androidAppStoreURL
+                              androidDeepLinkURL:androidDeepLinkURL];
+    
+    [item createWithCompletionHandler:^(NSError *error) {
+        completionHandler(item.shortURL, error);
+    }];
 }
 
 
