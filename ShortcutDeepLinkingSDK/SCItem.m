@@ -142,7 +142,7 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
         NSInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
         
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-        [userInfo setValue:[NSString stringWithFormat:@"HTTP error with code %ld", statusCode] forKey:NSLocalizedDescriptionKey];
+        [userInfo setValue:[NSString stringWithFormat:@"HTTP error with code %ld", (long)statusCode] forKey:NSLocalizedDescriptionKey];
         [userInfo setValue:@"Please try again. If the problem persists contact support@shortcutmedia.com" forKey:NSLocalizedRecoverySuggestionErrorKey];
         
         creationError = [NSError errorWithDomain:kSCItemErrorDomain
