@@ -4,7 +4,7 @@ This SDK provides the following features:
 
 - Support for [deferred deep linking](https://en.wikipedia.org/wiki/Deferred_deep_linking).
 - Collection of additional statistics to build a user acquisition funnel and evaluate user activity.
-- Create new short (deep) links to share content from within your app.
+- Creating Shortcuts (short mobile deep links) to share from within your app.
 
 There is also an [Android version of this SDK](https://github.com/shortcutmedia/shortcut-deeplink-sdk-android).
 
@@ -25,13 +25,13 @@ The SDK is packaged in a .framework file. To use it within your project follow t
 To make use of this SDK you need the following:
 
 - An iOS app that supports deep linking (responds to a [custom URL scheme](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html#//apple_ref/doc/uid/TP40007072-CH6-SW10)).
-- A Shortcut Link with a deep link to your app specified. Use the [Shortcut Manager](http://manager.shortcutmedia.com) to create one.
-- For creating new short links: An API key with auth token. Use the [Shortcut Manager](http://manager.shortcutmedia.com/users/api_keys) to create one.
+- A Shortcut with a mobile deep link to your app. Use the [Shortcut Manager](http://manager.shortcutmedia.com) to create one.
+- An API key with auth token. Use the [Shortcut Manager](http://manager.shortcutmedia.com/users/api_keys) to create one. This is only needed if you intend to create Shortcuts to share from within your app.
 
 
 ## Integration into your app
 
-To use any features of the SDK you have to import it in each file in which you want to use it:
+Make sure to import our SDK in all files where you use it:
 
 ```objective-c
 #import <ShortcutDeepLinkingSDK/ShortcutDeepLinkingSDK.h>
@@ -70,9 +70,9 @@ Add the following to `-application:openURL:sourceApplication:annotation:` (you h
 }
 ```
 
-#### Creating short (deep) links
+#### Creating Shortcuts (short mobile deep links)
 
-**Prerequisite:** You need an API key with an authentication token. You can generate one in the [Shortcut Manager](manager.shortcutmedia.com/users/api_keys).
+**Prerequisite:** You need an API key with an authentication token. You can generate one in the [Shortcut Manager](http://manager.shortcutmedia.com/users/api_keys). We need this in order to identify your app and assign the Shortcut to it..
 
 Tell the SDK about your token by adding the following to `-application:didFinishLaunchingWithOptions:` in your *AppDelegate.m* file:
 
@@ -86,6 +86,8 @@ Tell the SDK about your token by adding the following to `-application:didFinish
 }
 ```
 
+If you are also using deferred deep linking then add it before the `[[SCDeepLinking sharedInstance] launch];` call (see *[Enabling deferred deep linking](#enabling-deferred-deep-linking)*).
+
 Creating short links is an asynchronous process, since your link parameters need to be sent to the Shortcut backend. This can take a short amount of time during which you do not want to block your app. Therefore the short link creation process runs in the background and you are notified once it is finished via a completion handler.
 
 **An example:** Let's assume you have a *Share* button in your app which should bring up an action sheet that allows you to share some content within your app through a short link.
@@ -97,7 +99,7 @@ An implementation could look something like this:
 - (IBAction)shareButtonPressed:(id)button {
 
     SCDeepLinking *dl = [SCDeepLinking sharedInstance];
-    
+
     [dl createShortLinkWithTitle:@"content title"
                       websiteURL:[NSURL URLWithString:@"http://your.site/content"]
                   iOSAppStoreURL:[NSURL URLWithString:@"https://itunes.apple.com/app/idYOURAPPID?mt=8"]
@@ -119,7 +121,7 @@ An implementation could look something like this:
 }
 ```
 
-All parameters for the `-createShortLinkWithTitle:websiteURL:iOSAppStoreURL:iOSDeepLinkURL:androidAppStoreURL:androidDeepLinkURL:completionHandler:` method except for `websiteURL` and `completionHandler` are optional.
+The parameters `websiteURL` and `completionHandler` are mandatory. All other parameters are optional.
 
 There are also shorter alternative methods if you want to create a short link without any deep links (`-createShortLinkWithWebsiteURL:completionHandler:`) or a short link with just iOS deep links (`-createShortLinkWithTitle:websiteURL:iOSAppStoreURL:iOSDeepLinkURL:completionHandler:`).
 
