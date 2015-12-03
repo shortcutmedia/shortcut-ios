@@ -121,6 +121,44 @@
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
+ *  @param deepLinkURL The deep link URL the short link should link to on all platforms (optional).
+ *  @param completionHandler A handler that will be called with the short link URL once the short link is created.
+ */
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+                     deepLinkURL:(NSURL *)deepLinkURL
+               completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
+
+/**
+ *  Creates a new short (deep) link.
+ *
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
+ *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *
+ *  @param title The title of the new short link (optional).
+ *  @param websiteURL The URL of the website the short link points to by default.
+ *  @param iOSDeepLinkURL The deep link URL the short link should link to on iOS (optional).
+ *  @param androidDeepLinkURL The deep link URL the short link should link to on Android (optional).
+ *  @param windowsPhoneDeepLinkURL The deep link URL the short link should link to on Windows Phone (optional).
+ *  @param completionHandler A handler that will be called with the short link URL once the short link is created.
+ */
+- (void)createShortLinkWithTitle:(NSString *)title
+                      websiteURL:(NSURL *)websiteURL
+                  iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
+              androidDeepLinkURL:(NSURL *)androidDeepLinkURL
+         windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL
+               completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
+
+/**
+ *  Creates a new short (deep) link.
+ *
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
+ *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *
+ *  @param title The title of the new short link (optional).
+ *  @param websiteURL The URL of the website the short link points to by default.
  *  @param iOSAppStoreURL The store URL of the iOS app that should be used to handle the new short link (optional).
  *  @param iOSDeepLinkURL The deep link URL the short link should link to on iOS (optional).
  *  @param androidAppStoreURL The store URL of the Android app that should be used to handle the new short link (optional).

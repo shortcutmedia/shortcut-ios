@@ -94,6 +94,32 @@ Creating short links is an asynchronous process, since your link parameters need
 
 An implementation could look something like this:
 
+```objective-c
+- (IBAction)shareButtonPressed:(id)button {
+
+    SCDeepLinking *dl = [SCDeepLinking sharedInstance];
+
+    [dl createShortLinkWithTitle:@"content title"
+                      websiteURL:[NSURL URLWithString:@"http://your.site/content"]
+                     deepLinkURL:[NSURL URLWithString:@"your-app://your/content"]
+               completionHandler:^(NSURL *shortLinkURL, NSError *error) {
+
+        if (!error) {
+            [self displayShareSheetWithURL:shortLinkURL];
+        } else {
+            // do error handling...
+        }
+    }];
+}
+
+- (void)displayShareSheetWithURL:(NSURL *)urlToShare {
+    // ...
+}
+```
+
+This will create a short link that deep links into your app on all platforms you have configured in the Shortcut Manager.
+
+**Advanced configuration:** If you have different deep link schemes for different platforms or if you want to override the app store URLs you set up in the manager, you can use the following method instead:
 
 ```objective-c
 - (IBAction)shareButtonPressed:(id)button {
@@ -123,9 +149,7 @@ An implementation could look something like this:
 }
 ```
 
-The parameters `websiteURL` and `completionHandler` are mandatory. All other parameters are optional.
-
-There are also shorter alternative methods that omit different sets of optional parameters.
+The parameters `websiteURL` and `completionHandler` are mandatory. All other parameters are optional (you can pass nil). There are also shorter alternative methods that omit different sets of optional parameters. Just play around with Xcode autocompletion of method names ;)
 
 
 ## License
