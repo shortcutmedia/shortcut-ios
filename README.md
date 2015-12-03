@@ -26,7 +26,7 @@ To make use of this SDK you need the following:
 
 - An iOS app that supports deep linking (responds to a [custom URL scheme](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html#//apple_ref/doc/uid/TP40007072-CH6-SW10)).
 - A Shortcut with a mobile deep link to your app. Use the [Shortcut Manager](http://manager.shortcutmedia.com) to create one.
-- An API key with auth token. Use the [Shortcut Manager](http://manager.shortcutmedia.com/users/api_keys) to create one. This is only needed if you intend to create Shortcuts to share from within your app.
+- An API key. Use the [Shortcut Manager](http://manager.shortcutmedia.com/mobile_apps) to create a mobile app with an associated API key. This is only needed if you intend to create Shortcuts to share from within your app.
 
 
 ## Integration into your app
@@ -72,7 +72,7 @@ Add the following to `-application:openURL:sourceApplication:annotation:` (you h
 
 #### Creating Shortcuts (short mobile deep links)
 
-**Prerequisite:** You need an API key with an authentication token. You can generate one in the [Shortcut Manager](http://manager.shortcutmedia.com/users/api_keys). We need this in order to identify your app and assign the Shortcut to it..
+**Prerequisite:** You need an API key with an authentication token. You can generate a mobile app with an associated API key in the [Shortcut Manager](http://manager.shortcutmedia.com/mobile_apps). We need this in order to identify your app and assign the Shortcut to it..
 
 Tell the SDK about your token by adding the following to `-application:didFinishLaunchingWithOptions:` in your *AppDelegate.m* file:
 
