@@ -106,6 +106,8 @@ An implementation could look something like this:
                   iOSDeepLinkURL:[NSURL URLWithString:@"your-ios-scheme://your/content"]
               androidAppStoreURL:[NSURL URLWithString:@"https://play.google.com/store/apps/details?id=YOURAPPID"]
               androidDeepLinkURL:[NSURL URLWithString:@"your-android-scheme://your/content"]
+         windowsPhoneAppStoreURL:[NSURL URLWithString:@"https://www.microsoft.com/store/apps/YOURAPPID"]
+         windowsPhoneDeepLinkURL:[NSURL URLWithString:@"your-windows-phone-scheme://your/content"]
                completionHandler:^(NSURL *shortLinkURL, NSError *error) {
 
         if (!error) {
@@ -123,7 +125,7 @@ An implementation could look something like this:
 
 The parameters `websiteURL` and `completionHandler` are mandatory. All other parameters are optional.
 
-There are also shorter alternative methods if you want to create a short link without any deep links (`-createShortLinkWithWebsiteURL:completionHandler:`) or a short link with just iOS deep links (`-createShortLinkWithTitle:websiteURL:iOSAppStoreURL:iOSDeepLinkURL:completionHandler:`).
+There are also shorter alternative methods that omit different sets of optional parameters.
 
 
 ## License

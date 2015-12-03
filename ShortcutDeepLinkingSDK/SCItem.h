@@ -28,7 +28,9 @@
                iOSAppStoreURL:(NSURL *)iOSAppStoreURL
                iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
            androidAppStoreURL:(NSURL *)androidAppStoreURL
-           androidDeepLinkURL:(NSURL *)androidDeepLinkURL;
+           androidDeepLinkURL:(NSURL *)androidDeepLinkURL
+      windowsPhoneAppStoreURL:(NSURL *)windowsPhoneAppStoreURL
+      windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL;
 
 /**
  *  Creates the item on the Shortcut Backend.

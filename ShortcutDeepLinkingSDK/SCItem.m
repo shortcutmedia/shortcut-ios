@@ -24,6 +24,9 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
 @property (strong, nonatomic, readwrite) NSURL *androidAppStoreURL;
 @property (strong, nonatomic, readwrite) NSURL *androidDeepLinkURL;
 
+@property (strong, nonatomic, readwrite) NSURL *windowsPhoneAppStoreURL;
+@property (strong, nonatomic, readwrite) NSURL *windowsPhoneDeepLinkURL;
+
 @property (strong, nonatomic, readwrite) NSURL *shortURL;
 @property (strong, nonatomic, readwrite) NSString *UUID;
 
@@ -36,7 +39,9 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
                iOSAppStoreURL:(NSURL *)iOSAppStoreURL
                iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
            androidAppStoreURL:(NSURL *)androidAppStoreURL
-           androidDeepLinkURL:(NSURL *)androidDeepLinkURL {
+           androidDeepLinkURL:(NSURL *)androidDeepLinkURL
+      windowsPhoneAppStoreURL:(NSURL *)windowsPhoneAppStoreURL
+      windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL {
     
     self = [self init];
     
@@ -49,6 +54,9 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
         
         self.androidAppStoreURL = androidAppStoreURL;
         self.androidDeepLinkURL = androidDeepLinkURL;
+        
+        self.windowsPhoneAppStoreURL = windowsPhoneAppStoreURL;
+        self.windowsPhoneDeepLinkURL = windowsPhoneDeepLinkURL;
     }
     
     return self;
@@ -91,6 +99,8 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
     [itemParams setValue:[self.iOSDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.ios_in_app_url"];
     [itemParams setValue:[self.androidAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.android_app_store_url"];
     [itemParams setValue:[self.androidDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.android_in_app_url"];
+    [itemParams setValue:[self.windowsPhoneAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.windows_phone_app_store_url"];
+    [itemParams setValue:[self.windowsPhoneDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.windows_phone_in_app_url"];
     
     return @{@"deep_link_item" : itemParams};
 }
