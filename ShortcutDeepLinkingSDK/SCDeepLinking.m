@@ -12,6 +12,7 @@
 #import "SCConfig.h"
 #import "SCLogger.h"
 #import "SCItem.h"
+#import "SCDeepLinkOpener.h"
 
 NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
@@ -72,7 +73,8 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
         if (self.currentSession) {
             [SCLogger log:[NSString stringWithFormat:@"Found deferred deep link: %@",
                            self.currentSession.url.absoluteString]];
-            [[UIApplication sharedApplication] openURL:self.currentSession.url];
+            SCDeepLinkOpener *deepLinkOpener = [[SCDeepLinkOpener alloc] init];
+            [deepLinkOpener openURL:self.currentSession.url];
         } else {
             [SCLogger log:@"Found no deferred deep link"];
         }

@@ -22,26 +22,28 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		861295481BCD374100529657 /* SCItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 861295461BCD374100529657 /* SCItem.h */; settings = {ASSET_TAGS = (); }; };
-		861295491BCD374100529657 /* SCItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 861295471BCD374100529657 /* SCItem.m */; settings = {ASSET_TAGS = (); }; };
+		861295481BCD374100529657 /* SCItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 861295461BCD374100529657 /* SCItem.h */; };
+		861295491BCD374100529657 /* SCItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 861295471BCD374100529657 /* SCItem.m */; };
 		8612954D1BCD48FE00529657 /* SCConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8612954B1BCD48FE00529657 /* SCConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8612954E1BCD48FE00529657 /* SCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8612954C1BCD48FE00529657 /* SCConfig.m */; settings = {ASSET_TAGS = (); }; };
+		8612954E1BCD48FE00529657 /* SCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8612954C1BCD48FE00529657 /* SCConfig.m */; };
 		864828F41BAC10CB00E7F4D2 /* libShortcutDeepLinkingSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 864828E81BAC10CA00E7F4D2 /* libShortcutDeepLinkingSDK.a */; };
 		864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */ = {isa = PBXBuildFile; fileRef = 864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */; };
 		864829081BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8663CB0F1BB5829B00636636 /* SCSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 8663CB0D1BB5829B00636636 /* SCSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8663CB101BB5829B00636636 /* SCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8663CB0E1BB5829B00636636 /* SCSession.m */; settings = {ASSET_TAGS = (); }; };
-		86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */; settings = {ASSET_TAGS = (); }; };
-		86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */; settings = {ASSET_TAGS = (); }; };
-		86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */; settings = {ASSET_TAGS = (); }; };
-		86A1E8761BB41F2E000E7F7F /* SCLinkIDExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */; settings = {ASSET_TAGS = (); }; };
-		86A1E8771BB41F2E000E7F7F /* SCLinkIDExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8751BB41F2E000E7F7F /* SCLinkIDExtractor.m */; settings = {ASSET_TAGS = (); }; };
-		86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */; settings = {ASSET_TAGS = (); }; };
-		86A1E87D1BB427D7000E7F7F /* SCJSONRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */; settings = {ASSET_TAGS = (); }; };
-		86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */; settings = {ASSET_TAGS = (); }; };
-		86C168C51BC2AF15003FF836 /* SCLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 86C168C31BC2AF15003FF836 /* SCLogger.h */; settings = {ASSET_TAGS = (); }; };
-		86C168C61BC2AF15003FF836 /* SCLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C168C41BC2AF15003FF836 /* SCLogger.m */; settings = {ASSET_TAGS = (); }; };
+		8663CB101BB5829B00636636 /* SCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8663CB0E1BB5829B00636636 /* SCSession.m */; };
+		86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */; };
+		86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */; };
+		86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */; };
+		86A1E8761BB41F2E000E7F7F /* SCLinkIDExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */; };
+		86A1E8771BB41F2E000E7F7F /* SCLinkIDExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8751BB41F2E000E7F7F /* SCLinkIDExtractor.m */; };
+		86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */; };
+		86A1E87D1BB427D7000E7F7F /* SCJSONRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */; };
+		86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */; };
+		86C168C51BC2AF15003FF836 /* SCLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 86C168C31BC2AF15003FF836 /* SCLogger.h */; };
+		86C168C61BC2AF15003FF836 /* SCLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C168C41BC2AF15003FF836 /* SCLogger.m */; };
+		86D8D4771C3E84D80060C35B /* SCDeepLinkOpener.h in Headers */ = {isa = PBXBuildFile; fileRef = 86D8D4751C3E84D80060C35B /* SCDeepLinkOpener.h */; };
+		86D8D4781C3E84D80060C35B /* SCDeepLinkOpener.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D8D4761C3E84D80060C35B /* SCDeepLinkOpener.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCJSONRequest.m; sourceTree = "<group>"; };
 		86C168C31BC2AF15003FF836 /* SCLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLogger.h; sourceTree = "<group>"; };
 		86C168C41BC2AF15003FF836 /* SCLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLogger.m; sourceTree = "<group>"; };
+		86D8D4751C3E84D80060C35B /* SCDeepLinkOpener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeepLinkOpener.h; sourceTree = "<group>"; };
+		86D8D4761C3E84D80060C35B /* SCDeepLinkOpener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeepLinkOpener.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,8 @@
 				86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */,
 				86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */,
 				86A1E8751BB41F2E000E7F7F /* SCLinkIDExtractor.m */,
+				86D8D4751C3E84D80060C35B /* SCDeepLinkOpener.h */,
+				86D8D4761C3E84D80060C35B /* SCDeepLinkOpener.m */,
 				86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */,
 				86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */,
 				8663CB0D1BB5829B00636636 /* SCSession.h */,
@@ -217,6 +223,7 @@
 				86A1E8761BB41F2E000E7F7F /* SCLinkIDExtractor.h in Headers */,
 				86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */,
 				8663CB0F1BB5829B00636636 /* SCSession.h in Headers */,
+				86D8D4771C3E84D80060C35B /* SCDeepLinkOpener.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +341,7 @@
 				86C168C61BC2AF15003FF836 /* SCLogger.m in Sources */,
 				8663CB101BB5829B00636636 /* SCSession.m in Sources */,
 				864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */,
+				86D8D4781C3E84D80060C35B /* SCDeepLinkOpener.m in Sources */,
 				861295491BCD374100529657 /* SCItem.m in Sources */,
 				86A1E8771BB41F2E000E7F7F /* SCLinkIDExtractor.m in Sources */,
 				86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */,
