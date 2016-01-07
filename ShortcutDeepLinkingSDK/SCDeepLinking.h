@@ -71,7 +71,9 @@
 /**
  *  Starts a deep link viewing session and returns it.
  *
- *  This method should be called in the app delegate's application:openURL:sourceApplication:annotation:
+ *  This method should be called whenever your app opens a deep link (e.g. in the app delegate's 
+ *  application:openURL:sourceApplication:annotation: for custom scheme deep links or in the app delegate's
+ *  application:continueUserActivity:restorationHandler: for Universal Links).
  *  It creates and starts a deep link viewing session for the given deep link URL. A session spans the time the
  *  user is looking at a deep link and reports the duration to the Shortcut backend if the session was started
  *  by visiting a Shortcut link.

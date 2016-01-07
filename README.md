@@ -24,7 +24,7 @@ The SDK is packaged in a .framework file. To use it within your project follow t
 
 To make use of this SDK you need the following:
 
-- An iOS app that supports deep linking (responds to a [custom URL scheme](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html#//apple_ref/doc/uid/TP40007072-CH6-SW10)).
+- An iOS app that supports deep linking (using a [custom URL scheme](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html#//apple_ref/doc/uid/TP40007072-CH6-SW10) or [Universal Links](https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html)).
 - A Shortcut with a mobile deep link to your app. Use the [Shortcut Manager](http://manager.shortcutmedia.com) to create one.
 - An API key. Use the [Shortcut Manager](http://manager.shortcutmedia.com/mobile_apps) to create a mobile app with an associated API key. This is only needed if you intend to create Shortcuts to share from within your app.
 
@@ -57,7 +57,8 @@ Add the following to `-application:didFinishLaunchingWithOptions:` in your *AppD
 
 To collect deep link interaction statistics you have to tell the SDK when a deep link is opened: The SDK keeps track of your users looking at deep link content through sessions. You have to create a session whenever a a deep link is opened; the SDK will automatically terminate the session when a user leaves your app.
 
-Add the following to `-application:openURL:sourceApplication:annotation:` (you have added this method to your app delegate when you implemented your app's normal deep link handling):
+##### When using custom URL schemes:
+Add the following to `-application:openURL:sourceApplication:annotation:` (you have added this method to your app delegate when you implemented your app's custom-scheme deep link handling):
 
 ```objective-c
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -66,7 +67,21 @@ Add the following to `-application:openURL:sourceApplication:annotation:` (you h
     url = deepLinkSession.url // Use the session object's url property for further processing
 
     // ...
-    return YES;
+}
+```
+
+##### When using Universal Links:
+Add the following to `-application:continueUserActivity:restorationHandler:` (you have added this method to your app delegate when you implemented your app's Universal Link handling):
+
+```objective-c
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
+
+    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+        self.deepLinkSession = [[SCDeepLinking sharedInstance] startSessionWithURL:userActivity.webpageURL];
+        userActivity.webpageURL = self.deepLinkSession.url; // Use the session object's url property for further processing
+    }
+
+    // ...
 }
 ```
 
