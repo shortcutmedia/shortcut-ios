@@ -97,7 +97,7 @@
  *  @param completionHandler A handler that will be called with the short link URL once the short link is created.
  */
 - (void)createShortLinkWithWebsiteURL:(NSURL *)websiteURL
-               completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
+                    completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
 
 /**
  *  Creates a new short link.
