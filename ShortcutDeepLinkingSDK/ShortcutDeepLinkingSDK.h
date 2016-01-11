@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Shortcut Media AG. All rights reserved.
 //
 
-#define SDK_VERSION @"0.0.1-beta3"
+#define SDK_VERSION @"0.0.1-beta4"
 
 #import "SCDeepLinking.h"
 #import "SCSession.h"
