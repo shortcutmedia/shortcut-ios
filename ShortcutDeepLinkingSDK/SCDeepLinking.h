@@ -92,6 +92,9 @@
  *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
+ *  the handler and called this method on a background queue then it is your responsibility to invoke the
+ *  UI stuff on the main queue.
  *
  *  @param websiteURL The URL of the website the short link points to by default.
  *  @param completionHandler A handler that will be called with the short link URL once the short link is created.
@@ -105,6 +108,9 @@
  *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
+ *  the handler and called this method on a background queue then it is your responsibility to invoke the
+ *  UI stuff on the main queue.
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
@@ -120,6 +126,9 @@
  *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
+ *  the handler and called this method on a background queue then it is your responsibility to invoke the
+ *  UI stuff on the main queue.
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
@@ -137,6 +146,9 @@
  *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
+ *  the handler and called this method on a background queue then it is your responsibility to invoke the
+ *  UI stuff on the main queue.
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
@@ -158,6 +170,9 @@
  *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
+ *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
+ *  the handler and called this method on a background queue then it is your responsibility to invoke the
+ *  UI stuff on the main queue.
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.

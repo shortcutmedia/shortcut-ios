@@ -185,8 +185,15 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
                          windowsPhoneAppStoreURL:windowsPhoneAppStoreURL
                          windowsPhoneDeepLinkURL:windowsPhoneDeepLinkURL];
     
+    NSOperationQueue *completionHandlerQueue = [NSOperationQueue currentQueue];
+    if (!completionHandlerQueue) {
+        completionHandlerQueue = [NSOperationQueue mainQueue];
+    }
+    
     [item createWithCompletionHandler:^(NSError *error) {
-        completionHandler(item.shortURL, error);
+        [completionHandlerQueue addOperationWithBlock:^{
+            completionHandler(item.shortURL, error);
+        }];
     }];
 }
 
