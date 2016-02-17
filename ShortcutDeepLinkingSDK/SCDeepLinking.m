@@ -13,8 +13,7 @@
 #import "SCLogger.h"
 #import "SCItem.h"
 #import "SCDeepLinkOpener.h"
-
-NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
+#import "SCFirstLaunchChecker.h"
 
 @interface SCDeepLinking ()
 
@@ -60,7 +59,7 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 #pragma mark - Interactions
 
 - (void)launch {
-    BOOL firstLaunch = [self checkForFirstLaunch];
+    BOOL firstLaunch = [[SCFirstLaunchChecker sharedInstance] isFirstLaunch];
     if (!firstLaunch) {
         [SCLogger log:@"Doing no deferred deep link lookup since app is not freshly installed"];
         return;
@@ -206,21 +205,6 @@ NSString * const kAlreadyLaunchedKey = @"sc.shortcut.AlreadyLaunched";
 
 - (void)setLoggingEnabled:(BOOL)enabled {
     [SCConfig sharedConfig].loggingEnabled = enabled;
-}
-
-
-#pragma mark - Helpers
-
-- (BOOL)checkForFirstLaunch {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    BOOL alreadyLaunched = [defaults boolForKey:kAlreadyLaunchedKey];
-    if (!alreadyLaunched) {
-        [defaults setBool:YES forKey:kAlreadyLaunchedKey];
-        [defaults synchronize];
-    }
-    
-    return !alreadyLaunched;
 }
 
 @end
