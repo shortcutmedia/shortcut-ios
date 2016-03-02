@@ -8,7 +8,7 @@
 
 #import "SCLinkIDExtractor.h"
 
-NSString *kLinkIDParamString = @"sc_link_id";
+NSString *kSCLinkIDParamString = @"sc_link_id";
 
 @implementation SCLinkIDExtractor
 
@@ -17,7 +17,7 @@ NSString *kLinkIDParamString = @"sc_link_id";
     
     for (NSString *keyValueString in [url.query componentsSeparatedByString:@"&"]) {
         NSArray *keyValue = [keyValueString componentsSeparatedByString:@"="];
-        if ([[keyValue firstObject] isEqualToString:kLinkIDParamString]) {
+        if ([[keyValue firstObject] isEqualToString:kSCLinkIDParamString]) {
             linkId = [keyValue lastObject];
             break;
         }
@@ -33,7 +33,7 @@ NSString *kLinkIDParamString = @"sc_link_id";
     NSMutableString *newQueryString = [[NSMutableString alloc] init];
     for (NSString *keyValueString in [url.query componentsSeparatedByString:@"&"]) {
         NSArray *keyValue = [keyValueString componentsSeparatedByString:@"="];
-        if (![[keyValue firstObject] isEqualToString:kLinkIDParamString]) {
+        if (![[keyValue firstObject] isEqualToString:kSCLinkIDParamString]) {
             [newQueryString appendFormat:@"%@=%@", [keyValue firstObject], [keyValue lastObject]];
         }
     }

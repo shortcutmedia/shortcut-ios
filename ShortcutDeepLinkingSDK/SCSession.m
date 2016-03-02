@@ -10,11 +10,11 @@
 #import "SCLinkIDExtractor.h"
 #import "SCJSONRequest.h"
 
-NSString * const kFirstOpenURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/first_open";
-NSString * const kOpenURLString      = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/open";
-NSString * const kCloseURLString     = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/close";
+NSString * const kSCSessionFirstOpenURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/first_open";
+NSString * const kSCSessionOpenURLString      = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/open";
+NSString * const kSCSessionCloseURLString     = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/close";
 
-NSString * const kSessionIDParamString = @"session_id";
+NSString * const kSCSessionIDParamString = @"session_id";
 
 @interface SCSession ()
 
@@ -63,8 +63,8 @@ NSString * const kSessionIDParamString = @"session_id";
     
     NSString *sessionID = [self generateSessionID];
     
-    [SCJSONRequest postToURL:[NSURL URLWithString:kFirstOpenURLString]
-                      params:@{kSessionIDParamString : sessionID}
+    [SCJSONRequest postToURL:[NSURL URLWithString:kSCSessionFirstOpenURLString]
+                      params:@{kSCSessionIDParamString : sessionID}
            completionHandler:^(NSURLResponse *response, NSDictionary *content, NSError *error) {
         
                SCSession *session = nil;
@@ -82,7 +82,7 @@ NSString * const kSessionIDParamString = @"session_id";
 - (void)start {
     
     if (self.linkID) {
-        [SCJSONRequest postToURL:[NSURL URLWithString:kOpenURLString]
+        [SCJSONRequest postToURL:[NSURL URLWithString:kSCSessionOpenURLString]
                           params:[self paramsDictionary]
                completionHandler:nil];
     }
@@ -91,7 +91,7 @@ NSString * const kSessionIDParamString = @"session_id";
 - (void)finish {
     
     if (self.linkID) {
-        [SCJSONRequest postToURL:[NSURL URLWithString:kCloseURLString]
+        [SCJSONRequest postToURL:[NSURL URLWithString:kSCSessionCloseURLString]
                           params:[self paramsDictionary]
                completionHandler:nil];
     }
@@ -109,8 +109,8 @@ NSString * const kSessionIDParamString = @"session_id";
 - (NSDictionary *)paramsDictionary {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
-    if (self.linkID)    { params[kLinkIDParamString] = self.linkID; }
-    if (self.sessionID) { params[kSessionIDParamString] = self.sessionID; }
+    if (self.linkID)    { params[kSCLinkIDParamString] = self.linkID; }
+    if (self.sessionID) { params[kSCSessionIDParamString] = self.sessionID; }
 
     return params;
 }

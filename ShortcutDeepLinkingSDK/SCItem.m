@@ -9,7 +9,7 @@
 #import "SCItem.h"
 #import "SCJSONRequest.h"
 
-NSString * const kCreateURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/create";
+NSString * const kSCItemCreateURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/create";
 
 NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
 
@@ -65,7 +65,7 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
 - (void)createWithCompletionHandler:(void (^)(NSError *))completionHandler {
     
     
-    [SCJSONRequest postToURL:[NSURL URLWithString:kCreateURLString]
+    [SCJSONRequest postToURL:[NSURL URLWithString:kSCItemCreateURLString]
                       params:[self paramsDictionary]
            completionHandler:^(NSURLResponse *response, NSDictionary *content, NSError *error) {
                

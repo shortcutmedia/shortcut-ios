@@ -30,6 +30,6 @@
 /**
  *  Name of the Shortcut Link ID parameter.
  */
-extern NSString *kLinkIDParamString;
+extern NSString *kSCLinkIDParamString;
 
 @end

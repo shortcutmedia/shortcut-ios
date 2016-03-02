@@ -12,7 +12,7 @@
 #import "SCLogger.h"
 #import "SCConfig.h"
 
-NSString * const kAuthTokenParamString = @"token";
+NSString * const kSCJSONRequestAuthTokenParamString = @"token";
 
 @interface SCJSONRequest ()
 
@@ -92,7 +92,7 @@ completionHandler:(void (^)(NSURLResponse *response, NSDictionary *content, NSEr
     [params addEntriesFromDictionary:fingerprintDictionary];
     
     // auth token
-    [params setValue:[SCConfig sharedConfig].authToken forKey:kAuthTokenParamString];
+    [params setValue:[SCConfig sharedConfig].authToken forKey:kSCJSONRequestAuthTokenParamString];
     
     return params;
 }

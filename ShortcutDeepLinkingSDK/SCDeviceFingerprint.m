@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #include <sys/sysctl.h>
 
-NSString * const kDeviceIDKey = @"sc.shortcut.DeviceID";
+NSString * const kSCDeviceIDKey = @"sc.shortcut.DeviceID";
 
 @implementation SCDeviceFingerprint
 
@@ -49,10 +49,10 @@ NSString * const kDeviceIDKey = @"sc.shortcut.DeviceID";
 - (NSString *)deviceID {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    NSString *deviceID = [defaults objectForKey:kDeviceIDKey];
+    NSString *deviceID = [defaults objectForKey:kSCDeviceIDKey];
     if (!deviceID) {
         deviceID = [[NSUUID UUID] UUIDString];
-        [defaults setValue:deviceID forKey:kDeviceIDKey];
+        [defaults setValue:deviceID forKey:kSCDeviceIDKey];
         [defaults synchronize];
     }
     return deviceID;
