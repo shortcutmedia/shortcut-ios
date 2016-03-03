@@ -40,6 +40,8 @@
 		86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */; };
 		86A1E87D1BB427D7000E7F7F /* SCJSONRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */; };
 		86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */; };
+		86B7214C1C71D05800B29FE1 /* SCEventTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B7214A1C71D05800B29FE1 /* SCEventTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86B7214D1C71D05800B29FE1 /* SCEventTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B7214B1C71D05800B29FE1 /* SCEventTracking.m */; };
 		86B721501C71D2CD00B29FE1 /* SCFirstLaunchChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B7214E1C71D2CD00B29FE1 /* SCFirstLaunchChecker.h */; };
 		86B721511C71D2CD00B29FE1 /* SCFirstLaunchChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B7214F1C71D2CD00B29FE1 /* SCFirstLaunchChecker.m */; };
 		86B721531C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B721521C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m */; };
@@ -103,6 +105,8 @@
 		86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLinkIDExtractorTest.m; sourceTree = "<group>"; };
 		86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCJSONRequest.h; sourceTree = "<group>"; };
 		86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCJSONRequest.m; sourceTree = "<group>"; };
+		86B7214A1C71D05800B29FE1 /* SCEventTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEventTracking.h; sourceTree = "<group>"; };
+		86B7214B1C71D05800B29FE1 /* SCEventTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEventTracking.m; sourceTree = "<group>"; };
 		86B7214E1C71D2CD00B29FE1 /* SCFirstLaunchChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFirstLaunchChecker.h; sourceTree = "<group>"; };
 		86B7214F1C71D2CD00B29FE1 /* SCFirstLaunchChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFirstLaunchChecker.m; sourceTree = "<group>"; };
 		86B721521C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFirstLaunchCheckerTest.m; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */,
 				864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */,
 				864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */,
+				86B7214A1C71D05800B29FE1 /* SCEventTracking.h */,
+				86B7214B1C71D05800B29FE1 /* SCEventTracking.m */,
 				8612954B1BCD48FE00529657 /* SCConfig.h */,
 				8612954C1BCD48FE00529657 /* SCConfig.m */,
 				86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */,
@@ -233,6 +239,7 @@
 				86A1E8761BB41F2E000E7F7F /* SCLinkIDExtractor.h in Headers */,
 				86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */,
 				8663CB0F1BB5829B00636636 /* SCSession.h in Headers */,
+				86B7214C1C71D05800B29FE1 /* SCEventTracking.h in Headers */,
 				86D8D4771C3E84D80060C35B /* SCDeepLinkOpener.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +361,7 @@
 				864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */,
 				86D8D4781C3E84D80060C35B /* SCDeepLinkOpener.m in Sources */,
 				861295491BCD374100529657 /* SCItem.m in Sources */,
+				86B7214D1C71D05800B29FE1 /* SCEventTracking.m in Sources */,
 				86A1E8771BB41F2E000E7F7F /* SCLinkIDExtractor.m in Sources */,
 				86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */,
 			);

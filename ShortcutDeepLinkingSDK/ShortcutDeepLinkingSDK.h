@@ -9,5 +9,6 @@
 #define SDK_VERSION @"0.0.1-beta5"
 
 #import "SCDeepLinking.h"
+#import "SCEventTracking.h"
 #import "SCSession.h"
 #import "SCConfig.h"
