@@ -3,7 +3,8 @@
 This SDK provides the following features:
 
 - Support for [deferred deep linking](https://en.wikipedia.org/wiki/Deferred_deep_linking).
-- Collection of additional statistics to build a user acquisition funnel and evaluate user activity.
+- Collection of additional deep linking statistics to build a user acquisition funnel and evaluate user activity.
+- Collection of app usage statistics (app opens, app installs).
 - Creating Shortcuts (short mobile deep links) to share from within your app.
 
 There is also an [Android version of this SDK](https://github.com/shortcutmedia/shortcut-deeplink-sdk-android).
@@ -26,16 +27,32 @@ To make use of this SDK you need the following:
 
 - An iOS app that supports deep linking (using a [custom URL scheme](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html#//apple_ref/doc/uid/TP40007072-CH6-SW10) or [Universal Links](https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html)).
 - A Shortcut with a mobile deep link to your app. Use the [Shortcut Manager](http://manager.shortcutmedia.com) to create one.
-- An API key. Use the [Shortcut Manager](http://manager.shortcutmedia.com/mobile_apps) to create a mobile app with an associated API key. This is only needed if you intend to create Shortcuts to share from within your app.
-
+- An API key. Use the [Shortcut Manager](http://manager.shortcutmedia.com/mobile_apps) to create a mobile app with an associated API key.
 
 ## Integration into your app
+
+#### General setup
 
 Make sure to import our SDK in all files where you use it:
 
 ```objective-c
 #import <ShortcutDeepLinkingSDK/ShortcutDeepLinkingSDK.h>
 ```
+
+Use the [Shortcut Manager](http://manager.shortcutmedia.com/mobile_apps) to create a mobile app with an associated API key. Then tell the SDK about your API key's auth token by adding the following to `-application:didFinishLaunchingWithOptions:` in your *AppDelegate.m* file:
+
+```objective-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [[SCConfig sharedConfig] setAuthToken:@"YOUR_AUTH_TOKEN_HERE"];
+
+    // ...
+    return YES;
+}
+```
+
+Make sure to place this before any other calls to the Shortcut SDK.
+
 
 #### Enabling deferred deep linking
 
@@ -52,6 +69,8 @@ Add the following to `-application:didFinishLaunchingWithOptions:` in your *AppD
     return YES;
 }
 ```
+
+Make sure to place this call after the auth token setup explained above.
 
 #### Collecting deep link interaction statistics
 
@@ -85,23 +104,25 @@ Add the following to `-application:continueUserActivity:restorationHandler:` (yo
 }
 ```
 
-#### Creating Shortcuts (short mobile deep links)
+#### Collecting app usage statistics
 
-**Prerequisite:** You need an API key with an authentication token. You can generate a mobile app with an associated API key in the [Shortcut Manager](http://manager.shortcutmedia.com/mobile_apps). We need this in order to identify your app and assign the Shortcut to it..
+To collect usage statistics you have to setup the SDK's event tracking when the app is launched.
 
-Tell the SDK about your token by adding the following to `-application:didFinishLaunchingWithOptions:` in your *AppDelegate.m* file:
+Add the following to `-application:didFinishLaunchingWithOptions:` in your *AppDelegate.m* file:
 
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [[SCDeepLinking sharedInstance] setAuthToken:@"YOUR_AUTH_TOKEN_HERE"];
+[[SCEventTracking sharedInstance] launch];
 
-    // ...
-    return YES;
+// ...
+return YES;
 }
 ```
 
-If you are also using deferred deep linking then add it before the `[[SCDeepLinking sharedInstance] launch];` call (see *[Enabling deferred deep linking](#enabling-deferred-deep-linking)*).
+Make sure to place this call after the auth token setup explained above.
+
+#### Creating Shortcuts (short mobile deep links)
 
 Creating short links is an asynchronous process, since your link parameters need to be sent to the Shortcut backend. This can take a short amount of time during which you do not want to block your app. Therefore the short link creation process runs in the background and you are notified once it is finished via a completion handler.
 
