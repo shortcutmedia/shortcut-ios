@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		861BDB131BBAD184005B57AB /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 861BDB141BBAD184005B57AB /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				861BDB191BBAD27A005B57AB /* ShellScript */,
+			);
+			dependencies = (
+				861BDB181BBAD230005B57AB /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		861295481BCD374100529657 /* SCItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 861295461BCD374100529657 /* SCItem.h */; };
+		861295491BCD374100529657 /* SCItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 861295471BCD374100529657 /* SCItem.m */; };
+		8612954D1BCD48FE00529657 /* SCConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8612954B1BCD48FE00529657 /* SCConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8612954E1BCD48FE00529657 /* SCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8612954C1BCD48FE00529657 /* SCConfig.m */; };
+		864828F41BAC10CB00E7F4D2 /* libShortcut.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 864828E81BAC10CA00E7F4D2 /* libShortcut.a */; };
+		864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */ = {isa = PBXBuildFile; fileRef = 864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */; };
+		8663CB0F1BB5829B00636636 /* SCSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 8663CB0D1BB5829B00636636 /* SCSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8663CB101BB5829B00636636 /* SCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8663CB0E1BB5829B00636636 /* SCSession.m */; };
+		86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */; };
+		86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */; };
+		86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */; };
+		86A1E8761BB41F2E000E7F7F /* SCLinkIDExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */; };
+		86A1E8771BB41F2E000E7F7F /* SCLinkIDExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8751BB41F2E000E7F7F /* SCLinkIDExtractor.m */; };
+		86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */; };
+		86A1E87D1BB427D7000E7F7F /* SCJSONRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */; };
+		86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */; };
+		86B097EF1C94670C00623833 /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B097ED1C94670C00623833 /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86B097F01C94670C00623833 /* Shortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B097EE1C94670C00623833 /* Shortcut.m */; };
+		86B7214C1C71D05800B29FE1 /* SCEventTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B7214A1C71D05800B29FE1 /* SCEventTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86B7214D1C71D05800B29FE1 /* SCEventTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B7214B1C71D05800B29FE1 /* SCEventTracking.m */; };
+		86B721501C71D2CD00B29FE1 /* SCFirstLaunchChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B7214E1C71D2CD00B29FE1 /* SCFirstLaunchChecker.h */; };
+		86B721511C71D2CD00B29FE1 /* SCFirstLaunchChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B7214F1C71D2CD00B29FE1 /* SCFirstLaunchChecker.m */; };
+		86B721531C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B721521C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m */; };
+		86C168C51BC2AF15003FF836 /* SCLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 86C168C31BC2AF15003FF836 /* SCLogger.h */; };
+		86C168C61BC2AF15003FF836 /* SCLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C168C41BC2AF15003FF836 /* SCLogger.m */; };
+		86D8D4771C3E84D80060C35B /* SCDeepLinkOpener.h in Headers */ = {isa = PBXBuildFile; fileRef = 86D8D4751C3E84D80060C35B /* SCDeepLinkOpener.h */; };
+		86D8D4781C3E84D80060C35B /* SCDeepLinkOpener.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D8D4761C3E84D80060C35B /* SCDeepLinkOpener.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		861BDB171BBAD230005B57AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 864828E01BAC10CA00E7F4D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 864828E71BAC10CA00E7F4D2;
+			remoteInfo = Shortcut;
+		};
+		864828F51BAC10CB00E7F4D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 864828E01BAC10CA00E7F4D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 864828E71BAC10CA00E7F4D2;
+			remoteInfo = Shortcut;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		864828E61BAC10CA00E7F4D2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		861295461BCD374100529657 /* SCItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCItem.h; sourceTree = "<group>"; };
+		861295471BCD374100529657 /* SCItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCItem.m; sourceTree = "<group>"; };
+		8612954B1BCD48FE00529657 /* SCConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCConfig.h; sourceTree = "<group>"; };
+		8612954C1BCD48FE00529657 /* SCConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCConfig.m; sourceTree = "<group>"; };
+		861BDB1B1BBAD32D005B57AB /* create_framework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = create_framework.sh; sourceTree = "<group>"; };
+		861BDB1C1BBAD3B5005B57AB /* finish_build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = finish_build.sh; sourceTree = "<group>"; };
+		861BDB1E1BBAD423005B57AB /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		861BDB1F1BBAD423005B57AB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		864828E81BAC10CA00E7F4D2 /* libShortcut.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libShortcut.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		864828F31BAC10CB00E7F4D2 /* Shortcut.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Shortcut.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		864828F91BAC10CB00E7F4D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeepLinking.h; sourceTree = "<group>"; };
+		864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeepLinking.m; sourceTree = "<group>"; };
+		8663CB0D1BB5829B00636636 /* SCSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSession.h; sourceTree = "<group>"; };
+		8663CB0E1BB5829B00636636 /* SCSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSession.m; sourceTree = "<group>"; };
+		86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeviceFingerprint.h; sourceTree = "<group>"; };
+		86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeviceFingerprint.m; sourceTree = "<group>"; };
+		86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeviceFingerprintTest.m; sourceTree = "<group>"; };
+		86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLinkIDExtractor.h; sourceTree = "<group>"; };
+		86A1E8751BB41F2E000E7F7F /* SCLinkIDExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLinkIDExtractor.m; sourceTree = "<group>"; };
+		86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLinkIDExtractorTest.m; sourceTree = "<group>"; };
+		86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCJSONRequest.h; sourceTree = "<group>"; };
+		86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCJSONRequest.m; sourceTree = "<group>"; };
+		86B097ED1C94670C00623833 /* Shortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shortcut.h; sourceTree = "<group>"; };
+		86B097EE1C94670C00623833 /* Shortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shortcut.m; sourceTree = "<group>"; };
+		86B7214A1C71D05800B29FE1 /* SCEventTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEventTracking.h; sourceTree = "<group>"; };
+		86B7214B1C71D05800B29FE1 /* SCEventTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEventTracking.m; sourceTree = "<group>"; };
+		86B7214E1C71D2CD00B29FE1 /* SCFirstLaunchChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFirstLaunchChecker.h; sourceTree = "<group>"; };
+		86B7214F1C71D2CD00B29FE1 /* SCFirstLaunchChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFirstLaunchChecker.m; sourceTree = "<group>"; };
+		86B721521C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFirstLaunchCheckerTest.m; sourceTree = "<group>"; };
+		86C168C31BC2AF15003FF836 /* SCLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLogger.h; sourceTree = "<group>"; };
+		86C168C41BC2AF15003FF836 /* SCLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLogger.m; sourceTree = "<group>"; };
+		86D8D4751C3E84D80060C35B /* SCDeepLinkOpener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeepLinkOpener.h; sourceTree = "<group>"; };
+		86D8D4761C3E84D80060C35B /* SCDeepLinkOpener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeepLinkOpener.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		864828E51BAC10CA00E7F4D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		864828F01BAC10CB00E7F4D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				864828F41BAC10CB00E7F4D2 /* libShortcut.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		861BDB121BBAD11A005B57AB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				861BDB1A1BBAD32D005B57AB /* BuildScripts */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		861BDB1A1BBAD32D005B57AB /* BuildScripts */ = {
+			isa = PBXGroup;
+			children = (
+				861BDB1B1BBAD32D005B57AB /* create_framework.sh */,
+				861BDB1C1BBAD3B5005B57AB /* finish_build.sh */,
+			);
+			path = BuildScripts;
+			sourceTree = "<group>";
+		};
+		864828DF1BAC10CA00E7F4D2 = {
+			isa = PBXGroup;
+			children = (
+				864828EA1BAC10CA00E7F4D2 /* Shortcut */,
+				864828F71BAC10CB00E7F4D2 /* ShortcutTests */,
+				864828E91BAC10CA00E7F4D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		864828E91BAC10CA00E7F4D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				864828E81BAC10CA00E7F4D2 /* libShortcut.a */,
+				864828F31BAC10CB00E7F4D2 /* Shortcut.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		864828EA1BAC10CA00E7F4D2 /* Shortcut */ = {
+			isa = PBXGroup;
+			children = (
+				861BDB1F1BBAD423005B57AB /* README.md */,
+				861BDB1E1BBAD423005B57AB /* LICENSE.txt */,
+				86B097ED1C94670C00623833 /* Shortcut.h */,
+				86B097EE1C94670C00623833 /* Shortcut.m */,
+				864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */,
+				864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */,
+				86B7214A1C71D05800B29FE1 /* SCEventTracking.h */,
+				86B7214B1C71D05800B29FE1 /* SCEventTracking.m */,
+				8612954B1BCD48FE00529657 /* SCConfig.h */,
+				8612954C1BCD48FE00529657 /* SCConfig.m */,
+				86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */,
+				86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */,
+				86A1E8741BB41F2E000E7F7F /* SCLinkIDExtractor.h */,
+				86A1E8751BB41F2E000E7F7F /* SCLinkIDExtractor.m */,
+				86D8D4751C3E84D80060C35B /* SCDeepLinkOpener.h */,
+				86D8D4761C3E84D80060C35B /* SCDeepLinkOpener.m */,
+				86B7214E1C71D2CD00B29FE1 /* SCFirstLaunchChecker.h */,
+				86B7214F1C71D2CD00B29FE1 /* SCFirstLaunchChecker.m */,
+				86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */,
+				86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */,
+				8663CB0D1BB5829B00636636 /* SCSession.h */,
+				8663CB0E1BB5829B00636636 /* SCSession.m */,
+				861295461BCD374100529657 /* SCItem.h */,
+				861295471BCD374100529657 /* SCItem.m */,
+				86C168C31BC2AF15003FF836 /* SCLogger.h */,
+				86C168C41BC2AF15003FF836 /* SCLogger.m */,
+				861BDB121BBAD11A005B57AB /* Supporting Files */,
+			);
+			name = Shortcut;
+			path = Shortcut;
+			sourceTree = "<group>";
+		};
+		864828F71BAC10CB00E7F4D2 /* ShortcutTests */ = {
+			isa = PBXGroup;
+			children = (
+				86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */,
+				86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */,
+				86B721521C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m */,
+				864828F81BAC10CB00E7F4D2 /* Supporting Files */,
+			);
+			name = ShortcutTests;
+			path = ShortcutTests;
+			sourceTree = "<group>";
+		};
+		864828F81BAC10CB00E7F4D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				864828F91BAC10CB00E7F4D2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		864829021BAC113E00E7F4D2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86B097EF1C94670C00623833 /* Shortcut.h in Headers */,
+				86C168C51BC2AF15003FF836 /* SCLogger.h in Headers */,
+				86B721501C71D2CD00B29FE1 /* SCFirstLaunchChecker.h in Headers */,
+				86A1E87D1BB427D7000E7F7F /* SCJSONRequest.h in Headers */,
+				861295481BCD374100529657 /* SCItem.h in Headers */,
+				864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */,
+				8612954D1BCD48FE00529657 /* SCConfig.h in Headers */,
+				86A1E8761BB41F2E000E7F7F /* SCLinkIDExtractor.h in Headers */,
+				86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */,
+				8663CB0F1BB5829B00636636 /* SCSession.h in Headers */,
+				86B7214C1C71D05800B29FE1 /* SCEventTracking.h in Headers */,
+				86D8D4771C3E84D80060C35B /* SCDeepLinkOpener.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		864828E71BAC10CA00E7F4D2 /* Shortcut */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 864828FC1BAC10CB00E7F4D2 /* Build configuration list for PBXNativeTarget "Shortcut" */;
+			buildPhases = (
+				864828E41BAC10CA00E7F4D2 /* Sources */,
+				864828E51BAC10CA00E7F4D2 /* Frameworks */,
+				864828E61BAC10CA00E7F4D2 /* CopyFiles */,
+				864829021BAC113E00E7F4D2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Shortcut;
+			productName = Shortcut;
+			productReference = 864828E81BAC10CA00E7F4D2 /* libShortcut.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		864828F21BAC10CB00E7F4D2 /* ShortcutTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 864828FF1BAC10CB00E7F4D2 /* Build configuration list for PBXNativeTarget "ShortcutTests" */;
+			buildPhases = (
+				864828EF1BAC10CB00E7F4D2 /* Sources */,
+				864828F01BAC10CB00E7F4D2 /* Frameworks */,
+				864828F11BAC10CB00E7F4D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				864828F61BAC10CB00E7F4D2 /* PBXTargetDependency */,
+			);
+			name = ShortcutTests;
+			productName = ShortcutTests;
+			productReference = 864828F31BAC10CB00E7F4D2 /* Shortcut.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		864828E01BAC10CA00E7F4D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Shortcut Media AG";
+				TargetAttributes = {
+					861BDB131BBAD184005B57AB = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					864828E71BAC10CA00E7F4D2 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					864828F21BAC10CB00E7F4D2 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 864828E31BAC10CA00E7F4D2 /* Build configuration list for PBXProject "Shortcut" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 864828DF1BAC10CA00E7F4D2;
+			productRefGroup = 864828E91BAC10CA00E7F4D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				864828E71BAC10CA00E7F4D2 /* Shortcut */,
+				864828F21BAC10CB00E7F4D2 /* ShortcutTests */,
+				861BDB131BBAD184005B57AB /* Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		864828F11BAC10CB00E7F4D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		861BDB191BBAD27A005B57AB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Shortcut/BuildScripts/create_framework.sh\n$SRCROOT/Shortcut/BuildScripts/finish_build.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		864828E41BAC10CA00E7F4D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86B721511C71D2CD00B29FE1 /* SCFirstLaunchChecker.m in Sources */,
+				86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */,
+				8612954E1BCD48FE00529657 /* SCConfig.m in Sources */,
+				86C168C61BC2AF15003FF836 /* SCLogger.m in Sources */,
+				8663CB101BB5829B00636636 /* SCSession.m in Sources */,
+				864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */,
+				86D8D4781C3E84D80060C35B /* SCDeepLinkOpener.m in Sources */,
+				861295491BCD374100529657 /* SCItem.m in Sources */,
+				86B7214D1C71D05800B29FE1 /* SCEventTracking.m in Sources */,
+				86B097F01C94670C00623833 /* Shortcut.m in Sources */,
+				86A1E8771BB41F2E000E7F7F /* SCLinkIDExtractor.m in Sources */,
+				86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		864828EF1BAC10CB00E7F4D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */,
+				86B721531C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m in Sources */,
+				86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		861BDB181BBAD230005B57AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 864828E71BAC10CA00E7F4D2 /* Shortcut */;
+			targetProxy = 861BDB171BBAD230005B57AB /* PBXContainerItemProxy */;
+		};
+		864828F61BAC10CB00E7F4D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 864828E71BAC10CA00E7F4D2 /* Shortcut */;
+			targetProxy = 864828F51BAC10CB00E7F4D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		861BDB151BBAD184005B57AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		861BDB161BBAD184005B57AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		864828FA1BAC10CB00E7F4D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		864828FB1BAC10CB00E7F4D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		864828FD1BAC10CB00E7F4D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = Shortcut;
+				PUBLIC_HEADERS_FOLDER_PATH = include/Shortcut;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Debug;
+		};
+		864828FE1BAC10CB00E7F4D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = Shortcut;
+				PUBLIC_HEADERS_FOLDER_PATH = include/Shortcut;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Release;
+		};
+		864829001BAC10CB00E7F4D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ShortcutTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sc.shortcut.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Shortcut;
+			};
+			name = Debug;
+		};
+		864829011BAC10CB00E7F4D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ShortcutTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "sc.shortcut.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = Shortcut;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		861BDB141BBAD184005B57AB /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				861BDB151BBAD184005B57AB /* Debug */,
+				861BDB161BBAD184005B57AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		864828E31BAC10CA00E7F4D2 /* Build configuration list for PBXProject "Shortcut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				864828FA1BAC10CB00E7F4D2 /* Debug */,
+				864828FB1BAC10CB00E7F4D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		864828FC1BAC10CB00E7F4D2 /* Build configuration list for PBXNativeTarget "Shortcut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				864828FD1BAC10CB00E7F4D2 /* Debug */,
+				864828FE1BAC10CB00E7F4D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		864828FF1BAC10CB00E7F4D2 /* Build configuration list for PBXNativeTarget "ShortcutTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				864829001BAC10CB00E7F4D2 /* Debug */,
+				864829011BAC10CB00E7F4D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 864828E01BAC10CA00E7F4D2 /* Project object */;
+}
