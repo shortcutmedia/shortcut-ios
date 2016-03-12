@@ -40,6 +40,8 @@
 		86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */; };
 		86A1E87D1BB427D7000E7F7F /* SCJSONRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */; };
 		86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */; };
+		86B097EF1C94670C00623833 /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B097ED1C94670C00623833 /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86B097F01C94670C00623833 /* Shortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B097EE1C94670C00623833 /* Shortcut.m */; };
 		86B7214C1C71D05800B29FE1 /* SCEventTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B7214A1C71D05800B29FE1 /* SCEventTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86B7214D1C71D05800B29FE1 /* SCEventTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B7214B1C71D05800B29FE1 /* SCEventTracking.m */; };
 		86B721501C71D2CD00B29FE1 /* SCFirstLaunchChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B7214E1C71D2CD00B29FE1 /* SCFirstLaunchChecker.h */; };
@@ -105,6 +107,8 @@
 		86A1E8791BB42178000E7F7F /* SCLinkIDExtractorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLinkIDExtractorTest.m; sourceTree = "<group>"; };
 		86A1E87B1BB427D7000E7F7F /* SCJSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCJSONRequest.h; sourceTree = "<group>"; };
 		86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCJSONRequest.m; sourceTree = "<group>"; };
+		86B097ED1C94670C00623833 /* Shortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shortcut.h; sourceTree = "<group>"; };
+		86B097EE1C94670C00623833 /* Shortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shortcut.m; sourceTree = "<group>"; };
 		86B7214A1C71D05800B29FE1 /* SCEventTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEventTracking.h; sourceTree = "<group>"; };
 		86B7214B1C71D05800B29FE1 /* SCEventTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEventTracking.m; sourceTree = "<group>"; };
 		86B7214E1C71D2CD00B29FE1 /* SCFirstLaunchChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFirstLaunchChecker.h; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 				861BDB1F1BBAD423005B57AB /* README.md */,
 				861BDB1E1BBAD423005B57AB /* LICENSE.txt */,
 				864829051BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h */,
+				86B097ED1C94670C00623833 /* Shortcut.h */,
+				86B097EE1C94670C00623833 /* Shortcut.m */,
 				864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */,
 				864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */,
 				86B7214A1C71D05800B29FE1 /* SCEventTracking.h */,
@@ -229,6 +235,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B097EF1C94670C00623833 /* Shortcut.h in Headers */,
 				864829081BAC11EC00E7F4D2 /* ShortcutDeepLinkingSDK.h in Headers */,
 				86C168C51BC2AF15003FF836 /* SCLogger.h in Headers */,
 				86B721501C71D2CD00B29FE1 /* SCFirstLaunchChecker.h in Headers */,
@@ -362,6 +369,7 @@
 				86D8D4781C3E84D80060C35B /* SCDeepLinkOpener.m in Sources */,
 				861295491BCD374100529657 /* SCItem.m in Sources */,
 				86B7214D1C71D05800B29FE1 /* SCEventTracking.m in Sources */,
+				86B097F01C94670C00623833 /* Shortcut.m in Sources */,
 				86A1E8771BB41F2E000E7F7F /* SCLinkIDExtractor.m in Sources */,
 				86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */,
 			);
