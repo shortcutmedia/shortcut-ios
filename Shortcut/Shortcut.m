@@ -11,10 +11,13 @@
 #import "SCConfig.h"
 #import "SCDeepLinking.h"
 #import "SCEventTracking.h"
+#import <UIKit/UIKit.h>
 
 @implementation Shortcut
 
 + (void)launchWithAuthToken:(NSString *)authToken {
+    NSAssert([UIApplication sharedApplication].applicationState == UIApplicationStateInactive, @"You must invoke [Shortcut launchWithAuthToken:] BEFORE the app becomes active, e.g. in [UIApplicationDelegate application:didFinishLaunchingWithOptions:]");
+    
     [[SCConfig sharedConfig] setAuthToken:authToken];
     
     [[SCDeepLinking sharedInstance] launch];
