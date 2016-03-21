@@ -46,10 +46,10 @@ Use the [Shortcut Manager](http://manager.shortcutmedia.com/mobile_apps) to crea
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-[Shortcut launchWithAuthToken:@"YOUR_AUTH_TOKEN_HERE"];
+    [Shortcut launchWithAuthToken:@"YOUR_AUTH_TOKEN_HERE"];
 
-// ...
-return YES;
+    // ...
+    return YES;
 }
 ```
 
@@ -63,10 +63,10 @@ Add the following to `-application:openURL:sourceApplication:annotation:` (you h
 ```objective-c
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 
-SCSession *deepLinkSession = [Shortcut startDeepLinkSessionWithURL:url];
-url = deepLinkSession.url // Use the session object's url property for further processing
+    SCSession *deepLinkSession = [Shortcut startDeepLinkSessionWithURL:url];
+    url = deepLinkSession.url // Use the session object's url property for further processing
 
-// ...
+    // ...
 }
 ```
 
@@ -76,12 +76,12 @@ Add the following to `-application:continueUserActivity:restorationHandler:` (yo
 ```objective-c
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
 
-if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-self.deepLinkSession = [Shortcut startDeepLinkSessionWithURL:userActivity.webpageURL];
-userActivity.webpageURL = self.deepLinkSession.url; // Use the session object's url property for further processing
-}
+    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+        self.deepLinkSession = [Shortcut startDeepLinkSessionWithURL:userActivity.webpageURL];
+        userActivity.webpageURL = self.deepLinkSession.url; // Use the session object's url property for further processing
+    }
 
-// ...
+    // ...
 }
 ```
 
@@ -96,20 +96,19 @@ An implementation could look something like this:
 ```objective-c
 - (IBAction)shareButtonPressed:(id)button {
 
-[Shortcut createShortLinkWithTitle:@"content title"
-websiteURL:[NSURL URLWithString:@"http://your.site/content"]
-deepLinkURL:[NSURL URLWithString:@"your-app://your/content"]
-completionHandler:^(NSURL *shortLinkURL, NSError *error) {
-if (!error) {
-[self displayShareSheetWithURL:shortLinkURL];
-} else {
-// do error handling...
-}
-}];
+    [Shortcut createShortLinkWithTitle:@"content title"
+                            websiteURL:[NSURL URLWithString:@"http://your.site/content"]
+                           deepLinkURL:[NSURL URLWithString:@"your-app://your/content"]
+                     completionHandler:^(NSURL *shortLinkURL, NSError *error) {
+                         if (!error) {
+                             [self displayShareSheetWithURL:shortLinkURL];
+                         } else {
+                             // do error handling...
+                         }}];
 }
 
 - (void)displayShareSheetWithURL:(NSURL *)urlToShare {
-// ...
+    // ...
 }
 ```
 
@@ -120,18 +119,17 @@ This will create a short link that deep links into your app on all platforms you
 ```objective-c
 - (IBAction)shareButtonPressed:(id)button {
 
-[Shortcut createShortLinkWithTitle:@"content title"
-websiteURL:[NSURL URLWithString:@"http://your.site/content"]
-iOSDeepLink:[NSURL URLWithString:@"your-ios-scheme://your/content"]
-androidDeepLink:[NSURL URLWithString:@"your-android-scheme://your/content"]
-windowsPhoneDeepLink:[NSURL URLWithString:@"your-windows-phone-scheme://your/content"]
-completionHandler:^(NSURL *shortLinkURL, NSError *error) {
-if (!error) {
-[self displayShareSheetWithURL:shortLinkURL];
-} else {
-// do error handling...
-}
-}];
+    [Shortcut createShortLinkWithTitle:@"content title"
+                            websiteURL:[NSURL URLWithString:@"http://your.site/content"]
+                           iOSDeepLink:[NSURL URLWithString:@"your-ios-scheme://your/content"]
+                       androidDeepLink:[NSURL URLWithString:@"your-android-scheme://your/content"]
+                  windowsPhoneDeepLink:[NSURL URLWithString:@"your-windows-phone-scheme://your/content"]
+                     completionHandler:^(NSURL *shortLinkURL, NSError *error) {
+                         if (!error) {
+                             [self displayShareSheetWithURL:shortLinkURL];
+                         } else {
+                             // do error handling...
+                         }}];
 }
 
 - (void)displayShareSheetWithURL:(NSURL *)urlToShare {
