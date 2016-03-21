@@ -10,6 +10,7 @@ mkdir -p "${PROJECT_DIR}/build"
 cp -R "${FRAMEWORK}" "${PROJECT_DIR}/build/"
 
 cp "${PROJECT_DIR}/README.md" "${PROJECT_DIR}/build/"
+cp "${PROJECT_DIR}/CHANGELOG.md" "${PROJECT_DIR}/build/"
 cp "${PROJECT_DIR}/LICENSE.txt" "${PROJECT_DIR}/build/"
 
 SDK_VERSION=`ruby -E "utf-8" -e "print File.read('${PROJECT_DIR}/Shortcut/Shortcut.h').match(/SDK_VERSION @\"([^\"]+)\"/)[1]"`
