@@ -11,6 +11,9 @@
 #import <Foundation/Foundation.h>
 #import "SCSession.h"
 
+/**
+ *  The Shortcut class acts as central interaction point with the SDK.
+ */
 @interface Shortcut : NSObject
 
 /**
