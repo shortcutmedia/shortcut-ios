@@ -139,6 +139,19 @@ This will create a short link that deep links into your app on all platforms you
 
 The parameters `websiteURL` and `completionHandler` are mandatory. All other parameters are optional (you can pass nil).
 
+## Migrating from the Shortcut Deep Linking SDK
+
+The [Shortcut Deep Linking SDK](https://github.com/shortcutmedia/shortcut-deeplink-sdk-ios) has been deprecated and its functionality has been included into this SDK/[Shortcut for iOS](https://github.com/shortcutmedia/shortcut-ios).
+
+Please follow these steps to migrate your code to use this new SDK:
+
+1. Remove the `ShortcutDeepLinkingSDK.framework` from your project in Xcode.
+2. Follow the steps in the [Installation](#installation) and [Prerequisites](#prerequisites) sections to add the new framework to your app.
+3. Replace all occurrences of `#import <ShortcutDeepLinkingSDK/ShortcutDeepLinkingSDK.h>` with `#import <Shortcut/Shortcut.h>`.
+4. This SDK uses class methods on the `Shortcut` class for all its interactions instead of instance methods on the singleton instance of the `SCDeepLinking` class. So you have to replace all of the following calls to the SDK in your code:
+  * `[[SCDeepLinking sharedInstance] launch]` with `[Shortcut launchWithAuthToken:]`
+  * `[[SCDeepLinking sharedInstance] startSessionWithURL:]` with `[Shortcut startDeepLinkSessionWithURL:]`
+  * `[[SCDeepLinking sharedInstance] createShortLinkWithTitle:websiteURL:deepLinkURL:completionHandler:]` with `[Shortcut createShortLinkWithTitle:websiteURL:deepLink:completionHandler:]`
 
 ## License
 This project is released under the MIT license. See included LICENSE.txt file for details.
