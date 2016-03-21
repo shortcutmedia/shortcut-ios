@@ -47,28 +47,6 @@
 - (void)launch;
 
 /**
- *  Takes care of handling potential deferred deep links.
- *
- *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
- *  It checks for a stored deep link for the current device on the Shortcut backend and triggers an opening
- *  of the stored deep link if one was found.
- *
- *  @param authToken The token to use for authentication with the Shortcut backend. @see SCConfig
- */
-- (void)launchWithAuthToken:(NSString *)authToken;
-
-/**
- *  Takes care of handling potential deferred deep links.
- *
- *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
- *  It checks for a stored deep link for the current device on the Shortcut backend and triggers an opening
- *  of the stored deep link if one was found.
- *
- *  @param loggingEnabled Boolean to indicate whether to enable logging or not. @see SCConfig
- */
-- (void)launchWithLoggingEnabled:(BOOL)loggingEnabled;
-
-/**
  *  Starts a deep link viewing session and returns it.
  *
  *  This method should be called whenever your app opens a deep link (e.g. in the app delegate's 
@@ -193,22 +171,5 @@
          windowsPhoneAppStoreURL:(NSURL *)windowsPhoneAppStoreURL
          windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL
                completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
-
-
-/// @name Configuration accessors
-
-/**
- *  This token is used for authentication with the Shortcut backend.
- *
- *  @see SCConfig -authToken
- */
-- (void)setAuthToken:(NSString *)token;
-
-/**
- *  By default the some debug information is logged. Use this property to turn off this logging.
- *
- *  @see SCConfig -loggingEnabled
- */
-- (void)setLoggingEnabled:(BOOL)enabled;
 
 @end

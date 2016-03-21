@@ -80,16 +80,6 @@
     }];
 }
 
-- (void)launchWithAuthToken:(NSString *)authToken {
-    [self setAuthToken:authToken];
-    [self launch];
-}
-
-- (void)launchWithLoggingEnabled:(BOOL)loggingEnabled {
-    [self setLoggingEnabled:loggingEnabled];
-    [self launch];
-}
-
 
 - (SCSession *)startSessionWithURL:(NSURL *)url {
     
@@ -194,17 +184,6 @@
             completionHandler(item.shortURL, error);
         }];
     }];
-}
-
-
-#pragma mark - Config delegators
-
-- (void)setAuthToken:(NSString *)token {
-    [SCConfig sharedConfig].authToken = token;
-}
-
-- (void)setLoggingEnabled:(BOOL)enabled {
-    [SCConfig sharedConfig].loggingEnabled = enabled;
 }
 
 @end

@@ -45,43 +45,5 @@
  */
 - (void)launch;
 
-/**
- *  Takes care of setting up notification listeners and collecting launch events.
- *
- *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
- *  It sets up notification handlers that track different events based on OS notifications. It also
- *  tracks some launch-related events.
- *
- *  @param authToken The token to use for authentication with the Shortcut backend. @see SCConfig
- */
-- (void)launchWithAuthToken:(NSString *)authToken;
-
-/**
- *  Takes care of setting up notification listeners and collecting launch events.
- *
- *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
- *  It sets up notification handlers that track different events based on OS notifications. It also
- *  tracks some launch-related events.
- *
- *  @param loggingEnabled Boolean to indicate whether to enable logging or not. @see SCConfig
- */
-- (void)launchWithLoggingEnabled:(BOOL)loggingEnabled;
-
-
-/// @name Configuration accessors
-
-/**
- *  This token is used for authentication with the Shortcut backend.
- *
- *  @see SCConfig -authToken
- */
-- (void)setAuthToken:(NSString *)token;
-
-/**
- *  By default the some debug information is logged. Use this property to turn off this logging.
- *
- *  @see SCConfig -loggingEnabled
- */
-- (void)setLoggingEnabled:(BOOL)enabled;
 
 @end
