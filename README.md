@@ -98,7 +98,7 @@ An implementation could look something like this:
 
     [Shortcut createShortLinkWithTitle:@"content title"
                             websiteURL:[NSURL URLWithString:@"http://your.site/content"]
-                           deepLinkURL:[NSURL URLWithString:@"your-app://your/content"]
+                              deepLink:[NSURL URLWithString:@"your-app://your/content"]
                      completionHandler:^(NSURL *shortLinkURL, NSError *error) {
                          if (!error) {
                              [self displayShareSheetWithURL:shortLinkURL];
