@@ -27,7 +27,7 @@
 		8612954D1BCD48FE00529657 /* SCConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8612954B1BCD48FE00529657 /* SCConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8612954E1BCD48FE00529657 /* SCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8612954C1BCD48FE00529657 /* SCConfig.m */; };
 		864828F41BAC10CB00E7F4D2 /* libShortcut.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 864828E81BAC10CA00E7F4D2 /* libShortcut.a */; };
-		864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */; };
 		864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */ = {isa = PBXBuildFile; fileRef = 864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */; };
 		8663CB0F1BB5829B00636636 /* SCSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 8663CB0D1BB5829B00636636 /* SCSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8663CB101BB5829B00636636 /* SCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8663CB0E1BB5829B00636636 /* SCSession.m */; };
@@ -41,7 +41,7 @@
 		86A1E87E1BB427D7000E7F7F /* SCJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */; };
 		86B097EF1C94670C00623833 /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B097ED1C94670C00623833 /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86B097F01C94670C00623833 /* Shortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B097EE1C94670C00623833 /* Shortcut.m */; };
-		86B7214C1C71D05800B29FE1 /* SCEventTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B7214A1C71D05800B29FE1 /* SCEventTracking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86B7214C1C71D05800B29FE1 /* SCEventTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B7214A1C71D05800B29FE1 /* SCEventTracking.h */; };
 		86B7214D1C71D05800B29FE1 /* SCEventTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B7214B1C71D05800B29FE1 /* SCEventTracking.m */; };
 		86B721501C71D2CD00B29FE1 /* SCFirstLaunchChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B7214E1C71D2CD00B29FE1 /* SCFirstLaunchChecker.h */; };
 		86B721511C71D2CD00B29FE1 /* SCFirstLaunchChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B7214F1C71D2CD00B29FE1 /* SCFirstLaunchChecker.m */; };
@@ -203,7 +203,6 @@
 				86C168C41BC2AF15003FF836 /* SCLogger.m */,
 				861BDB121BBAD11A005B57AB /* Supporting Files */,
 			);
-			name = Shortcut;
 			path = Shortcut;
 			sourceTree = "<group>";
 		};
@@ -215,7 +214,6 @@
 				86B721521C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m */,
 				864828F81BAC10CB00E7F4D2 /* Supporting Files */,
 			);
-			name = ShortcutTests;
 			path = ShortcutTests;
 			sourceTree = "<group>";
 		};
