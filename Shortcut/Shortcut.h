@@ -9,6 +9,8 @@
 #define SDK_VERSION @"0.0.1"
 
 #import <Foundation/Foundation.h>
+
+#import "SCConfig.h"
 #import "SCSession.h"
 
 /**
