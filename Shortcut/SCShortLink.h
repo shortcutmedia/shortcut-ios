@@ -14,25 +14,16 @@
 @property (strong, nonatomic, readonly) NSString *title;
 @property (strong, nonatomic, readonly) NSURL *websiteURL;
 
-@property (strong, nonatomic, readonly) NSURL *iOSAppStoreURL;
 @property (strong, nonatomic, readonly) NSURL *iOSDeepLinkURL;
-
-@property (strong, nonatomic, readonly) NSURL *androidAppStoreURL;
 @property (strong, nonatomic, readonly) NSURL *androidDeepLinkURL;
-
-@property (strong, nonatomic, readonly) NSURL *windowsPhoneAppStoreURL;
 @property (strong, nonatomic, readonly) NSURL *windowsPhoneDeepLinkURL;
 
 @property (strong, nonatomic, readonly) NSURL *shortURL;
-@property (strong, nonatomic, readonly) NSString *UUID;
 
 - (instancetype)initWithTitle:(NSString *)title
                    websiteURL:(NSURL *)websiteURL
-               iOSAppStoreURL:(NSURL *)iOSAppStoreURL
                iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
-           androidAppStoreURL:(NSURL *)androidAppStoreURL
            androidDeepLinkURL:(NSURL *)androidDeepLinkURL
-      windowsPhoneAppStoreURL:(NSURL *)windowsPhoneAppStoreURL
       windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL;
 
 /**

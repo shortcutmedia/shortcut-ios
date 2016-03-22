@@ -144,34 +144,11 @@
               androidDeepLinkURL:(NSURL *)androidDeepLinkURL
          windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL
                completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
-    [self createShortLinkWithTitle:title
-                        websiteURL:websiteURL
-                    iOSAppStoreURL:nil
-                    iOSDeepLinkURL:iOSDeepLinkURL
-                androidAppStoreURL:nil
-                androidDeepLinkURL:androidDeepLinkURL
-           windowsPhoneAppStoreURL:nil
-           windowsPhoneDeepLinkURL:windowsPhoneDeepLinkURL
-                 completionHandler:completionHandler];
-}
-
-- (void)createShortLinkWithTitle:(NSString *)title
-                      websiteURL:(NSURL *)websiteURL
-                  iOSAppStoreURL:(NSURL *)iOSAppStoreURL
-                  iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
-              androidAppStoreURL:(NSURL *)androidAppStoreURL
-              androidDeepLinkURL:(NSURL *)androidDeepLinkURL
-         windowsPhoneAppStoreURL:(NSURL *)windowsPhoneAppStoreURL
-         windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL
-               completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
     
     SCShortLink *shortLink = [[SCShortLink alloc] initWithTitle:title
                                                      websiteURL:websiteURL
-                                                 iOSAppStoreURL:iOSAppStoreURL
                                                  iOSDeepLinkURL:iOSDeepLinkURL
-                                             androidAppStoreURL:androidAppStoreURL
                                              androidDeepLinkURL:androidDeepLinkURL
-                                        windowsPhoneAppStoreURL:windowsPhoneAppStoreURL
                                         windowsPhoneDeepLinkURL:windowsPhoneDeepLinkURL];
     
     NSOperationQueue *completionHandlerQueue = [NSOperationQueue currentQueue];

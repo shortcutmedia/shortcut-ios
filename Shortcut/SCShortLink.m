@@ -18,17 +18,11 @@ NSString *kSCShortLinkErrorDomain = @"SCShortLinkErrorDomain";
 @property (strong, nonatomic, readwrite) NSString *title;
 @property (strong, nonatomic, readwrite) NSURL *websiteURL;
 
-@property (strong, nonatomic, readwrite) NSURL *iOSAppStoreURL;
 @property (strong, nonatomic, readwrite) NSURL *iOSDeepLinkURL;
-
-@property (strong, nonatomic, readwrite) NSURL *androidAppStoreURL;
 @property (strong, nonatomic, readwrite) NSURL *androidDeepLinkURL;
-
-@property (strong, nonatomic, readwrite) NSURL *windowsPhoneAppStoreURL;
 @property (strong, nonatomic, readwrite) NSURL *windowsPhoneDeepLinkURL;
 
 @property (strong, nonatomic, readwrite) NSURL *shortURL;
-@property (strong, nonatomic, readwrite) NSString *UUID;
 
 @end
 
@@ -36,11 +30,8 @@ NSString *kSCShortLinkErrorDomain = @"SCShortLinkErrorDomain";
 
 - (instancetype)initWithTitle:(NSString *)title
                    websiteURL:(NSURL *)websiteURL
-               iOSAppStoreURL:(NSURL *)iOSAppStoreURL
                iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
-           androidAppStoreURL:(NSURL *)androidAppStoreURL
            androidDeepLinkURL:(NSURL *)androidDeepLinkURL
-      windowsPhoneAppStoreURL:(NSURL *)windowsPhoneAppStoreURL
       windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL {
     
     self = [self init];
@@ -49,13 +40,8 @@ NSString *kSCShortLinkErrorDomain = @"SCShortLinkErrorDomain";
         self.title      = title;
         self.websiteURL = websiteURL;
         
-        self.iOSAppStoreURL = iOSAppStoreURL;
-        self.iOSDeepLinkURL = iOSDeepLinkURL;
-        
-        self.androidAppStoreURL = androidAppStoreURL;
-        self.androidDeepLinkURL = androidDeepLinkURL;
-        
-        self.windowsPhoneAppStoreURL = windowsPhoneAppStoreURL;
+        self.iOSDeepLinkURL          = iOSDeepLinkURL;
+        self.androidDeepLinkURL      = androidDeepLinkURL;
         self.windowsPhoneDeepLinkURL = windowsPhoneDeepLinkURL;
     }
     
@@ -92,11 +78,8 @@ NSString *kSCShortLinkErrorDomain = @"SCShortLinkErrorDomain";
     [shortLinkParams setValue:self.title forKeyPath:@"title"];
     [shortLinkParams setValue:[self.websiteURL absoluteString] forKeyPath:@"uri"];
     [shortLinkParams setValue:[NSMutableDictionary dictionary] forKeyPath:@"mobile_deep_link"];
-    [shortLinkParams setValue:[self.iOSAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.ios_app_store_url"];
     [shortLinkParams setValue:[self.iOSDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.ios_in_app_url"];
-    [shortLinkParams setValue:[self.androidAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.android_app_store_url"];
     [shortLinkParams setValue:[self.androidDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.android_in_app_url"];
-    [shortLinkParams setValue:[self.windowsPhoneAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.windows_phone_app_store_url"];
     [shortLinkParams setValue:[self.windowsPhoneDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.windows_phone_in_app_url"];
     
     return @{@"deep_link_item" : shortLinkParams};
