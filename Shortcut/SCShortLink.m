@@ -101,7 +101,7 @@ NSString *kSCShortLinkErrorDomain = @"SCShortLinkErrorDomain";
               
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
         [userInfo setValue:@"Auth token missing or invalid" forKey:NSLocalizedDescriptionKey];
-        [userInfo setValue:@"Generate an API key with an auth token in the Shortcut Manager and set it using SCConfig or SCDeepLinking classes" forKey:NSLocalizedRecoverySuggestionErrorKey];
+        [userInfo setValue:@"Generate an API key with an auth token in the Shortcut Manager and set it using the [Shortcut launchWithAuthToken:] method or the SCConfig class" forKey:NSLocalizedRecoverySuggestionErrorKey];
         [userInfo setValue:connectionError forKey:NSUnderlyingErrorKey];
         
         creationError = [NSError errorWithDomain:kSCShortLinkErrorDomain
