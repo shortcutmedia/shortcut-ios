@@ -1,19 +1,19 @@
 //
-//  SCItem.m
+//  SCShortLink.m
 //  Shortcut
 //
 //  Created by Severin Schoepke on 13/10/15.
 //  Copyright © 2015 Shortcut Media AG. All rights reserved.
 //
 
-#import "SCItem.h"
+#import "SCShortLink.h"
 #import "SCJSONRequest.h"
 
-NSString * const kSCItemCreateURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/create";
+NSString * const kSCShortLinkCreateURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/create";
 
-NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
+NSString *kSCShortLinkErrorDomain = @"SCShortLinkErrorDomain";
 
-@interface SCItem ()
+@interface SCShortLink ()
 
 @property (strong, nonatomic, readwrite) NSString *title;
 @property (strong, nonatomic, readwrite) NSURL *websiteURL;
@@ -32,7 +32,7 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
 
 @end
 
-@implementation SCItem
+@implementation SCShortLink
 
 - (instancetype)initWithTitle:(NSString *)title
                    websiteURL:(NSURL *)websiteURL
@@ -65,24 +65,21 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
 - (void)createWithCompletionHandler:(void (^)(NSError *))completionHandler {
     
     
-    [SCJSONRequest postToURL:[NSURL URLWithString:kSCItemCreateURLString]
+    [SCJSONRequest postToURL:[NSURL URLWithString:kSCShortLinkCreateURLString]
                       params:[self paramsDictionary]
            completionHandler:^(NSURLResponse *response, NSDictionary *content, NSError *error) {
                
-               NSError *itemCreationError = [self creationErrorFromResponse:response
-                                                                    content:content
-                                                            connectionError:error];
+               NSError *shortLinkCreationError = [self creationErrorFromResponse:response
+                                                                         content:content
+                                                                 connectionError:error];
                
-               if (!itemCreationError) {
-                   if ([content[@"uuid"] isKindOfClass:NSString.class]) {
-                       self.UUID = content[@"uuid"];
-                   }
+               if (!shortLinkCreationError) {
                    if ([content[@"short_url"] isKindOfClass:NSString.class]) {
                        self.shortURL = [NSURL URLWithString:content[@"short_url"]];
                    }
                }
                
-               completionHandler(itemCreationError);
+               completionHandler(shortLinkCreationError);
     }];
 }
 
@@ -90,19 +87,19 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
 
 - (NSDictionary *)paramsDictionary {
     
-    NSMutableDictionary *itemParams = [NSMutableDictionary dictionary];
+    NSMutableDictionary *shortLinkParams = [NSMutableDictionary dictionary];
     
-    [itemParams setValue:self.title forKeyPath:@"title"];
-    [itemParams setValue:[self.websiteURL absoluteString] forKeyPath:@"uri"];
-    [itemParams setValue:[NSMutableDictionary dictionary] forKeyPath:@"mobile_deep_link"];
-    [itemParams setValue:[self.iOSAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.ios_app_store_url"];
-    [itemParams setValue:[self.iOSDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.ios_in_app_url"];
-    [itemParams setValue:[self.androidAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.android_app_store_url"];
-    [itemParams setValue:[self.androidDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.android_in_app_url"];
-    [itemParams setValue:[self.windowsPhoneAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.windows_phone_app_store_url"];
-    [itemParams setValue:[self.windowsPhoneDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.windows_phone_in_app_url"];
+    [shortLinkParams setValue:self.title forKeyPath:@"title"];
+    [shortLinkParams setValue:[self.websiteURL absoluteString] forKeyPath:@"uri"];
+    [shortLinkParams setValue:[NSMutableDictionary dictionary] forKeyPath:@"mobile_deep_link"];
+    [shortLinkParams setValue:[self.iOSAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.ios_app_store_url"];
+    [shortLinkParams setValue:[self.iOSDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.ios_in_app_url"];
+    [shortLinkParams setValue:[self.androidAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.android_app_store_url"];
+    [shortLinkParams setValue:[self.androidDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.android_in_app_url"];
+    [shortLinkParams setValue:[self.windowsPhoneAppStoreURL absoluteString] forKeyPath:@"mobile_deep_link.windows_phone_app_store_url"];
+    [shortLinkParams setValue:[self.windowsPhoneDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.windows_phone_in_app_url"];
     
-    return @{@"deep_link_item" : itemParams};
+    return @{@"deep_link_item" : shortLinkParams};
 }
 
 
@@ -124,7 +121,7 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
         [userInfo setValue:@"Generate an API key with an auth token in the Shortcut Manager and set it using SCConfig or SCDeepLinking classes" forKey:NSLocalizedRecoverySuggestionErrorKey];
         [userInfo setValue:connectionError forKey:NSUnderlyingErrorKey];
         
-        creationError = [NSError errorWithDomain:kSCItemErrorDomain
+        creationError = [NSError errorWithDomain:kSCShortLinkErrorDomain
                                             code:statusCode
                                         userInfo:userInfo];
     }
@@ -135,13 +132,13 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
         NSInteger statusCode = 422;
         
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-        [userInfo setValue:@"Item data is invalid" forKey:NSLocalizedDescriptionKey];
+        [userInfo setValue:@"Short link data is invalid" forKey:NSLocalizedDescriptionKey];
         if ([content[@"errors"] isKindOfClass:NSDictionary.class]) {
             NSString *serverErrorMessage = [NSString stringWithFormat:@"The Shortcut Backend reports the following errors: %@", content[@"errors"]];
             [userInfo setValue:serverErrorMessage forKey:NSLocalizedFailureReasonErrorKey];
         }
         
-        creationError = [NSError errorWithDomain:kSCItemErrorDomain
+        creationError = [NSError errorWithDomain:kSCShortLinkErrorDomain
                                             code:statusCode
                                         userInfo:userInfo];
     }
@@ -155,7 +152,7 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
         [userInfo setValue:[NSString stringWithFormat:@"HTTP error with code %ld", (long)statusCode] forKey:NSLocalizedDescriptionKey];
         [userInfo setValue:@"Please try again. If the problem persists contact support@shortcutmedia.com" forKey:NSLocalizedRecoverySuggestionErrorKey];
         
-        creationError = [NSError errorWithDomain:kSCItemErrorDomain
+        creationError = [NSError errorWithDomain:kSCShortLinkErrorDomain
                                             code:statusCode
                                         userInfo:userInfo];
     }
@@ -166,7 +163,7 @@ NSString *kSCItemErrorDomain = @"SCItemErrorDomain";
         
         NSDictionary *userInfo = @{ NSUnderlyingErrorKey : connectionError };
         
-        creationError = [NSError errorWithDomain:kSCItemErrorDomain
+        creationError = [NSError errorWithDomain:kSCShortLinkErrorDomain
                                             code:statusCode
                                         userInfo:userInfo];
     }

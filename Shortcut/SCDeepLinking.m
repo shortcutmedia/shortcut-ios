@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "SCConfig.h"
 #import "SCLogger.h"
-#import "SCItem.h"
+#import "SCShortLink.h"
 #import "SCDeepLinkOpener.h"
 #import "SCFirstLaunchChecker.h"
 
@@ -165,23 +165,23 @@
          windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL
                completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
     
-    SCItem *item = [[SCItem alloc] initWithTitle:title
-                                      websiteURL:websiteURL
-                                  iOSAppStoreURL:iOSAppStoreURL
-                                  iOSDeepLinkURL:iOSDeepLinkURL
-                              androidAppStoreURL:androidAppStoreURL
-                              androidDeepLinkURL:androidDeepLinkURL
-                         windowsPhoneAppStoreURL:windowsPhoneAppStoreURL
-                         windowsPhoneDeepLinkURL:windowsPhoneDeepLinkURL];
+    SCShortLink *shortLink = [[SCShortLink alloc] initWithTitle:title
+                                                     websiteURL:websiteURL
+                                                 iOSAppStoreURL:iOSAppStoreURL
+                                                 iOSDeepLinkURL:iOSDeepLinkURL
+                                             androidAppStoreURL:androidAppStoreURL
+                                             androidDeepLinkURL:androidDeepLinkURL
+                                        windowsPhoneAppStoreURL:windowsPhoneAppStoreURL
+                                        windowsPhoneDeepLinkURL:windowsPhoneDeepLinkURL];
     
     NSOperationQueue *completionHandlerQueue = [NSOperationQueue currentQueue];
     if (!completionHandlerQueue) {
         completionHandlerQueue = [NSOperationQueue mainQueue];
     }
     
-    [item createWithCompletionHandler:^(NSError *error) {
+    [shortLink createWithCompletionHandler:^(NSError *error) {
         [completionHandlerQueue addOperationWithBlock:^{
-            completionHandler(item.shortURL, error);
+            completionHandler(shortLink.shortURL, error);
         }];
     }];
 }

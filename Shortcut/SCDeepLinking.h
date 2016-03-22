@@ -67,7 +67,7 @@
 /**
  *  Creates a new short link.
  *
- *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the short link is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
  *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
@@ -83,7 +83,7 @@
 /**
  *  Creates a new short link.
  *
- *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the short link is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
  *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
@@ -101,7 +101,7 @@
 /**
  *  Creates a new short (deep) link.
  *
- *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the short link is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
  *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
@@ -121,7 +121,7 @@
 /**
  *  Creates a new short (deep) link.
  *
- *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the short link is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
  *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
@@ -145,7 +145,7 @@
 /**
  *  Creates a new short (deep) link.
  *
- *  This method creates a new short link in the Shortcut backend with the given parameters. When the item is
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the short link is
  *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
  *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in

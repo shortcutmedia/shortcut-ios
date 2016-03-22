@@ -1,5 +1,5 @@
 //
-//  SCItem.h
+//  SCShortLink.h
 //  Shortcut
 //
 //  Created by Severin Schoepke on 13/10/15.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SCItem : NSObject
+@interface SCShortLink : NSObject
 
 
 @property (strong, nonatomic, readonly) NSString *title;
@@ -19,6 +19,9 @@
 
 @property (strong, nonatomic, readonly) NSURL *androidAppStoreURL;
 @property (strong, nonatomic, readonly) NSURL *androidDeepLinkURL;
+
+@property (strong, nonatomic, readonly) NSURL *windowsPhoneAppStoreURL;
+@property (strong, nonatomic, readonly) NSURL *windowsPhoneDeepLinkURL;
 
 @property (strong, nonatomic, readonly) NSURL *shortURL;
 @property (strong, nonatomic, readonly) NSString *UUID;
@@ -33,13 +36,13 @@
       windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL;
 
 /**
- *  Creates the item on the Shortcut Backend.
+ *  Creates the short link on the Shortcut Backend.
  *
- *  This method attempts to create the item on the Shortcut Backend. When the operation has
+ *  This method attempts to create the short link on the Shortcut Backend. When the operation has
  *  completed, it calls the completion handler.
- *  If the item was successfully created then its UUID and shortURL properties will be set.
+ *  If the short link was successfully created then its shortURL property will be set.
  *  If the creation failed then the completion handler receives an error object with the 
- *  kSCItemErrorDomain describing the error.
+ *  kSCShortLinkErrorDomain describing the error.
  *
  *  @param completionHandler A handler that will be called after the operation is completed.
  */
@@ -47,8 +50,8 @@
 
 
 /**
- *  Item error domain.
+ *  Short link error domain.
  */
-extern NSString *kSCItemErrorDomain;
+extern NSString *kSCShortLinkErrorDomain;
 
 @end
