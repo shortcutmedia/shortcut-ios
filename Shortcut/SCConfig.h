@@ -18,9 +18,22 @@
 @property (strong, nonatomic) NSString *authToken;
 
 /**
- *  By default the some debug information is logged. Use this property to turn off this logging.
+ *  By default some debug information is logged. Use this property to turn off this logging.
  */
 @property (nonatomic) BOOL loggingEnabled;
+
+/**
+ *  The domain used when creating short links.
+ *
+ *  If you have set up your app to use a custom domain in Shortcut Manager then you can specify
+ *  it here to be used when creating short links from the SDK.
+ */
+@property (strong, nonatomic) NSString *shortLinkDomain;
+
+/**
+ *  The default domain for short links.
+ */
+@property (strong, nonatomic, readonly) NSString *defaultShortLinkDomain;
 
 
 /// @name Accessing the global instance

@@ -8,6 +8,8 @@
 
 #import "SCConfig.h"
 
+NSString * const kSCConfigDefaultShortLinkDomain = @"scm.st";
+
 @implementation SCConfig
 
 + (instancetype)sharedConfig {
@@ -31,7 +33,12 @@
 
 - (void)setDefaultValues {
     
-    self.loggingEnabled = YES;
+    self.loggingEnabled  = YES;
+    self.shortLinkDomain = self.defaultShortLinkDomain;
+}
+
+- (NSString *)defaultShortLinkDomain {
+    return kSCConfigDefaultShortLinkDomain;
 }
 
 @end
