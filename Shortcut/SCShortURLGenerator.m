@@ -10,6 +10,7 @@
 
 #import "SCNumberEncoder.h"
 #import "SCConfig.h"
+#import "SCStringUtils.h"
 
 #include <stdlib.h>
 
@@ -46,14 +47,14 @@ NSUInteger const kSCShortURLGeneratorEpoch = 1456790400; // 2016-03-01 00:00:00 
 - (NSString *)generatePath {
     NSUInteger random = [self generateRandom];
     
-    NSString *keyPart    = [self rotate:[self generateKeyPart]
-                                  times:random];
-    NSString *randomPart = [self rjustString:[self.encoder encode:random]
-                                     withPad:@"0"
-                                    toLength:kSCShortURLGeneratorRandomLength];
-    NSString *timePart   = [self rjustString:[self.encoder encode:[self secondsSinceGeneratorEpoch]]
-                                     withPad:@"0"
-                                    toLength:kSCShortURLGeneratorTimeLength];
+    NSString *keyPart    = [SCStringUtils rotate:[self generateKeyPart]
+                                           times:random];
+    NSString *randomPart = [SCStringUtils rjustString:[self.encoder encode:random]
+                                              withPad:@"0"
+                                             toLength:kSCShortURLGeneratorRandomLength];
+    NSString *timePart   = [SCStringUtils rjustString:[self.encoder encode:[self secondsSinceGeneratorEpoch]]
+                                              withPad:@"0"
+                                             toLength:kSCShortURLGeneratorTimeLength];
     
     return [NSString stringWithFormat:@"%@%@%@", keyPart, randomPart, timePart];
 }
@@ -80,33 +81,6 @@ NSUInteger const kSCShortURLGeneratorEpoch = 1456790400; // 2016-03-01 00:00:00 
  */
 - (NSUInteger)generateRandom {
     return arc4random_uniform(pow(self.encoder.baseNumber, kSCShortURLGeneratorRandomLength) - 1) + 1;
-}
-
-- (NSString *)rotate:(NSString *)string times:(NSInteger)num {
-    if (string.length < 1) {
-        return string;
-    }
-    
-    NSUInteger decoded = [self.encoder decode:string];
-    
-    NSUInteger max = pow(self.encoder.baseNumber, string.length);
-    NSUInteger value;
-    if ((NSInteger)decoded + num < 0) {
-        value = max + decoded + num;
-    } else {
-        value = decoded + num;
-    }
-    
-    NSString *encoded = [self.encoder encode:(value%max)];
-    
-    return [self rjustString:encoded withPad:@"0" toLength:string.length];
-}
-
-- (NSString *)rjustString:(NSString *)string withPad:(NSString *)pad toLength:(NSUInteger)length {
-    while (string.length < length) {
-        string = [NSString stringWithFormat:@"%@%@", pad, string];
-    }
-    return string;
 }
 
 - (NSUInteger)secondsSinceGeneratorEpoch {

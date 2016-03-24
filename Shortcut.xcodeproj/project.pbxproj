@@ -37,6 +37,9 @@
 		866F55161CA2B02500A90656 /* SCShortURLGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 866F55141CA2B02500A90656 /* SCShortURLGenerator.h */; };
 		866F55171CA2B02500A90656 /* SCShortURLGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 866F55151CA2B02500A90656 /* SCShortURLGenerator.m */; };
 		866F55191CA2CF7400A90656 /* SCShortURLGeneratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 866F55181CA2CF7400A90656 /* SCShortURLGeneratorTest.m */; };
+		866F551C1CA3F32B00A90656 /* SCStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 866F551A1CA3F32A00A90656 /* SCStringUtils.h */; };
+		866F551D1CA3F32B00A90656 /* SCStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 866F551B1CA3F32B00A90656 /* SCStringUtils.m */; };
+		866F551F1CA3F4AF00A90656 /* SCStringUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 866F551E1CA3F4AF00A90656 /* SCStringUtilsTest.m */; };
 		86A1E8701BB3F843000E7F7F /* SCDeviceFingerprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */; };
 		86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */; };
 		86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */; };
@@ -109,6 +112,9 @@
 		866F55141CA2B02500A90656 /* SCShortURLGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCShortURLGenerator.h; sourceTree = "<group>"; };
 		866F55151CA2B02500A90656 /* SCShortURLGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCShortURLGenerator.m; sourceTree = "<group>"; };
 		866F55181CA2CF7400A90656 /* SCShortURLGeneratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCShortURLGeneratorTest.m; sourceTree = "<group>"; };
+		866F551A1CA3F32A00A90656 /* SCStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCStringUtils.h; sourceTree = "<group>"; };
+		866F551B1CA3F32B00A90656 /* SCStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCStringUtils.m; sourceTree = "<group>"; };
+		866F551E1CA3F4AF00A90656 /* SCStringUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCStringUtilsTest.m; sourceTree = "<group>"; };
 		86A1E86E1BB3F843000E7F7F /* SCDeviceFingerprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDeviceFingerprint.h; sourceTree = "<group>"; };
 		86A1E86F1BB3F843000E7F7F /* SCDeviceFingerprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeviceFingerprint.m; sourceTree = "<group>"; };
 		86A1E8721BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDeviceFingerprintTest.m; sourceTree = "<group>"; };
@@ -211,6 +217,8 @@
 				86A1E87C1BB427D7000E7F7F /* SCJSONRequest.m */,
 				865246901CA18E4700CB38FD /* SCNumberEncoder.h */,
 				865246911CA18E4700CB38FD /* SCNumberEncoder.m */,
+				866F551A1CA3F32A00A90656 /* SCStringUtils.h */,
+				866F551B1CA3F32B00A90656 /* SCStringUtils.m */,
 				8663CB0D1BB5829B00636636 /* SCSession.h */,
 				8663CB0E1BB5829B00636636 /* SCSession.m */,
 				861295461BCD374100529657 /* SCShortLink.h */,
@@ -230,6 +238,7 @@
 				86B721521C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m */,
 				866F55181CA2CF7400A90656 /* SCShortURLGeneratorTest.m */,
 				865246941CA1939B00CB38FD /* SCNumberEncoderTest.m */,
+				866F551E1CA3F4AF00A90656 /* SCStringUtilsTest.m */,
 				864828F81BAC10CB00E7F4D2 /* Supporting Files */,
 			);
 			path = ShortcutTests;
@@ -250,6 +259,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866F551C1CA3F32B00A90656 /* SCStringUtils.h in Headers */,
 				86B097EF1C94670C00623833 /* Shortcut.h in Headers */,
 				86C168C51BC2AF15003FF836 /* SCLogger.h in Headers */,
 				865246921CA18E4700CB38FD /* SCNumberEncoder.h in Headers */,
@@ -376,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866F551D1CA3F32B00A90656 /* SCStringUtils.m in Sources */,
 				866F55171CA2B02500A90656 /* SCShortURLGenerator.m in Sources */,
 				86B721511C71D2CD00B29FE1 /* SCFirstLaunchChecker.m in Sources */,
 				86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */,
@@ -399,6 +410,7 @@
 			files = (
 				86A1E8731BB3FA4A000E7F7F /* SCDeviceFingerprintTest.m in Sources */,
 				865246951CA1939B00CB38FD /* SCNumberEncoderTest.m in Sources */,
+				866F551F1CA3F4AF00A90656 /* SCStringUtilsTest.m in Sources */,
 				866F55191CA2CF7400A90656 /* SCShortURLGeneratorTest.m in Sources */,
 				86B721531C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m in Sources */,
 				86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */,
