@@ -32,6 +32,20 @@
 + (void)launchWithAuthToken:(NSString *)authToken;
 
 /**
+ *  Initializes the SDK and handles the application launch (deferred deep linking, event tracking).
+ *
+ *  This method should be called in the app delegate's application:didFinishLaunchingWithOptions:
+ *  In addition to setting up the SDK it does the following:
+ *  - Deferred deep link lookup: it checks for a stored deep link for the current device on the Shortcut
+ *    backend and triggers an opening of the stored deep link if one was found.
+ *  - Event tracking: it tracks the opening or install of the app in the Shortcut backend
+ *
+ *  @param authToken The token to use for authentication with the Shortcut backend. @see SCConfig
+ *  @param shortLinkDomain The domain to use when generating short links. This domain must also be set up in the Shortcut Manager. @see SCConfig
+ */
++ (void)launchWithAuthToken:(NSString *)authToken shortLinkDomain:(NSString *)shortLinkDomain;
+
+/**
  *  Starts a deep link viewing session and returns it.
  *
  *  This method should be called whenever your app opens a deep link (e.g. in the app delegate's

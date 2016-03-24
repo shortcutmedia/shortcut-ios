@@ -16,9 +16,16 @@
 @implementation Shortcut
 
 + (void)launchWithAuthToken:(NSString *)authToken {
+    [self launchWithAuthToken:authToken shortLinkDomain:nil];
+}
+
++ (void)launchWithAuthToken:(NSString *)authToken shortLinkDomain:(NSString *)shortLinkDomain {
     NSAssert([UIApplication sharedApplication].applicationState == UIApplicationStateInactive, @"You must invoke [Shortcut launchWithAuthToken:] BEFORE the app becomes active, e.g. in [UIApplicationDelegate application:didFinishLaunchingWithOptions:]");
     
     [[SCConfig sharedConfig] setAuthToken:authToken];
+    if (shortLinkDomain) {
+        [[SCConfig sharedConfig] setShortLinkDomain:shortLinkDomain];
+    }
     
     [[SCDeepLinking sharedInstance] launch];
     [[SCEventTracking sharedInstance] launch];
