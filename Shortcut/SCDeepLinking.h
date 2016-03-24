@@ -141,4 +141,41 @@
               androidDeepLinkURL:(NSURL *)androidDeepLinkURL
          windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL
                completionHandler:(void (^)(NSURL *shortLinkURL, NSError *error))completionHandler;
+
+/**
+ *  Creates a new short (deep) link.
+ *
+ *  This method generates a new short link immediately with the given parameters and then stores it in the
+ *  Shortcut backend in the background.
+ *
+ *  @param title The title of the new short link (optional).
+ *  @param websiteURL The URL of the website the short link points to by default.
+ *  @param deepLinkURL The deep link URL the short link should link to on all platforms (optional).
+ *
+ *  @return The short URL of the new short link.
+ */
+- (NSURL *)createShortLinkWithTitle:(NSString *)title
+                         websiteURL:(NSURL *)websiteURL
+                        deepLinkURL:(NSURL *)deepLinkURL;
+
+/**
+ *  Creates a new short (deep) link.
+ *
+ *  This method generates a new short link immediately with the given parameters and then stores it in the
+ *  Shortcut backend in the background.
+ *
+ *  @param title The title of the new short link (optional).
+ *  @param websiteURL The URL of the website the short link points to by default.
+ *  @param iOSDeepLinkURL The deep link URL the short link should link to on iOS (optional).
+ *  @param androidDeepLinkURL The deep link URL the short link should link to on Android (optional).
+ *  @param windowsPhoneDeepLinkURL The deep link URL the short link should link to on Windows Phone (optional).
+ *
+ *  @return The short URL of the new short link.
+ */
+- (NSURL *)createShortLinkWithTitle:(NSString *)title
+                         websiteURL:(NSURL *)websiteURL
+                     iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
+                 androidDeepLinkURL:(NSURL *)androidDeepLinkURL
+            windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL;
+
 @end

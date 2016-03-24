@@ -156,11 +156,45 @@
         completionHandlerQueue = [NSOperationQueue mainQueue];
     }
     
-    [shortLink createWithCompletionHandler:^(NSError *error) {
+    [shortLink persistWithCompletionHandler:^(NSError *error) {
         [completionHandlerQueue addOperationWithBlock:^{
             completionHandler(shortLink.shortURL, error);
         }];
     }];
+}
+
+- (NSURL *)createShortLinkWithTitle:(NSString *)title
+                         websiteURL:(NSURL *)websiteURL
+                        deepLinkURL:(NSURL *)deepLinkURL {
+    return [self createShortLinkWithTitle:title
+                               websiteURL:websiteURL
+                           iOSDeepLinkURL:deepLinkURL
+                       androidDeepLinkURL:deepLinkURL
+                  windowsPhoneDeepLinkURL:deepLinkURL];
+}
+
+- (NSURL *)createShortLinkWithTitle:(NSString *)title
+                         websiteURL:(NSURL *)websiteURL
+                     iOSDeepLinkURL:(NSURL *)iOSDeepLinkURL
+                 androidDeepLinkURL:(NSURL *)androidDeepLinkURL
+            windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL {
+    
+    SCShortLink *shortLink = [[SCShortLink alloc] initWithTitle:title
+                                                     websiteURL:websiteURL
+                                                 iOSDeepLinkURL:iOSDeepLinkURL
+                                             androidDeepLinkURL:androidDeepLinkURL
+                                        windowsPhoneDeepLinkURL:windowsPhoneDeepLinkURL];
+    
+    [shortLink generateShortURL];
+    
+    [shortLink persistWithCompletionHandler:^(NSError *error) {
+        if (error) {
+            [SCLogger log:[NSString stringWithFormat:@"Short link was not persisted because of error: %@",
+                           error.debugDescription]];
+        }
+    }];
+    
+    return shortLink.shortURL;
 }
 
 @end

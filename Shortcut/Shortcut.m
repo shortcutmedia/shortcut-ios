@@ -54,4 +54,26 @@
                                            completionHandler:completionHandler];
 }
 
++ (NSURL *)createShortLinkWithTitle:(NSString *)title
+                         websiteURL:(NSURL *)websiteURL
+                           deepLink:(NSURL *)deepLink {
+    return [self createShortLinkWithTitle:title
+                               websiteURL:websiteURL
+                              iOSDeepLink:deepLink
+                          androidDeepLink:deepLink
+                     windowsPhoneDeepLink:deepLink];
+}
+
++ (NSURL *)createShortLinkWithTitle:(NSString *)title
+                         websiteURL:(NSURL *)websiteURL
+                        iOSDeepLink:(NSURL *)iOSDeepLink
+                    androidDeepLink:(NSURL *)androidDeepLink
+               windowsPhoneDeepLink:(NSURL *)windowsPhoneDeepLink {
+    return [[SCDeepLinking sharedInstance] createShortLinkWithTitle:title
+                                                  websiteURL:websiteURL
+                                                     iOSDeepLinkURL:iOSDeepLink
+                                                 androidDeepLinkURL:androidDeepLink
+                                            windowsPhoneDeepLinkURL:windowsPhoneDeepLink];
+}
+
 @end
