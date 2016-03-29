@@ -64,15 +64,21 @@
  */
 - (SCSession *)startSessionWithURL:(NSURL *)url;
 
+
+/// @name Creating Shortcuts
+
 /**
  *  Creates a new short (deep) link.
  *
- *  This method creates a new short link in the Shortcut backend with the given parameters. When the short link is
- *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the short link
+ *  is created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
  *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
  *  the handler and called this method on a background queue then it is your responsibility to invoke the
  *  UI stuff on the main queue.
+ *
+ *  @see createShortLinkWithTitle:websiteURL:deepLinkURL: for a variant that returns the new short link
+ *  immediately and not only after it is persisted on the backend.
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
@@ -87,12 +93,15 @@
 /**
  *  Creates a new short (deep) link.
  *
- *  This method creates a new short link in the Shortcut backend with the given parameters. When the short link is
- *  created, the method will invoke the completion handler. The new short link's URL will be passed to the
+ *  This method creates a new short link in the Shortcut backend with the given parameters. When the short link
+ *  is created, the method will invoke the completion handler. The new short link's URL will be passed to the
  *  handler. If an error occurs, the handler also gets an error object describing the error.
  *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
  *  the handler and called this method on a background queue then it is your responsibility to invoke the
  *  UI stuff on the main queue.
+ *
+ *  @see createShortLinkWithTitle:websiteURL:iOSDeepLinkURL:androidDeepLinkURL:windowsPhoneDeepLinkURL: for a
+ *  variant that returns the new short link immediately and not only after it is persisted on the backend.
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
@@ -114,6 +123,11 @@
  *  This method generates a new short link immediately with the given parameters and then stores it in the
  *  Shortcut backend in the background.
  *
+ *  @warning Only use this method if there is a network connection!
+ *
+ *  @see createShortLinkWithTitle:websiteURL:deepLinkURL:completionHandler for a variant that allows you to
+ *  do some error handling.
+ *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
  *  @param deepLinkURL The deep link URL the short link should link to on all platforms (optional).
@@ -129,6 +143,11 @@
  *
  *  This method generates a new short link immediately with the given parameters and then stores it in the
  *  Shortcut backend in the background.
+ *
+ *  @warning Only use this method if there is a network connection!
+ *
+ *  @see createShortLinkWithTitle:websiteURL:iOSDeepLinkURL:androidDeepLinkURL:windowsPhoneDeepLinkURL:completionHandler
+ *  for a variant that allows you to do some error handling.
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.

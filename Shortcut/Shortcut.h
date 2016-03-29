@@ -18,6 +18,8 @@
  */
 @interface Shortcut : NSObject
 
+/// @name Initialization
+
 /**
  *  Initializes the SDK and handles the application launch (deferred deep linking, event tracking).
  *
@@ -45,6 +47,9 @@
  */
 + (void)launchWithAuthToken:(NSString *)authToken shortLinkDomain:(NSString *)shortLinkDomain;
 
+
+/// @name Deep link session tracking
+
 /**
  *  Starts a deep link viewing session and returns it.
  *
@@ -63,6 +68,9 @@
  */
 + (SCSession *)startDeepLinkSessionWithURL:(NSURL *)url;
 
+
+/// @name Shortcut creation
+
 /**
  *  Creates a new short (deep) link.
  *
@@ -72,6 +80,9 @@
  *  The handler is executed on the same queue on which the method was called: if you want to do UI stuff in
  *  the handler and called this method on a background queue then it is your responsibility to invoke the
  *  UI stuff on the main queue.
+ *
+ *  @see createShortLinkWithTitle:websiteURL:deepLink: for a variant that returns the new short link
+ *  immediately and not only after it is persisted on the backend.
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
@@ -93,6 +104,9 @@
  *  the handler and called this method on a background queue then it is your responsibility to invoke the
  *  UI stuff on the main queue.
  *
+ *  @see createShortLinkWithTitle:websiteURL:iOSDeepLink:androidDeepLink:windowsPhoneDeepLink: for a
+ *  variant that returns the new short link immediately and not only after it is persisted on the backend.
+ *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
  *  @param iOSDeepLink The deep link URL the short link should link to on iOS (optional).
@@ -113,6 +127,11 @@
  *  This method generates a new short link immediately with the given parameters and then stores it in the
  *  Shortcut backend in the background.
  *
+ *  @warning Only use this method if there is a network connection!
+ *
+ *  @see createShortLinkWithTitle:websiteURL:deepLink:completionHandler for a variant that allows you to
+ *  do some error handling.
+ *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
  *  @param deepLink The deep link URL the short link should link to on all platforms (optional).
@@ -128,6 +147,11 @@
  *
  *  This method generates a new short link immediately with the given parameters and then stores it in the
  *  Shortcut backend in the background.
+ *
+ *  @warning Only use this method if there is a network connection!
+ *
+ *  @see createShortLinkWithTitle:websiteURL:iOSDeepLink:androidDeepLink:windowsPhoneDeepLink:completionHandler
+ *  for a variant that allows you to do some error handling.
  *
  *  @param title The title of the new short link (optional).
  *  @param websiteURL The URL of the website the short link points to by default.
