@@ -147,6 +147,19 @@ The implementation of the example above would look like this with the asynchrono
 ##### Different deep links per platform
 If your deep links are not identical for the different platforms your app supports (iOS, Android, Windows Phone) then you can specify them on a per-platform basis, just use `[Shortcut createShortLinkWithTitle:websiteURL:iOSDeepLink:AndroidDeepLink:WindowsPhoneDeepLink:]` / `[Shortcut createShortLinkWithTitle:websiteURL:iOSDeepLink:AndroidDeepLink:WindowsPhoneDeepLink:completionHandler:]` instead.
 
+##### Custom domain for short links
+If you set up a custon domain for your short links in the Shortcut Manager and want to use it for short links created from the SDK as well, then you need to tell the SDK about it. This is done by launching the SDK with a custom domain parameter. Just replace the SDK launch call in `-application:didFinishLaunchingWithOptions:` in your *AppDelegate.m* file:
+
+```objective-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [Shortcut launchWithAuthToken:@"YOUR_AUTH_TOKEN_HERE" shortLinkDomain:@"YOUR_DOMAIN_HERE"]; // instead of: [Shortcut launchWithAuthToken:@"YOUR_AUTH_TOKEN_HERE"];
+
+    // ...
+    return YES;
+}
+```
+
 ## Migrating from the Shortcut Deep Linking SDK
 
 The [Shortcut Deep Linking SDK](https://github.com/shortcutmedia/shortcut-deeplink-sdk-ios) has been deprecated and its functionality has been included into this SDK/[Shortcut for iOS](https://github.com/shortcutmedia/shortcut-ios).
