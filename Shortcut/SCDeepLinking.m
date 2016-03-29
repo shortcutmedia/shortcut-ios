@@ -109,23 +109,6 @@
     }
 }
 
-
-- (void)createShortLinkWithWebsiteURL:(NSURL *)websiteURL
-                    completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
-    [self createShortLinkWithTitle:nil
-                        websiteURL:websiteURL
-                 completionHandler:completionHandler];
-}
-
-- (void)createShortLinkWithTitle:(NSString *)title
-                      websiteURL:(NSURL *)websiteURL
-               completionHandler:(void (^)(NSURL *, NSError *))completionHandler {
-    [self createShortLinkWithTitle:title
-                        websiteURL:websiteURL
-                       deepLinkURL:nil
-                 completionHandler:completionHandler];
-}
-
 - (void)createShortLinkWithTitle:(NSString *)title
                       websiteURL:(NSURL *)websiteURL
                      deepLinkURL:(NSURL *)deepLinkURL
