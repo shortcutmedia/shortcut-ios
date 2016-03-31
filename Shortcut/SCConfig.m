@@ -8,6 +8,8 @@
 
 #import "SCConfig.h"
 
+#import "SCLogger.h"
+
 NSString * const kSCConfigDefaultShortLinkDomain = @"scm.st";
 
 @implementation SCConfig
@@ -39,6 +41,24 @@ NSString * const kSCConfigDefaultShortLinkDomain = @"scm.st";
 
 - (NSString *)defaultShortLinkDomain {
     return kSCConfigDefaultShortLinkDomain;
+}
+
+- (void)setShortLinkDomain:(NSString *)value {
+    // Very basic regex to check domain according to RFC-1035 (parts separated by dots, parts may only contain
+    // letters, digits and hyphens)
+    NSRegularExpression *domainRegEx = [NSRegularExpression regularExpressionWithPattern:@"^[a-zA-Z0-9-\\.]+$"
+                                                                                 options:0
+                                                                                   error:nil];
+    BOOL domainValid = value && [domainRegEx matchesInString:value
+                                                     options:0
+                                                       range:NSMakeRange(0, value.length)].count > 0;
+    
+    if (!domainValid) {
+        [SCLogger log:[NSString stringWithFormat:@"Not a valid domain: %@", value]];
+        return;
+    }
+    
+    _shortLinkDomain = value;
 }
 
 @end

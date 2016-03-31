@@ -26,6 +26,7 @@
 		861295491BCD374100529657 /* SCShortLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 861295471BCD374100529657 /* SCShortLink.m */; };
 		8612954D1BCD48FE00529657 /* SCConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8612954B1BCD48FE00529657 /* SCConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8612954E1BCD48FE00529657 /* SCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8612954C1BCD48FE00529657 /* SCConfig.m */; };
+		86432DE71CAC29CA002A5D80 /* SCConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86432DE61CAC29CA002A5D80 /* SCConfigTest.m */; };
 		864828F41BAC10CB00E7F4D2 /* libShortcut.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 864828E81BAC10CA00E7F4D2 /* libShortcut.a */; };
 		864829061BAC11EC00E7F4D2 /* SCDeepLinking.h in Headers */ = {isa = PBXBuildFile; fileRef = 864829031BAC11EC00E7F4D2 /* SCDeepLinking.h */; };
 		864829071BAC11EC00E7F4D2 /* SCDeepLinking.m in Sources */ = {isa = PBXBuildFile; fileRef = 864829041BAC11EC00E7F4D2 /* SCDeepLinking.m */; };
@@ -100,6 +101,7 @@
 		861BDB1C1BBAD3B5005B57AB /* finish_build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = finish_build.sh; sourceTree = "<group>"; };
 		861BDB1E1BBAD423005B57AB /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		861BDB1F1BBAD423005B57AB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		86432DE61CAC29CA002A5D80 /* SCConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCConfigTest.m; sourceTree = "<group>"; };
 		864828E81BAC10CA00E7F4D2 /* libShortcut.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libShortcut.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		864828F31BAC10CB00E7F4D2 /* Shortcut.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Shortcut.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		864828F91BAC10CB00E7F4D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				865246941CA1939B00CB38FD /* SCNumberEncoderTest.m */,
 				866F551E1CA3F4AF00A90656 /* SCStringUtilsTest.m */,
 				866F55201CA4079000A90656 /* SCShortLinkTest.m */,
+				86432DE61CAC29CA002A5D80 /* SCConfigTest.m */,
 				864828F81BAC10CB00E7F4D2 /* Supporting Files */,
 			);
 			path = ShortcutTests;
@@ -416,6 +419,7 @@
 				866F551F1CA3F4AF00A90656 /* SCStringUtilsTest.m in Sources */,
 				866F55211CA4079000A90656 /* SCShortLinkTest.m in Sources */,
 				866F55191CA2CF7400A90656 /* SCShortURLGeneratorTest.m in Sources */,
+				86432DE71CAC29CA002A5D80 /* SCConfigTest.m in Sources */,
 				86B721531C71E6F600B29FE1 /* SCFirstLaunchCheckerTest.m in Sources */,
 				86A1E87A1BB42178000E7F7F /* SCLinkIDExtractorTest.m in Sources */,
 			);
