@@ -33,6 +33,7 @@
 		865246921CA18E4700CB38FD /* SCNumberEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 865246901CA18E4700CB38FD /* SCNumberEncoder.h */; };
 		865246931CA18E4700CB38FD /* SCNumberEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 865246911CA18E4700CB38FD /* SCNumberEncoder.m */; };
 		865246951CA1939B00CB38FD /* SCNumberEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 865246941CA1939B00CB38FD /* SCNumberEncoderTest.m */; };
+		8656C26E1CAA874500FC5C95 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 8656C26D1CAA874500FC5C95 /* CHANGELOG.md */; };
 		8663CB0F1BB5829B00636636 /* SCSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 8663CB0D1BB5829B00636636 /* SCSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8663CB101BB5829B00636636 /* SCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8663CB0E1BB5829B00636636 /* SCSession.m */; };
 		866F55161CA2B02500A90656 /* SCShortURLGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 866F55141CA2B02500A90656 /* SCShortURLGenerator.h */; };
@@ -110,6 +111,7 @@
 		865246901CA18E4700CB38FD /* SCNumberEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNumberEncoder.h; sourceTree = "<group>"; };
 		865246911CA18E4700CB38FD /* SCNumberEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNumberEncoder.m; sourceTree = "<group>"; };
 		865246941CA1939B00CB38FD /* SCNumberEncoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNumberEncoderTest.m; sourceTree = "<group>"; };
+		8656C26D1CAA874500FC5C95 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = SOURCE_ROOT; };
 		8663CB0D1BB5829B00636636 /* SCSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSession.h; sourceTree = "<group>"; };
 		8663CB0E1BB5829B00636636 /* SCSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSession.m; sourceTree = "<group>"; };
 		866F55141CA2B02500A90656 /* SCShortURLGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCShortURLGenerator.h; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				861BDB1F1BBAD423005B57AB /* README.md */,
+				8656C26D1CAA874500FC5C95 /* CHANGELOG.md */,
 				861BDB1E1BBAD423005B57AB /* LICENSE.txt */,
 				86B097ED1C94670C00623833 /* Shortcut.h */,
 				86B097EE1C94670C00623833 /* Shortcut.m */,
@@ -395,6 +398,7 @@
 				866F551D1CA3F32B00A90656 /* SCStringUtils.m in Sources */,
 				866F55171CA2B02500A90656 /* SCShortURLGenerator.m in Sources */,
 				86B721511C71D2CD00B29FE1 /* SCFirstLaunchChecker.m in Sources */,
+				8656C26E1CAA874500FC5C95 /* CHANGELOG.md in Sources */,
 				86A1E8711BB3F843000E7F7F /* SCDeviceFingerprint.m in Sources */,
 				8612954E1BCD48FE00529657 /* SCConfig.m in Sources */,
 				86C168C61BC2AF15003FF836 /* SCLogger.m in Sources */,
