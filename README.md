@@ -87,7 +87,14 @@ Add the following to `-application:continueUserActivity:restorationHandler:` (yo
 
 #### Creating Shortcuts (short mobile deep links)
 
-Creating short links is an asynchronous process, since your link parameters need to be sent to the Shortcut backend. This can take a short amount of time during which you do not want to block your app. Therefore the short link creation process runs in the background and you are notified once it is finished via a completion handler.
+Shortcut allows you to generate short links immediately, no (potentially slow) backend roundtrip is required. This works as follows:
+
+1. The SDK generates a unique short link and returns it to you immediately
+2. The generated short link as well as all its parameters (website URL, title, deep links) are sent to the Shortcut backend in the background
+
+This way you get a link immediately that you can present in a share sheet or send out via email, no need to wait for a backend.
+
+**Important: You must make sure that a network connection is available when calling this method!**
 
 **An example:** Let's assume you have a *Share* button in your app which should bring up an action sheet that allows you to share some content within your app through a short link.
 
@@ -95,6 +102,31 @@ An implementation could look something like this:
 
 ```objective-c
 - (IBAction)shareButtonPressed:(id)button {
+
+    NSURL *shortLinkURL = [Shortcut createShortLinkWithTitle:@"content title"
+                                                  websiteURL:[NSURL URLWithString:@"http://your.site/content"]
+                                                    deepLink:[NSURL URLWithString:@"your-app://your/content"]];
+    [self displayShareSheetWithURL:shortLinkURL];
+}
+
+- (void)displayShareSheetWithURL:(NSURL *)urlToShare {
+    // ...
+}
+```
+
+##### Alternative: Asynchronous creation
+There is also an asynchronous way to create a new short link. It works as follows:
+
+1. The SDK sends the parameters for the short link to the backend
+2. The backend generates a new short link and returns it to the SDK
+3. The SDK notifies you of the new short link via a completion handler
+
+This way you have to wait for the backend to generate the short link, but if there are any errors (e.g. no network connection) then you can react to them.
+
+The implementation of the example above would look like this with the asynchronous call:
+
+ ```objective-c
+ - (IBAction)shareButtonPressed:(id)button {
 
     [Shortcut createShortLinkWithTitle:@"content title"
                             websiteURL:[NSURL URLWithString:@"http://your.site/content"]
@@ -112,32 +144,21 @@ An implementation could look something like this:
 }
 ```
 
-This will create a short link that deep links into your app on all platforms you have configured in the Shortcut Manager.
+##### Different deep links per platform
+If your deep links are not identical for the different platforms your app supports (iOS, Android, Windows Phone) then you can specify them on a per-platform basis, just use `[Shortcut createShortLinkWithTitle:websiteURL:iOSDeepLink:AndroidDeepLink:WindowsPhoneDeepLink:]` / `[Shortcut createShortLinkWithTitle:websiteURL:iOSDeepLink:AndroidDeepLink:WindowsPhoneDeepLink:completionHandler:]` instead.
 
-**Advanced configuration:** If you have different deep link schemes for different platforms you can use the following method instead:
+##### Custom domain for short links
+If you set up a custon domain for your short links in the Shortcut Manager and want to use it for short links created from the SDK as well, then you need to tell the SDK about it. This is done by launching the SDK with a custom domain parameter. Just replace the SDK launch call in `-application:didFinishLaunchingWithOptions:` in your *AppDelegate.m* file:
 
 ```objective-c
-- (IBAction)shareButtonPressed:(id)button {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [Shortcut createShortLinkWithTitle:@"content title"
-                            websiteURL:[NSURL URLWithString:@"http://your.site/content"]
-                           iOSDeepLink:[NSURL URLWithString:@"your-ios-scheme://your/content"]
-                       androidDeepLink:[NSURL URLWithString:@"your-android-scheme://your/content"]
-                  windowsPhoneDeepLink:[NSURL URLWithString:@"your-windows-phone-scheme://your/content"]
-                     completionHandler:^(NSURL *shortLinkURL, NSError *error) {
-                         if (!error) {
-                             [self displayShareSheetWithURL:shortLinkURL];
-                         } else {
-                             // do error handling...
-                         }}];
-}
+    [Shortcut launchWithAuthToken:@"YOUR_AUTH_TOKEN_HERE" shortLinkDomain:@"YOUR_DOMAIN_HERE"]; // instead of: [Shortcut launchWithAuthToken:@"YOUR_AUTH_TOKEN_HERE"];
 
-- (void)displayShareSheetWithURL:(NSURL *)urlToShare {
-// ...
+    // ...
+    return YES;
 }
 ```
-
-The parameters `websiteURL` and `completionHandler` are mandatory. All other parameters are optional (you can pass nil).
 
 ## Migrating from the Shortcut Deep Linking SDK
 
@@ -152,6 +173,7 @@ Please follow these steps to migrate your code to use this new SDK:
   * `[[SCDeepLinking sharedInstance] launch]` with `[Shortcut launchWithAuthToken:]`
   * `[[SCDeepLinking sharedInstance] startSessionWithURL:]` with `[Shortcut startDeepLinkSessionWithURL:]`
   * `[[SCDeepLinking sharedInstance] createShortLinkWithTitle:websiteURL:deepLinkURL:completionHandler:]` with `[Shortcut createShortLinkWithTitle:websiteURL:deepLink:completionHandler:]`
+5. Optional: Use the immediate short link generation from the new SDK if desired. Read through the [Creating Shortcuts](#creating-shortcuts-short-mobile-deep-links) section above and replace calls to `[Shortcut createShortLinkWithTitle:websiteURL:deepLink:completionHandler:]` with `[Shortcut createShortLinkWithTitle:websiteURL:deepLink:]`.
 
 ## License
 This project is released under the MIT license. See included LICENSE.txt file for details.

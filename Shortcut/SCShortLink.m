@@ -8,6 +8,7 @@
 
 #import "SCShortLink.h"
 #import "SCJSONRequest.h"
+#import "SCShortURLGenerator.h"
 
 NSString * const kSCShortLinkCreateURLString = @"https://shortcut-service.shortcutmedia.com/api/v1/deep_links/create";
 
@@ -48,7 +49,7 @@ NSString *kSCShortLinkErrorDomain = @"SCShortLinkErrorDomain";
     return self;
 }
 
-- (void)createWithCompletionHandler:(void (^)(NSError *))completionHandler {
+- (void)persistWithCompletionHandler:(void (^)(NSError *))completionHandler {
     
     
     [SCJSONRequest postToURL:[NSURL URLWithString:kSCShortLinkCreateURLString]
@@ -69,6 +70,13 @@ NSString *kSCShortLinkErrorDomain = @"SCShortLinkErrorDomain";
     }];
 }
 
+- (void)generateShortURL {
+    if (!self.shortURL) {
+        SCShortURLGenerator *generator = [[SCShortURLGenerator alloc] init];
+        self.shortURL = [generator generate];
+    }
+}
+
 #pragma mark - Helpers
 
 - (NSDictionary *)paramsDictionary {
@@ -81,6 +89,9 @@ NSString *kSCShortLinkErrorDomain = @"SCShortLinkErrorDomain";
     [shortLinkParams setValue:[self.iOSDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.ios_in_app_url"];
     [shortLinkParams setValue:[self.androidDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.android_in_app_url"];
     [shortLinkParams setValue:[self.windowsPhoneDeepLinkURL absoluteString] forKeyPath:@"mobile_deep_link.windows_phone_in_app_url"];
+    if (self.shortURL) {
+        [shortLinkParams setValue:[self.shortURL absoluteString] forKeyPath:@"short_link"];
+    }
     
     return @{@"deep_link_item" : shortLinkParams};
 }

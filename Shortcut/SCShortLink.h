@@ -27,18 +27,26 @@
       windowsPhoneDeepLinkURL:(NSURL *)windowsPhoneDeepLinkURL;
 
 /**
- *  Creates the short link on the Shortcut Backend.
+ *  Persists the short link on the Shortcut Backend.
  *
- *  This method attempts to create the short link on the Shortcut Backend. When the operation has
+ *  This method attempts to persist the short link on the Shortcut Backend. When the operation has
  *  completed, it calls the completion handler.
+ *
  *  If the short link was successfully created then its shortURL property will be set.
  *  If the creation failed then the completion handler receives an error object with the 
  *  kSCShortLinkErrorDomain describing the error.
  *
  *  @param completionHandler A handler that will be called after the operation is completed.
  */
-- (void)createWithCompletionHandler:(void (^)(NSError *error))completionHandler;
+- (void)persistWithCompletionHandler:(void (^)(NSError *error))completionHandler;
 
+/**
+ *  Generates a new, unique, short URL for the short link.
+ *
+ *  This method makes sure that the short link has a valid shortURL property. If there is already one
+ *  then it is not modified; if there is none yet then a new, unique short URL will be generated.
+ */
+- (void)generateShortURL;
 
 /**
  *  Short link error domain.

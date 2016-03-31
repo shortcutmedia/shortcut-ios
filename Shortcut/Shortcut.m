@@ -16,9 +16,16 @@
 @implementation Shortcut
 
 + (void)launchWithAuthToken:(NSString *)authToken {
+    [self launchWithAuthToken:authToken shortLinkDomain:nil];
+}
+
++ (void)launchWithAuthToken:(NSString *)authToken shortLinkDomain:(NSString *)shortLinkDomain {
     NSAssert([UIApplication sharedApplication].applicationState == UIApplicationStateInactive, @"You must invoke [Shortcut launchWithAuthToken:] BEFORE the app becomes active, e.g. in [UIApplicationDelegate application:didFinishLaunchingWithOptions:]");
     
     [[SCConfig sharedConfig] setAuthToken:authToken];
+    if (shortLinkDomain) {
+        [[SCConfig sharedConfig] setShortLinkDomain:shortLinkDomain];
+    }
     
     [[SCDeepLinking sharedInstance] launch];
     [[SCEventTracking sharedInstance] launch];
@@ -52,6 +59,28 @@
                                           androidDeepLinkURL:androidDeepLink
                                      windowsPhoneDeepLinkURL:windowsPhoneDeepLink
                                            completionHandler:completionHandler];
+}
+
++ (NSURL *)createShortLinkWithTitle:(NSString *)title
+                         websiteURL:(NSURL *)websiteURL
+                           deepLink:(NSURL *)deepLink {
+    return [self createShortLinkWithTitle:title
+                               websiteURL:websiteURL
+                              iOSDeepLink:deepLink
+                          androidDeepLink:deepLink
+                     windowsPhoneDeepLink:deepLink];
+}
+
++ (NSURL *)createShortLinkWithTitle:(NSString *)title
+                         websiteURL:(NSURL *)websiteURL
+                        iOSDeepLink:(NSURL *)iOSDeepLink
+                    androidDeepLink:(NSURL *)androidDeepLink
+               windowsPhoneDeepLink:(NSURL *)windowsPhoneDeepLink {
+    return [[SCDeepLinking sharedInstance] createShortLinkWithTitle:title
+                                                  websiteURL:websiteURL
+                                                     iOSDeepLinkURL:iOSDeepLink
+                                                 androidDeepLinkURL:androidDeepLink
+                                            windowsPhoneDeepLinkURL:windowsPhoneDeepLink];
 }
 
 @end
