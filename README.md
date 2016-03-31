@@ -64,7 +64,7 @@ Add the following to `-application:openURL:sourceApplication:annotation:` (you h
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 
     SCSession *deepLinkSession = [Shortcut startDeepLinkSessionWithURL:url];
-    url = deepLinkSession.url // Use the session object's url property for further processing
+    url = deepLinkSession.url; // Use the session object's url property for further processing
 
     // ...
 }
