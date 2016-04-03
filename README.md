@@ -14,7 +14,14 @@ The SDK works with any device running iOS6 and newer.
 
 ## Installation
 
-The SDK is packaged in a .framework file. To use it within your project follow these steps:
+You can install the SDK either using *CocoaPods* or by integrating it as a *.framework* file into your app.
+
+##### Using CocoaPods
+
+1. Add `pod 'Shortcut'` to your *Podfile*.
+2. Run `pod install`.
+
+##### Integrating the .framework file
 
 1. Download the latest SDK as zip file from the [releases page](https://github.com/shortcutmedia/shortcut-ios/releases).
 2. Unzip it and add the *Shortcut.framework*  file to your project, e.g. by dragging it into the Project Navigator of your project in Xcode.
