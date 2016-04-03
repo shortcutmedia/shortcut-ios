@@ -6,7 +6,7 @@
 //  Copyright © 2016 Shortcut Media AG. All rights reserved.
 //
 
-#define SDK_VERSION @"0.1.0"
+#define SDK_VERSION @"0.2.0"
 
 #import <Foundation/Foundation.h>
 
