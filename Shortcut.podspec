@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.social_media_url = "https://twitter.com/ShortcutMedia"
 
 
-  s.license  = { :type => "MIT", :file => "LICENSE.txt" }
+  s.license  = "MIT"
 
   s.author   = "Shortcut Media AG"
 
