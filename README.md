@@ -6,7 +6,7 @@ This SDK provides the following features:
 - Support for [deferred deep linking](https://en.wikipedia.org/wiki/Deferred_deep_linking).
 - Creation Shortcuts (short mobile deep links) to share from within your app.
 
-There is also an [Android version of this SDK](https://github.com/shortcutmedia/shortcut-deeplink-sdk-android).
+There is also an [Android version of this SDK](https://github.com/shortcutmedia/shortcut-android-sdk).
 
 ## Requirements
 
