@@ -152,7 +152,7 @@ The implementation of the example above would look like this with the asynchrono
 ```
 
 ##### Different deep links per platform
-If your deep links are not identical for the different platforms your app supports (iOS, Android, Windows Phone) then you can specify them on a per-platform basis, just use `[Shortcut createShortLinkWithTitle:websiteURL:iOSDeepLink:AndroidDeepLink:WindowsPhoneDeepLink:]` / `[Shortcut createShortLinkWithTitle:websiteURL:iOSDeepLink:AndroidDeepLink:WindowsPhoneDeepLink:completionHandler:]` instead.
+If your deep links are not identical for the different platforms your app supports (iOS, Android, Windows Phone) then you can specify them on a per-platform basis, just use `[Shortcut createShortLinkWithTitle:websiteURL:iOSDeepLink:androidDeepLink:windowsPhoneDeepLink:]` / `[Shortcut createShortLinkWithTitle:websiteURL:iOSDeepLink:androidDeepLink:windowsPhoneDeepLink:completionHandler:]` instead.
 
 ##### Custom domain for short links
 If you set up a custon domain for your short links in the Shortcut Manager and want to use it for short links created from the SDK as well, then you need to tell the SDK about it. This is done by launching the SDK with a custom domain parameter. Just replace the SDK launch call in `-application:didFinishLaunchingWithOptions:` in your *AppDelegate.m* file:
